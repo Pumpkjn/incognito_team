@@ -1,0 +1,237 @@
+.information{
+  background-color: #000000;
+  padding:10px 10px 10px 10px;
+}
+.information .tt1{
+  background-color: #FFFFFF;
+  margin-top: 10px;
+  padding: 20px ;
+  height: 480px;
+}
+.container-fluid .information .position {
+  position: absolute;
+  top: 480px;
+  left: 120px;
+  background-color: #222222;
+  padding: 8px 10px 6px 6px;
+  width: 80%;
+  opacity: 0.8;
+  
+}
+
+.container-fuk-breadcrumb{size: 40px;
+    color: white; 
+    /*top: 0px*/
+}
+  
+.container-fluid .information .position .text {
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    left: 60px;
+    font-family:time new roman;
+}
+.hotline{
+  background-color: #222222;
+  padding:10px;
+  width: 100%;
+  font-family: time new roman;
+  font-size: 30px;
+  color: red;
+  text-align: center;
+
+}
+.page-title{
+    background-color: #000;
+    margin-left: 45px;
+    margin-right: 52px;
+    font-family: time new roman;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    opacity: 0.8;
+    padding-left: 30px;
+}
+.page-content{
+  background-color: #444;
+}
+.content{
+    width: 1236px;
+    margin-left: 46px;
+    padding-top: 3px;
+    background-color: #fff;
+}
+.std{
+    margin-left: 15px;
+    margin-top: 24px;
+    font-size: 16px;
+    color: #444;
+    padding: 3px 25px;
+}
+.about{
+    margin-right: -9px;
+    margin-left: -9px;
+}
+a:hover{
+  color: #d9d900;
+}
+
+.position .icon {
+  font-size : 40px;
+  color: #C0FFF4;
+}
+#anh-cua-hang {
+  padding: 10px 10px 10px 10px;
+  width: 500px;
+  height: 500px;
+}
+.lh-intro {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+.modal-backdrop {
+  z-index: 999!important;
+}
+.space-ground {
+  height: 80px;
+  background-color: #eee;
+}
+.navbar-brand>.logo{
+  margin-top: -23px;
+}
+
+.banner2{
+  width: 100%;
+
+}
+.textgallery{
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 0;
+  font-size: 40px;
+  text-align: center;
+
+}
+.gallery{
+   -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4;
+    -moz-column-gap: 1em;
+    -webkit-column-gap: 1em;
+    column-gap: 1em;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+}
+.item{
+  background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}
+
+.main .product {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.main .product .product-thumbnail {
+  border: 1px solid #eee;
+  background-color: #eee;
+  padding: 10px 10px 10px 10px;
+}
+.main .product .product-thumbnail img {
+  width: 100%;
+  height: 230px;
+}
+.main .product .product-title {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: bold;
+    margin: 0 0 5px;
+}
+
+#filters li {
+  border: 2px solid #eee;
+  border-radius: 25px;
+  overflow: hidden;
+}
+#filters li:hover,#filters li:focus {
+  border: 2px solid #eee;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+#filters li a {
+  font-weight: bold;
+  color: #7c858b;
+}
+.main .item:hover {
+  border: 2px solid #6b7767;
+}
+/*.main .product .product-thumbnail:before {
+    display: block;
+    position: absolute;
+    content: "";
+    background: #202e39;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: all .5s;
+}*/
+
+.main {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.item-info {
+  margin-top: 30px;
+  padding: 10px 10px 10px 10px;
+}
+
+.single-content .item-thumb {
+  padding: 10px;
+}
+
+.single-content .item-thumb img {
+  width: 100%;
+
+}
+.gallery {
+  background: #EEE;
+  max-width: 1200px;
+}
+
+/* clearfix */
+.gallery:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.mansonry {
+  width: 160px;
+  height: 120px;
+  float: left;
+  background: #D26;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+.mansonry--width2 { width: 320px; }
+.mansonry--width3 { width: 480px; }
+.mansonry--width4 { width: 640px; }
+
+.mansonry--height2 { height: 200px; }
+.mansonry--height3 { height: 260px; }
+.mansonry--height4 { height: 360px; }
+
+.gallery img{
+  width: 100%;
+
+}
