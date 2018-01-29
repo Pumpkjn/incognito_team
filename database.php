@@ -2,7 +2,7 @@
 class database 
 {
 	var $connection = null; 
- 
+    private static $db = null;
     function connect()
     {
         // require("config.php"); // include config
@@ -21,7 +21,16 @@ class database
             else    mysqli_query($this->connection,'set names utf8'); 
         }
     }
-    
+
+    public static function get_instance() // get global database object
+    {
+        if (self::$db==null)
+        {
+            self::$db = new database();
+        }
+        return self::$db;
+    }
+
     function disconnect()
     {
         mysqli_close($this->connection); 
@@ -67,8 +76,8 @@ class database
                 while($row = mysqli_fetch_array($list,MYSQLI_ASSOC))
                 {
                     $result[] = $row;
-                }            
-                $this->disconnect();
+                }
+                //$this->disconnect();
                 return $result[0];
             }
             else
@@ -86,7 +95,7 @@ class database
             $execute = mysqli_query($this->connection,$sql);
             if($execute)
             {
-                $this->disconnect();
+                //$this->disconnect();
                 return true;
             }
             else
