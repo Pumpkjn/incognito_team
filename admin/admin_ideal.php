@@ -4,16 +4,14 @@
 	include("admin_header.php");
 
 	session_start();
-	if ( 1 == $_SESSION['login'] ) {
-		if ( 1 == $_SESSION['isAdmin'] ) { ?>
+	// if ( 1 == $_SESSION['login'] ) {
+	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
+			?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-2"><?php include("admin_sidebar.php"); ?></div>
-					<div class="col-md-10"> Materials |
-					<a href="addcategory.php"> Add Material Category </a>
-					<span>|</span>
-					<a href="addmaterials.php"> Add Material </a>
-
+					<div class="col-md-10"> Ideals |
+					<a href="addcategory.php"> Add Category </a>
 					<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -64,10 +62,11 @@
 					</div>
 				</div>
 			</div>
-		<?php }
-	} else {
-		echo '???';
-	}
+		<?php
+	// 	 }
+	// } else {
+	// 	echo '???';
+	// }
 
 
 	include("admin_footer.php");
