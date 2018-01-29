@@ -10,7 +10,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-2"><?php include("admin_sidebar.php"); ?></div>
-					<div class="col-md-10"> Ideals |
+					<div class="col-md-10"> Ideas |
 					<a href="addcategory.php"> Add Category </a>
 					<table class="table table-bordered">
 					<thead>
@@ -27,7 +27,7 @@
 					</thead>
 					<?php 
 						$con = new database();
-						$sql = 'SELECT * FROM material';
+						$sql = 'SELECT * FROM ideas';
 						$result = $con->select_all_query( $sql );
 					?>
 					<?php if ( $result ) : ?>
