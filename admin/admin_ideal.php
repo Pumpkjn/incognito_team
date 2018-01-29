@@ -1,19 +1,18 @@
 <?php
 	require_once("../database.php");
+	require_once("../modules/ideals.php");
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
 	session_start();
-	if ( 1 == $_SESSION['login'] ) {
-		if ( 1 == $_SESSION['isAdmin'] ) { ?>
+	// if ( 1 == $_SESSION['login'] ) {
+	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
+			?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-2"><?php include("admin_sidebar.php"); ?></div>
-					<div class="col-md-10"> Materials |
-					<a href="addcategory.php"> Add Material Category </a>
-					<span>|</span>
-					<a href="addmaterials.php"> Add Material </a>
-
+					<div class="col-md-10"> Ideas |
+					<a href="addcategory.php"> Add Category </a>
 					<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -28,12 +27,11 @@
 						</tr>
 					</thead>
 					<?php 
-						$con = new database();
-						$sql = 'SELECT * FROM material';
-						$result = $con->select_all_query( $sql );
+						
+						$ideas = get_all_ideas_by_category();
 					?>
-					<?php if ( $result ) : ?>
-					<?php foreach ( $result as $r ) : ?>
+					<?php if ( $ideas ) : ?>
+					<?php foreach ( $ideas as $idea ) : ?>
 						<tbody>
 							<tr> 
 								<th scope="row">
@@ -64,10 +62,11 @@
 					</div>
 				</div>
 			</div>
-		<?php }
-	} else {
-		echo '???';
-	}
+		<?php
+	// 	 }
+	// } else {
+	// 	echo '???';
+	// }
 
 
 	include("admin_footer.php");

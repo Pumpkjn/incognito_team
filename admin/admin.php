@@ -2,6 +2,9 @@
 	include("admin_header.php");
 
 	session_start();
+	// if ( 1 == $_SESSION['login'] ) {
+		// if ( 1 == $_SESSION['isAdmin'] ) { 
+			?>
 	if ( 1 == $_SESSION['login'] ) {
 		if ( 1 == $_SESSION['isAdmin'] ) { ?>
 			<div class="container-fluid">
@@ -11,15 +14,15 @@
 					
 				</div>
 			</div>
-		<?php } else {
-			echo "<script>
-	        alert('Eh try to cheat huh?');
-	        window.location.href = '../index.php';
-	      </script>";
-		}
-	} else {
-		echo '???';
-	}
-
+		<?php
+		 // } else {
+	// 		echo "<script>
+	//         alert('Eh try to cheat huh?');
+	//         window.location.href = '../index.php';
+	//       </script>";
+	// 	}
+	// } else {
+	// 	echo '???';
+	// }
 
 	include("admin_footer.php");
