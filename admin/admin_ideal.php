@@ -1,5 +1,6 @@
 <?php
 	require_once("../database.php");
+	require_once("../modules/ideals.php");
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
@@ -26,12 +27,11 @@
 						</tr>
 					</thead>
 					<?php 
-						$con = new database();
-						$sql = 'SELECT * FROM ideas';
-						$result = $con->select_all_query( $sql );
+						
+						$ideas = get_all_ideas_by_category();
 					?>
-					<?php if ( $result ) : ?>
-					<?php foreach ( $result as $r ) : ?>
+					<?php if ( $ideas ) : ?>
+					<?php foreach ( $ideas as $idea ) : ?>
 						<tbody>
 							<tr> 
 								<th scope="row">

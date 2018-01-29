@@ -97,8 +97,6 @@ class database
             
         }
     }
-    
-    
-
 }
+$GLOBALS['database'] = new database();
 ?>
