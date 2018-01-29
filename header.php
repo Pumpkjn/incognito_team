@@ -8,7 +8,7 @@
 	<script src="assets/js/bootstrap.js"  type="text/javascript"></script>
 	<script src="assets/js/isotope.min.js"  type="text/javascript"></script>
 	<script src="assets/js/masonry.pkgd.min.js"></script>
-	<title>3Rd Greenwich</title>
+	<title>3RD Greenwich</title>
 </head>
 <body>
 	<header>
