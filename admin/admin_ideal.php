@@ -5,6 +5,7 @@
 	include("admin_header.php");
 
 	session_start();
+	global $ideal;
 	// if ( 1 == $_SESSION['login'] ) {
 	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
 			?>
@@ -28,7 +29,7 @@
 					</thead>
 					<?php 
 						
-						$ideas = get_all_ideas_by_category();
+						$ideas = $ideal->get_all_ideas_by_category();
 					?>
 					<?php if ( $ideas ) : ?>
 					<?php foreach ( $ideas as $idea ) : ?>

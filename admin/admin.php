@@ -5,8 +5,6 @@
 	// if ( 1 == $_SESSION['login'] ) {
 		// if ( 1 == $_SESSION['isAdmin'] ) { 
 			?>
-	if ( 1 == $_SESSION['login'] ) {
-		if ( 1 == $_SESSION['isAdmin'] ) { ?>
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-md-3"><?php include("admin_sidebar.php"); ?></div>

@@ -12,6 +12,11 @@ class ideal
         $result = $database->select_all_query( $sql );
         return $result;
       }
+    function get_all_category() {
+        global $database;
+        $sql = "SELECT * From categories";
+        $result = $database->select_all_query( $sql );
+    }
       
 }
 $GLOBALS['ideal'] = new ideal();
