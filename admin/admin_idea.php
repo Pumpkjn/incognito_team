@@ -1,19 +1,28 @@
 <?php
 	require_once("../database.php");
-	require_once("../classes/Ideals.php");
+	require_once("../classes/_Ideals.php");
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
 	session_start();
-	global $ideal;
+	global $idea;
 	// if ( 1 == $_SESSION['login'] ) {
 	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
 			?>
+		<div class="admin-container">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-2"><?php include("admin_sidebar.php"); ?></div>
-					<div class="col-md-10"> Ideas |
-					<a href="addcategory.php"> Add Category </a>
+					<div class="col-md-2">
+						<?php
+							$current_tab = 'idea';
+							include("admin_sidebar.php"); 
+						?>
+					</div>
+					<div class="col-md-10">
+						<nav class="nav">
+							Ideas |
+							<a href="addcategory.php"> Add Category </a>
+						</nav>
 					<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -29,7 +38,7 @@
 					</thead>
 					<?php 
 						
-						$ideas = $ideal->get_all_ideas_by_category();
+						$ideas = $idea->get_all_ideas_by_category();
 					?>
 					<?php if ( $ideas ) : ?>
 					<?php foreach ( $ideas as $idea ) : ?>
@@ -63,6 +72,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		<?php
 	// 	 }
 	// } else {

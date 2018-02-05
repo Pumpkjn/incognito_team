@@ -106,6 +106,27 @@ class database
             
         }
     }
+
+    function execute_query_return_result($sql)
+    {
+        if($sql != '')
+        {
+            $this->connect();
+            $execute = mysqli_query($this->connection,$sql);
+            if($execute)
+            {   
+                $id = $this->connection->insert_id;
+                $this->disconnect();
+                return $id;
+            }
+            else
+            {
+                $this->disconnect();
+                return false;
+            }
+            
+        }
+    }
 }
 $GLOBALS['database'] = new database();
 ?>
