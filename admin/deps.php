@@ -1,11 +1,11 @@
 <?php
 	require_once("../database.php");
-	require_once("../classes/_Ideals.php");
+	require_once("../classes/_deps.php");
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
 	session_start();
-	global $idea;
+	global $deps;
 	// if ( 1 == $_SESSION['login'] ) {
 	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
 			?>
@@ -14,40 +14,45 @@
 				<div class="row">
 					<div class="col-md-2">
 						<?php
-							$current_tab = 'idea';
+							$current_tab = 'deps';
 							include("admin_sidebar.php"); 
 						?>
 					</div>
 					<div class="col-md-10">
 					<div class="row">
 						<div class="col-md-3">
-							<form method="POST" action="modules/admin_add_category.php">
+							<form method="POST" action="modules/admin_add_deps.php">
+								<h3> Add Department </h3>
 								<div class="form-group">
-									<label for="cat-name">Category Name</label>
-									<input type="cat-name" name="cat-name" class="form-control" id="cat-name">
+									<label for="deps-name">Department Name</label>
+									<input type="deps-name" name="deps-name" class="form-control" id="deps-name">
+								</div>
+								<div class="form-group">
+									<label for="thumbnail">Thumbnail</label>
+									<input type="thumbnail" name="thumbnail" class="form-control" id="thumbnail">
 								</div>
 								<button type="submit" class="btn btn-default">Add</button>
 							</form>
 						</div>
 						<div class="col-md-9">
-							<label for="cat-name">Categories</label>
+							<label for="cat-name">Departments</label>
 							<table class="table table-bordered">
 							<thead>
 								<tr>
 									<th>Name</th>
-									<th>Slug</th>
+									<th>Thumbnail</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
 							<?php 
-								$category = $idea->get_all_category();
+								$department = $deps->get_all_department();
 							?>
-							<?php if ( $category ) : ?>
-							<?php foreach ( $category as $cat ) : ?>
+							<?php if ( $department ) : ?>
+							<?php foreach ( $department as $dep ) : ?>
 								<tbody>
 									<tr> 
-										<td><?php echo $cat['name']; ?></td>
-										 <td><?php echo $cat['slug']; ?></td>
+										<td><?php echo $dep['name']; ?></td>
+										 <td><?php echo $deps->get_deps_meta( $dep['id'], 'thumbnail', false ) ?></td>
 										  <td>
 											<a href="modules/admin_delete_category.php?id=<?php echo $cat['id'] ?>"> Delete </a>
 										  </td>

@@ -91,8 +91,8 @@ DROP TABLE IF EXISTS `deps_data`;
 CREATE TABLE `deps_data` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `dep_id` int(11) unsigned DEFAULT NULL,
-  `key` varchar(255) DEFAULT NULL,
-  `value` varchar(255) DEFAULT NULL,
+  `meta_key` varchar(255) DEFAULT NULL,
+  `meta_value` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `deps_ref` (`dep_id`),
   CONSTRAINT `deps_ref` FOREIGN KEY (`dep_id`) REFERENCES `deps` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -128,8 +128,8 @@ DROP TABLE IF EXISTS `ideas_metadata`;
 CREATE TABLE `ideas_metadata` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `idea_id` int(11) unsigned DEFAULT NULL,
-  `key` varchar(64) DEFAULT NULL,
-  `value` varchar(64) DEFAULT NULL,
+  `meta_key` varchar(64) DEFAULT NULL,
+  `meta_value` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `meta_idea_ref` (`idea_id`),
   CONSTRAINT `meta_idea_ref` FOREIGN KEY (`idea_id`) REFERENCES `ideas` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
