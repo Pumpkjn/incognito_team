@@ -9,58 +9,9 @@
 </head>
 <body>
 
-<!-- Top navigation -->
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Logo + toggle button -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapsable-menu">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Incognito</a>
-        </div>
-        <!-- Collapseable menu -->
-        <div class="collapse navbar-collapse" id="collapsable-menu">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="#">Home</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        Departments
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li> <a href="#">Computing</a> </li>
-                        <li> <a href="#">Electrical Engineering</a> </li>
-                        <li class="divider"></li>
-                        <li> <a href="#">Business</a></li>
-                        <li> <a href="#">Accounting</a> </li>
-                        <li class="divider"></li>
-                        <li> <a href="#">Art</a></li>
-                        <li> <a href="#">Music</a> </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Submit Idea</a>
-                </li>
-                <li>
-                    <a href="#">My Idea</a>
-                </li>
-                <li>
-                    <a href="#">Work</a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-</nav>
+<?php
+include_once "top_nav.php";
+?>
 
 <div class="container">
     <div class="row">
@@ -120,7 +71,7 @@
                             </li>
                             <li>|</li>
                             <li>
-                                <a>
+                                <a href="#comment-box-1">
                                    <span class="glyphicon glyphicon-comment"></span>
                                     <span>2 comments</span>
                                 </a>
@@ -142,6 +93,34 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-left pull-left
+">
+                            <a href="#">
+                                <img src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" class="media-object">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">Media heading</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                            <div class="media">
+                                <div class="media-left pull-left
+">
+                                    <a href="#">
+                                        <img src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" class="media-object">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading">Media heading</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                </ul>
+
                 <!-- The end of an idea -->
                 <!-- The beginning of an idea -->
                 <div class="panel panel-default">
@@ -226,60 +205,9 @@
 
         <div class="col-xs-12 col-md-3 ">
             <!-- Search box-->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Search</h3>
-                </div>
-                <div class="panel-body">
-                    <form action="#" method="GET">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter text here">
-                        </div>
-                        <input type="submit" class="btn btn-default">
-                    </form>
-                </div>
-            </div>
-            <!-- Categories -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Categories</h3>
-                </div>
-
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <span class="badge">14</span>
-                        <a>Computer upgrade </a>
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">90</span>
-                        <a>Distance learning</a>
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">50</span>
-                        <a>Parking improvement</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Popular idea -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Popular ideas</h3>
-                </div>
-
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">Computer upgrade</h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deserunt dolorem dolorem</p>
-                    </a>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading">Distance learning</h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deserunt dolorem dolorem</p>
-                    </a>
-                </div>
-
-            </div>
+            <?php include "search_box.php"; ?>
+            <?php include "categories_box.php"; ?>
+            <?php include "popular_ideas_box.php"; ?>
         </div>
     </div>
 </div>
