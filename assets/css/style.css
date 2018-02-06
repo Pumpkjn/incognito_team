@@ -235,3 +235,23 @@ a:hover{
   width: 100%;
 
 }
+
+.submit-login {
+  padding: 20px;
+  border: 1px dashed #d3d3d3;
+}
+
+.submit-login .col-md-8 {
+  border-right: 1px solid #d3d3d3;
+}
+
+.submit-container .submit-button {
+  margin-top: 5px;
+}
+.submit-container  .login-anchor {
+  display: inline-block;
+  background: #337ab7;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}

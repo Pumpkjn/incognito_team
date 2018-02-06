@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Submit Idea</a>
+                    <a href="submit-idea.php">Submit Idea</a>
                 </li>
                 <li>
                     <a href="#">My Idea</a>

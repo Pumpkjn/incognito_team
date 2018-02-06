@@ -54,7 +54,7 @@
 										<td><?php echo $dep['name']; ?></td>
 										 <td><?php echo $deps->get_deps_meta( $dep['id'], 'thumbnail', false ) ?></td>
 										  <td>
-											<a href="modules/admin_delete_category.php?id=<?php echo $cat['id'] ?>"> Delete </a>
+											<a href="modules/admin_delete_deps.php?id=<?php echo $dep['id'] ?>"> Delete </a>
 										  </td>
 										   </tr>
 										 <tr> 

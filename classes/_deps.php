@@ -56,7 +56,11 @@ class DEPS
     	return $r;
     }
 
-
+    function delete_deps( $id ) {
+        global $database;
+        $sql = 'DELETE FROM deps WHERE id = "'.$id.'"';
+        $database->execute_query( $sql );
+    }
 
 
 

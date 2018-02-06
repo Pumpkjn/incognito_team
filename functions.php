@@ -1,4 +1,6 @@
 	<?php
+	require_once("classes/_Ideals.php");
+	require_once("classes/_deps.php");
 	function login_form() { ?>
 		<div class="container">
 			<div class="row">
@@ -20,3 +22,4 @@
 			</div>
 		</div>
 		<?php }
+	
