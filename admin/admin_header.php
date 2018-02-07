@@ -6,7 +6,6 @@
     <!-- <link href="assets/css/bootstrap-theme.css" rel="stylesheet" type="text/css"> -->
     <script src="assets/js/jquery-1.9.1.min.js"  type="text/javascript"></script>
     <script src="assets/js/bootstrap.js"  type="text/javascript"></script>
-    <script src="assets/js/script.js"  type="text/javascript"></script> 
     <title>Dashboard</title>
 </head>
 <body>

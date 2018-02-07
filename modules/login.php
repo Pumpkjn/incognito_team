@@ -18,52 +18,53 @@ function check_admin( $user_id )
 
 
 session_start();
+// die();
 
 require("../database.php");
+require_once("../functions.php");
 
-$conn = new database();
 
 
 
 $user_name = $_POST['user_name'];
 $password = $_POST['password'];
 
-$sql = 'SELECT users.* FROM users 
-        WHERE user_name = "'.$user_name.'" 
-            and password = "'.$password.'"';
-$results = $conn->select_query($sql);
+// $sql = 'SELECT users.* FROM users 
+//         WHERE user_name = "'.$user_name.'" 
+//             and password = "'.$password.'"';
+// $results = $conn->select_query($sql);
 
 
-if( $results ){
-        $_SESSION['login'] = 1; // Ðánh d?u là dã dang nh?p
+// if( $results ){
+//         $_SESSION['login'] = 1; // 
       
-        //Luu m?t s? thông tin c?n thi?t c?a ngu?i dang dang nh?p
-        $_SESSION['user_name'] = $results['user_name'];
-        $_SESSION['id'] = $results['ID'];
+//         //Luu m?t s? thông tin c?n thi?t c?a ngu?i dang dang nh?p
+//         $_SESSION['user_name'] = $results['user_name'];
+//         $_SESSION['id'] = $results['ID'];
 
-        $check_admin = check_admin( $results['ID'] );
-        if ( 1 == $check_admin ) {
-            $_SESSION['isAdmin'] = 1;
-            $redirect = 'admin/admin.php';
-        } else {
-            $_SESSION['isAdmin'] = 0;
-            $redirect = 'index.php';
-        }
+//         $check_admin = check_admin( $results['ID'] );
+//         if ( 1 == $check_admin ) {
+//             $_SESSION['isAdmin'] = 1;
+//             $redirect = 'admin/admin.php';
+//         } else {
+//             $_SESSION['isAdmin'] = 0;
+//             $redirect = 'index.php';
+//         }
 
-        $data = array(
-			'login_status' => 'success',
-			'redirect' => $redirect,
-		);
+//         $data = array(
+// 			'login_status' => 'success',
+// 			'redirect' => $redirect,
+// 		);
 
-	    echo json_encode( $data );
-    }
-else
-{
+// 	    echo json_encode( $data );
+//     }
+// else
+// {
 
-	$data = array(
-		'login_status' => 'error',
-	);
+// 	$data = array(
+// 		'login_status' => 'error',
+// 	);
 
-    echo json_encode( $data );
-}
-?>
+//     echo json_encode( $data );
+// }
+// ?>

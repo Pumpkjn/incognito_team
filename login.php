@@ -2,6 +2,7 @@
     require_once("database.php");
     require_once("functions.php");
     include("header.php");
+    include("/templates/top_nav.php");
 ?>
 
 <?php

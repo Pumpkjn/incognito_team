@@ -3,7 +3,7 @@
 	require_once("functions.php");
 	include("header.php");
 	include("/templates/top_nav.php");
-	global $deps,$ideal;
+	global $deps,$idea;
 ?>
 
 	<div class="container submit-container">
@@ -14,7 +14,7 @@
 				<input type="text" name="idea-name" class="form-control" placeholder="Title">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Description</label>
+				<label for="idea-description">Description</label>
 				</br>
 				<textarea name="idea-description" style="width: 100%" rows="5"></textarea>
 			</div>
@@ -22,7 +22,7 @@
 				<?php
 					$departments = $deps->get_all_department();
 				?>
-				<label for="exampleInputPassword1">Choose Department</label>
+				<label for="department">Choose Department</label>
 				</br>
 				<select name="department">
 					<?php foreach ( $departments as $d ) { ?>
@@ -33,7 +33,7 @@
 				
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Choose Categories</label>
+				<label for="category">Choose Categories</label>
 				</br>
 				<?php
 					$category = $idea->get_all_category();
@@ -45,7 +45,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Attachment</label>
+				<label for="attachment">Attachment</label>
 				</br>
 				<input type="file" name="attachment" accept=".zip,.rar"></input>
 			</div>

@@ -7,4 +7,9 @@
 			return;
 		}
 	}
+
+	function check_exist_email( $email ) {
+		var_dump("expression");
+		die();
+	}
 ?>
