@@ -36,6 +36,18 @@
                         <input id="password" type="password" class="form-control" name="password" placeholder="Password">
                     </div>                                                                  
                     <br />
+                    <label for="conpassword">Confirm Password</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="conpassword" type="conpassword" class="form-control" name="conpassword" placeholder="Confirm Password">
+                    </div>                                                                  
+                    <br />
+                    <label for="email">Email Address</label>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input id="email" type="email" class="form-control" name="email" placeholder="Email Address">
+                    </div>                                                                  
+                    <br />
                     <br />
                      <center><button type="submit" name="login" class="btn btn-success btn-md btn-block">Login</button>
                     <br />
