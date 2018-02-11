@@ -17,7 +17,7 @@ include_once "top_nav.php";
     <div class="row">
         <div class="col-xs-12 col-md-9">
             <h2 class="page-header-2">Latest idea</h2>
-            <div class="col-xs-12">
+
                 <!-- the start of an idea -->
                 <div class="panel panel-default">
                     <div class="panel-heading ">
@@ -59,14 +59,14 @@ include_once "top_nav.php";
                             <li>
                                 <a>
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
-                                    <span> Up </span>
+                                    <span> 5 </span>
                                 </a>
                             </li>
                             <li>|</li>
                             <li>
                                 <a>
                                     <span class="glyphicon glyphicon-thumbs-down"></span>
-                                    <span> Down </span>
+                                    <span> 11 </span>
                                 </a>
                             </li>
                             <li>|</li>
@@ -91,35 +91,122 @@ include_once "top_nav.php";
                             </li>
                         </ul>
                         <div class="clearfix"></div>
-                    </div>
-                </div>
-                <ul class="media-list">
-                    <li class="media">
-                        <div class="media-left pull-left
-">
-                            <a href="#">
-                                <img src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" class="media-object">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Media heading</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                            <div class="media">
-                                <div class="media-left pull-left
-">
+                        <div class="divider"></div>
+                        <ul class="media-list">
+                            <li class="media">
+                                <div class="media-left pull-left">
                                     <a href="#">
-                                        <img src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" class="media-object">
+                                        <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
                                     </a>
                                 </div>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Media heading</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                </div>
-                            </div>
-                        </div>
+                                    <div class="media-content">
+                                        <h4 class="media-heading">Nguyen Vu</h4>
+                                        <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+                                            2 days, 8 hours ago</small></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                        <div class="divider"></div>
+                                        <ul class="list-inline ">
+                                            <li>
+                                                <a>
+                                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                                    <span> 5 </span>
+                                                </a>
+                                            </li>
+                                            <li>|</li>
+                                            <li>
+                                                <a>
+                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                    <span> 11 </span>
+                                                </a>
+                                            </li>
+                                            <li>|</li>
+                                            <li>
+                                                <a href="#comment-box-1">
+                                                    <span class="glyphicon glyphicon-comment"></span>
+                                                    <span>2 comments</span>
+                                                </a>
+                                        </ul>
+                                    </div>
 
-                    </li>
-                </ul>
+                                    <div class="media">
+                                        <div class="media-left pull-left">
+                                            <a href="#">
+                                                <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="media-content">
+                                                <h4 class="media-heading">Nguyen Vu</h4>
+                                                <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+                                                        2 days, 8 hours ago</small></h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                                <div class="divider"></div>
+                                                <ul class="list-inline ">
+                                                    <li>
+                                                        <a>
+                                                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                                                            <span> 5 </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>|</li>
+                                                    <li>
+                                                        <a>
+                                                            <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                            <span> 11 </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>|</li>
+                                                    <li>
+                                                        <a href="#comment-box-1">
+                                                            <span class="glyphicon glyphicon-comment"></span>
+                                                            <span>2 comments</span>
+                                                        </a>
+                                                </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left pull-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-content">
+                                        <h4 class="media-heading">Nguyen Vu</h4>
+                                        <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+                                                2 days, 8 hours ago</small></h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                        <div class="divider"></div>
+                                        <ul class="list-inline ">
+                                            <li>
+                                                <a>
+                                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                                    <span> 5 </span>
+                                                </a>
+                                            </li>
+                                            <li>|</li>
+                                            <li>
+                                                <a>
+                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                    <span> 11 </span>
+                                                </a>
+                                            </li>
+                                            <li>|</li>
+                                            <li>
+                                                <a href="#comment-box-1">
+                                                    <span class="glyphicon glyphicon-comment"></span>
+                                                    <span>2 comments</span>
+                                                </a>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
 
                 <!-- The end of an idea -->
                 <!-- The beginning of an idea -->
@@ -198,9 +285,141 @@ include_once "top_nav.php";
                     </div>
                 </div>
                 <!-- The end of an idea -->
-            </div>
+
             <div class="clearfix visible-xs-block"></div>
             <h2 class="page-header-2">Departments</h2>
+            <!-- a department -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Computing</h3>
+                </div>
+                <div class="panel-body container-fluid my-panel-body">
+                        <div class="row my-row">
+                            <div class="col-xs-12 col-md-8 no-float bottom-border-xs right-border-md ">
+
+                                <div class="media">
+                                    <div class="media-left pull-left">
+                                        <a href="#">
+                                            <img width="110px" height="110px" class="media-object img-thumbnail" src="http://demo.designwall.com/dw-focus/wp-content/uploads/sites/10/time-to-get-tough-with-north-korea-and-iran-as-imminent-nuclear-bomb-test-looms-110x110.jpg" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a>Title</a></h4>
+                                        <ul class="list-inline pull-left">
+                                            <li>
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                2 days, 8 hours ago
+                                            </li>
+                                            <li>|</li>
+                                            <li>
+                                                <span class="glyphicon glyphicon-user"></span>
+                                                <a href="#">
+                                                    John
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad quidem quis
+                                            voluptatibus? Blanditiis est harum in veniam? Aliquid animi iste porro
+                                            quidem quos repudiandae saepe sed sequi similique sint?
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="col-xs-12 col-md-4 no-float list-unstyled my-list">
+                                <li role="separator" class="divider only-sx"></li>
+                                <li>
+                                    <a href="#">Lorem ipsum dolor sit amet, consectetur adipi </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="#">Dapibus ac facilisis in morbi leo risus</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="#">Morbi leo risus dapibus ac facilisis in</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="#">Porta ac consectetur ac dapibus ac facilisis</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <a href="#">Vestibulum at eros porta ac consectetur</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clearfix">
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Computing</h3>
+                </div>
+                <div class="panel-body container-fluid my-panel-body">
+                    <div class="row my-row">
+                        <div class="col-xs-12 col-md-8 no-float bottom-border-xs right-border-md ">
+
+                            <div class="media">
+                                <div class="media-left pull-left">
+                                    <a href="#">
+                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://demo.designwall.com/dw-focus/wp-content/uploads/sites/10/time-to-get-tough-with-north-korea-and-iran-as-imminent-nuclear-bomb-test-looms-110x110.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><a>Title</a></h4>
+                                    <ul class="list-inline pull-left">
+                                        <li>
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                            2 days, 8 hours ago
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                            <span class="glyphicon glyphicon-user"></span>
+                                            <a href="#">
+                                                John
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad quidem quis
+                                        voluptatibus? Blanditiis est harum in veniam? Aliquid animi iste porro
+                                        quidem quos repudiandae saepe sed sequi similique sint?
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="col-xs-12 col-md-4 no-float list-unstyled my-list">
+                            <li role="separator" class="divider only-sx"></li>
+                            <li>
+                                <a href="#">Lorem ipsum dolor sit amet, consectetur adipi </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Dapibus ac facilisis in morbi leo risus</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Morbi leo risus dapibus ac facilisis in</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Porta ac consectetur ac dapibus ac facilisis</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">Vestibulum at eros porta ac consectetur</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-xs-12 col-md-3 ">

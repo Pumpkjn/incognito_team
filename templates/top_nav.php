@@ -42,10 +42,34 @@
                 <li>
                     <a href="#">Work</a>
                 </li>
-                <li>
-                    <a href="login.php">Login</a>
-                </li>
+
             </ul>
+            <!-- <form class="navbar-form navbar-right" href="login.php" role="login">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
+                <a class="btn btn-default">Sign up</a>
+            </form> -->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle avatar-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-responsive img-circle" src="http://lifecoach.com.vn/wp-content/uploads/2015/12/avatar.jpg">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">User profile</a></li>
+                        <li><a href="#">Preferences</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Log out</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+
         </div>
     </div>
 </nav>
