@@ -5,10 +5,9 @@
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
-	session_start();
 	global $deps,$idea;
-	// if ( 1 == $_SESSION['login'] ) {
-	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
+	if ( is_user_login() ) {
+		if ( current_user_can_manage() ) { 
 			?>
 		<div class="admin-container">
 			<div class="container-fluid">
@@ -57,12 +56,12 @@
 									<label for="role">Role</label>
 									</br>
 									<select name="role" id="role-select">
-										<option value="2">Student</option>
-										<option value="1">Manager</option>
+										<option value="2">Staff</option>
+										<option value="1">QA Coordinator</option>
 										<!-- <option value="0">Admin</option> -->
 									</select>
 								</div>
-								<div class="form-group hidden">
+								<div class="form-group">
 									<?php
 										$departments = $deps->get_all_department();
 									?>
@@ -117,10 +116,5 @@
 			</div>
 		</div>
 		<?php
-	// 	 }
-	// } else {
-	// 	echo '???';
-	// }
-
-
-	include("admin_footer.php");
+	}
+include("admin_footer.php");

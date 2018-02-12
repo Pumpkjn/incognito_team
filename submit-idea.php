@@ -2,6 +2,7 @@
 	require_once("database.php");
 	require_once("functions.php");
 	include("header.php");
+	$current_tab = 'submit';
 	include("/templates/top_nav.php");
 	global $deps,$idea;
 ?>

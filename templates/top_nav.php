@@ -9,15 +9,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home.php">Incognito</a>
+            <a class="navbar-brand" href="index.php">Incognito</a>
         </div>
         <!-- Collapseable menu -->
         <div class="collapse navbar-collapse" id="collapsable-menu">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="home.php">Home</a>
+                <li class="<?php echo get_active_tab( $current_tab, 'home' ); ?>">
+                    <a href="index.php">Home</a>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown <?php echo get_active_tab( $current_tab, 'category' ); ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Departments
                         <b class="caret"></b>
@@ -33,41 +33,49 @@
                         <li> <a href="#">Music</a> </li>
                     </ul>
                 </li>
-                <li>
+                <li class="<?php echo get_active_tab( $current_tab, 'submit' ); ?>">
                     <a href="submit-idea.php">Submit Idea</a>
                 </li>
-                <li>
+                <?php if ( is_user_login() ) : ?>
+                <li class="<?php echo get_active_tab( $current_tab, 'my-idea' ); ?>">
                     <a href="#">My Idea</a>
                 </li>
-                <li>
-                    <a href="#">Work</a>
+                <?php endif; ?>
+                <?php if ( is_user_login() ) : ?>
+                <li class="<?php echo get_active_tab( $current_tab, 'my-department' ); ?>">
+                    <a href="#">My Department</a>
                 </li>
+                <?php endif; ?>
+                <?php if ( current_user_can_manage() ) : ?>
+                    <li>
+                        <a href="admin/admin.<?php  ?>">Dashboard</a>
+                    </li>
+                <?php endif; ?>
 
             </ul>
-            <!-- <form class="navbar-form navbar-right" href="login.php" role="login">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Username">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-                <a class="btn btn-default">Sign up</a>
-            </form> -->
+            
             <ul class="nav navbar-nav navbar-right">
+                <?php
+                    if ( !is_user_login() ) { ?>
+                        <li>
+                            <a id="nav-login" href="login.php">Login</a>
+                        </li>
+                    <?php } else {
+                ?>
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle avatar-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-responsive img-circle" src="http://lifecoach.com.vn/wp-content/uploads/2015/12/avatar.jpg">
+                        <img class="img-responsive img-circle" src="../uog-incognito-team-project/assets/img/avatar.jpg">
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="user_profile.php">User profile</a></li>
                         <li><a href="#">Preferences</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Log out</a></li>
+                        <li><a href="modules/logout.php">Log out</a></li>
                     </ul>
                 </li>
-
+                <?php } ?>
             </ul>
 
         </div>

@@ -4,10 +4,9 @@
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
-	session_start();
 	global $idea;
-	// if ( 1 == $_SESSION['login'] ) {
-	// 	if ( 1 == $_SESSION['isAdmin'] ) { 
+	if ( is_user_login() ) {
+		if ( current_user_can_manage() ) {
 			?>
 		<div class="admin-container">
 			<div class="container-fluid">
@@ -74,10 +73,18 @@
 			</div>
 		</div>
 		<?php
-	// 	 }
-	// } else {
-	// 	echo '???';
-	// }
+		 } else {
+		 echo "<script>
+	        alert('Eh try to cheat huh?');
+	        window.location.href = '../index.php';
+	      </script>";
+      }
+	} else {
+		echo "<script>
+	        alert('Eh try to cheat huh?');
+	        window.location.href = '../index.php';
+	      </script>";
+	}
 
 
 	include("admin_footer.php");
