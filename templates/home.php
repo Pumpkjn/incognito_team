@@ -16,7 +16,9 @@ include_once "top_nav.php";
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
-            <h2 class="page-header-2">Latest idea</h2>
+                <div class="page-header">
+                    <h2>Latest ideas</h2>
+                </div>
 
                 <!-- the start of an idea -->
                 <div class="panel panel-default">
@@ -287,7 +289,9 @@ include_once "top_nav.php";
                 <!-- The end of an idea -->
 
             <div class="clearfix visible-xs-block"></div>
-            <h2 class="page-header-2">Departments</h2>
+            <div class="page-header">
+                <h2>Departments</h2>
+            </div>
             <!-- a department -->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -357,7 +361,7 @@ include_once "top_nav.php";
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Computing</h3>
+                    <h3 class="panel-title">Art</h3>
                 </div>
                 <div class="panel-body container-fluid my-panel-body">
                     <div class="row my-row">
@@ -366,7 +370,7 @@ include_once "top_nav.php";
                             <div class="media">
                                 <div class="media-left pull-left">
                                     <a href="#">
-                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://demo.designwall.com/dw-focus/wp-content/uploads/sites/10/time-to-get-tough-with-north-korea-and-iran-as-imminent-nuclear-bomb-test-looms-110x110.jpg" alt="...">
+                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://www.planetware.com/photos-large/ENG/london-victoria-and-albert-museum-national-art-library.jpg" alt="...">
                                     </a>
                                 </div>
                                 <div class="media-body">

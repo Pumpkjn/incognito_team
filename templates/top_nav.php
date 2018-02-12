@@ -44,7 +44,7 @@
                 </li>
 
             </ul>
-            <!-- <form class="navbar-form navbar-right" href="login.php" role="login">
+            <!--<form class="navbar-form navbar-right" href="login.php" role="login">
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Username">
                 </div>
@@ -53,7 +53,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Sign in</button>
                 <a class="btn btn-default">Sign up</a>
-            </form> -->
+            </form>-->
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle avatar-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
