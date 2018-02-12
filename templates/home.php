@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Bootstrap 101 Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-</head>
+<?php include "head.php"; ?>
 <body>
 
 <?php
@@ -134,7 +128,7 @@ include_once "top_nav.php";
                                     <div class="media">
                                         <div class="media-left pull-left arrow-media-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
+                                                <img class="media-object img-circle" src="../assets/img/a2.png" >
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -171,7 +165,7 @@ include_once "top_nav.php";
                             <li class="media">
                                 <div class="media-left pull-left arrow-media-left">
                                     <a href="#">
-                                        <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
+                                        <img class="media-object img-circle" src="../assets/img/a3.png" >
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -205,8 +199,34 @@ include_once "top_nav.php";
                                     </div>
                                 </div>
                             </li>
+<!--                            the comment-->
+                            <li class="media">
+                                <div class="media-left pull-left arrow-media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="../assets/img/a1.png">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-content">
+                                        <form>
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+                                            </div>
+                                            <input type="submit" class="btn btn-primary">
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+
+                            </li>
                         </ul>
+
+
+
                     </div>
+
                 </div>
 
 
@@ -283,6 +303,7 @@ include_once "top_nav.php";
                                 </a>
                             </li>
                         </ul>
+
                         <div class="clearfix"></div>
                     </div>
                 </div>

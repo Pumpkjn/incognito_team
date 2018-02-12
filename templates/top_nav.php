@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="submit-idea.php">Submit Idea</a>
+                    <a href="submit_idea.php">Submit Idea</a>
                 </li>
                 <li>
                     <a href="#">My Idea</a>
@@ -57,7 +57,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle avatar-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-responsive img-circle" src="http://lifecoach.com.vn/wp-content/uploads/2015/12/avatar.jpg">
+                        <img class="img-responsive img-circle" src="../assets/img/a1.png">
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
