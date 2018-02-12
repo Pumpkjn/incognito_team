@@ -6,7 +6,7 @@
     include("/templates/top_nav.php");
  ?>
 
-<div class="container">
+<div class="container main-container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
             <h2 class="page-header-2">Latest idea</h2>

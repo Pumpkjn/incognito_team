@@ -15,10 +15,6 @@ class User
 		return $result;
     }
 
-    function get_current_user_id() {
-    	
-    }
-
     function check_exist( $email ) {
     	global $database;
 		$sql = 'SELECT * From users WHERE email="'.$email.'"';
@@ -68,6 +64,31 @@ class User
 			VALUES ('" . $user['email'] . "','".$user['password']."', '".$user['name']."', '".$user['email']."', '".$user['role']."', '".$user['deps']."')";
 		}
 		$database->execute_query( $sql );
+	}
+
+	function get_user_by_id( $user_id ) {
+		global $database;
+		$sql = "SELECT * From users WHERE id=".$user_id;
+		$result = $database->select_all_query( $sql );
+		return $result[0];
+	}
+
+	function get_current_user() {
+		global $database;
+		if (session_status() == PHP_SESSION_NONE) {
+		    session_start();
+		}
+		$user_id = $_SESSION['id'];
+		$sql = "SELECT * From users WHERE id=".$user_id;
+		$result = $database->select_all_query( $sql );
+		return $result[0];
+	}
+
+	function get_user_department( $user_id ) {
+		global $database;
+		$sql = 'SELECT deps.name FROM deps INNER JOIN users WHERE users.dep_id = deps.id AND users.id='.$user_id;
+		$result = $database->select_all_query( $sql );
+		return $result[0];
 	}
 }
 $GLOBALS['user'] = new User();

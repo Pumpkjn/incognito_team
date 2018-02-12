@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="submit_idea.php">Submit Idea</a>
+                    <a href="submit-idea.php">Submit Idea</a>
 
                 </li>
                 <?php if ( is_user_login() ) : ?>
@@ -49,7 +49,7 @@
                 <?php endif; ?>
                 <?php if ( current_user_can_manage() ) : ?>
                     <li>
-                        <a href="admin/admin.<?php  ?>">Dashboard</a>
+                        <a href="admin/admin.php">Dashboard</a>
                     </li>
                 <?php endif; ?>
 
@@ -65,11 +65,11 @@
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle avatar-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-responsive img-circle" src="../assets/img/a1.png">
+                        <img class="img-responsive img-circle" src="assets/img/a1.png">
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="user_profile.php">User profile</a></li>
+                        <li><a href="user-profile.php">User profile</a></li>
                         <li><a href="#">Preferences</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="modules/logout.php">Log out</a></li>

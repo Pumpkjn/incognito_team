@@ -55,26 +55,20 @@
 				<input type="checkbox" class="form-check-input" name="term-condition" id="term">
 				<label class="form-check-label" for="term">Term And Condition</label>
 			</div>
+			<?php if ( !is_user_login() ) { ?>
+				<div class="submit-login row">
+						<h3> Submit as Anonymous </h3>
+						<div class="form-group">
+							<label for="">Name</label>
+							<input type="text" name="user-name" class="form-control" placeholder="User Name">
+						</div>
 
-			<div class="submit-login row">
-				<div class="col-md-8">
-					<h3> Submit as Anonymous </h3>
-					<div class="form-group">
-						<label for="">Name</label>
-						<input type="text" name="user-name" class="form-control" placeholder="User Name">
-					</div>
-
-					<div class="form-group">
-						<label for="">Email</label>
-						<input type="text" name="user-email" class="form-control" placeholder="User email">
-					</div>
+						<div class="form-group">
+							<label for="">Email</label>
+							<input type="text" name="user-email" class="form-control" placeholder="User email">
+						</div>
 				</div>
-				<div class="col-md-4">
-					<h3>Or Login</h3>
-					<div><a class="login-anchor" href="#"> Login </a></div>
-					
-				</div>
-			</div>
+			<?php } ?>
 			<button type="submit" class="btn btn-primary submit-button">Submit</button>
 		</form>
 	</div>
