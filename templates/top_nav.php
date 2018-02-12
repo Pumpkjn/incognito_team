@@ -33,8 +33,9 @@
                         <li> <a href="#">Music</a> </li>
                     </ul>
                 </li>
-                <li class="<?php echo get_active_tab( $current_tab, 'submit' ); ?>">
-                    <a href="submit-idea.php">Submit Idea</a>
+                <li>
+                    <a href="submit_idea.php">Submit Idea</a>
+
                 </li>
                 <?php if ( is_user_login() ) : ?>
                 <li class="<?php echo get_active_tab( $current_tab, 'my-idea' ); ?>">
@@ -53,7 +54,6 @@
                 <?php endif; ?>
 
             </ul>
-            
             <ul class="nav navbar-nav navbar-right">
                 <?php
                     if ( !is_user_login() ) { ?>
@@ -65,7 +65,7 @@
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle avatar-small" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img class="img-responsive img-circle" src="../uog-incognito-team-project/assets/img/avatar.jpg">
+                        <img class="img-responsive img-circle" src="../assets/img/a1.png">
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">

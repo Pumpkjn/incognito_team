@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Bootstrap 101 Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-</head>
+<?php
+include "head.php";
+?>
 <body>
 
 <?php
@@ -24,7 +20,7 @@ include_once "top_nav.php";
                     <div class="media">
                         <div class="media-left pull-left">
                             <a>
-                                <img class="img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png">
+                                <img class="img-circle" src="../assets/img/a1.png">
                             </a>
                         </div>
                         <div class="media-body">
@@ -52,8 +48,6 @@ include_once "top_nav.php";
                                     <td>Email:</td>
                                     <td>nguyenvu9405@gmail.com</td>
                                 </tr>
-
-
                             </table>
                         </div>
                     </div>

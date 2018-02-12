@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Bootstrap 101 Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-</head>
+<?php include "head.php"; ?>
 <body>
 
 <?php
@@ -16,7 +10,9 @@ include_once "top_nav.php";
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
-            <h2 class="page-header-2">Latest idea</h2>
+                <div class="page-header">
+                    <h2>Latest ideas</h2>
+                </div>
 
                 <!-- the start of an idea -->
                 <div class="panel panel-default">
@@ -132,7 +128,7 @@ include_once "top_nav.php";
                                     <div class="media">
                                         <div class="media-left pull-left arrow-media-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
+                                                <img class="media-object img-circle" src="../assets/img/a2.png" >
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -169,7 +165,7 @@ include_once "top_nav.php";
                             <li class="media">
                                 <div class="media-left pull-left arrow-media-left">
                                     <a href="#">
-                                        <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
+                                        <img class="media-object img-circle" src="../assets/img/a3.png" >
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -203,8 +199,34 @@ include_once "top_nav.php";
                                     </div>
                                 </div>
                             </li>
+<!--                            the comment-->
+                            <li class="media">
+                                <div class="media-left pull-left arrow-media-left">
+                                    <a href="#">
+                                        <img class="media-object img-circle" src="../assets/img/a1.png">
+                                    </a>
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-content">
+                                        <form>
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+                                            </div>
+                                            <input type="submit" class="btn btn-primary">
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
+
+                            </li>
                         </ul>
+
+
+
                     </div>
+
                 </div>
 
 
@@ -281,13 +303,16 @@ include_once "top_nav.php";
                                 </a>
                             </li>
                         </ul>
+
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <!-- The end of an idea -->
 
             <div class="clearfix visible-xs-block"></div>
-            <h2 class="page-header-2">Departments</h2>
+            <div class="page-header">
+                <h2>Departments</h2>
+            </div>
             <!-- a department -->
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -357,7 +382,7 @@ include_once "top_nav.php";
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Computing</h3>
+                    <h3 class="panel-title">Art</h3>
                 </div>
                 <div class="panel-body container-fluid my-panel-body">
                     <div class="row my-row">
@@ -366,7 +391,7 @@ include_once "top_nav.php";
                             <div class="media">
                                 <div class="media-left pull-left">
                                     <a href="#">
-                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://demo.designwall.com/dw-focus/wp-content/uploads/sites/10/time-to-get-tough-with-north-korea-and-iran-as-imminent-nuclear-bomb-test-looms-110x110.jpg" alt="...">
+                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://www.planetware.com/photos-large/ENG/london-victoria-and-albert-museum-national-art-library.jpg" alt="...">
                                     </a>
                                 </div>
                                 <div class="media-body">
