@@ -7,15 +7,15 @@
     <ul class="list-group">
         <li class="list-group-item">
             <span class="badge">14</span>
-            <a>Computer upgrade </a>
+            <a href="category_page.php">Computer upgrade </a>
         </li>
         <li class="list-group-item">
             <span class="badge">90</span>
-            <a>Distance learning</a>
+            <a href="category_page.php">Distance learning</a>
         </li>
         <li class="list-group-item">
             <span class="badge">50</span>
-            <a>Parking improvement</a>
+            <a href="category_page.php">Parking improvement</a>
         </li>
     </ul>
 </div>

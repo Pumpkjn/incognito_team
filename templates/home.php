@@ -94,7 +94,7 @@ include_once "top_nav.php";
                         <div class="divider"></div>
                         <ul class="media-list">
                             <li class="media">
-                                <div class="media-left pull-left">
+                                <div class="media-left pull-left arrow-media-left">
                                     <a href="#">
                                         <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
                                     </a>
@@ -130,7 +130,7 @@ include_once "top_nav.php";
                                     </div>
 
                                     <div class="media">
-                                        <div class="media-left pull-left">
+                                        <div class="media-left pull-left arrow-media-left">
                                             <a href="#">
                                                 <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
                                             </a>
@@ -167,7 +167,7 @@ include_once "top_nav.php";
                                 </div>
                             </li>
                             <li class="media">
-                                <div class="media-left pull-left">
+                                <div class="media-left pull-left arrow-media-left">
                                     <a href="#">
                                         <img class="media-object img-circle" src="http://icons.iconarchive.com/icons/designbolts/free-male-avatars/64/Male-Avatar-Cool-Cap-icon.png" >
                                     </a>

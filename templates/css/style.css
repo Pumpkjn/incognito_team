@@ -80,5 +80,29 @@ body{
     margin-top: 5px;
 }
 
+.panel-footer .list-inline
+{
+    margin-bottom: 0px;
+}
 
+.media
+{
+    overflow: visible;
+}
+
+.media-left{
+    position: relative;
+}
+.arrow-media-left:before{
+    z-index: 100;
+    content: " ";
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    margin-top: -8px;
+    margin-right: -10px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+}
 

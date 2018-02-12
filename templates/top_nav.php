@@ -9,13 +9,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Incognito</a>
+            <a class="navbar-brand" href="home.php">Incognito</a>
         </div>
         <!-- Collapseable menu -->
         <div class="collapse navbar-collapse" id="collapsable-menu">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="index.php">Home</a>
+                    <a href="home.php">Home</a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -61,7 +61,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">User profile</a></li>
+                        <li><a href="user_profile.php">User profile</a></li>
                         <li><a href="#">Preferences</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Log out</a></li>
