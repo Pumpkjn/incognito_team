@@ -1,9 +1,7 @@
 <?php
 	require_once("../database.php");
-	require_once("../classes/_Ideas.php
-	        alert('Eh try to cheat huh?');
-	        window.location.href = '../index.php';
-	      </script>";");
+	require_once("../classes/_Ideas.php");
+
 	require_once("admin_functions.php");
 	include("admin_header.php");
 

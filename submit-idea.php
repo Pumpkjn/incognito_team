@@ -9,6 +9,7 @@
 
 	<div class="container submit-container">
 		<h2> Submit Idea </h2>
+		<?php if ( is_user_login() ) { ?>
 		<form method="POST" action="modules/add_idea.php">
 			<div class="form-group title-group">
 				<label for="">Title</label>
@@ -48,33 +49,29 @@
 			<div class="form-group">
 				<label for="attachment">Attachment</label>
 				</br>
-				<input type="file" name="attachment" accept=".zip,.rar" id="idea-attachment"></input>
+				<input type="file" name="attachment" accept=".png,.jpeg,.jpg,.gif,.pdf,.zip,.rar,.doc,.docx,.mp4,.mp3,.mpeg,.txt,.xlsx,.xml,.sql" id="idea-attachment" multiple></input>
 			</div>
 
 			<div class="form-check">
 				<input type="checkbox" class="form-check-input" name="term-condition" id="term-condition-check">
 				<label class="form-check-label" for="term">Terms And Conditions</label>
 			</div>
-			<?php if ( !is_user_login() ) { ?>
-				<div class="submit-login row">
-						<h3> Submit as Anonymous </h3>
-						<div class="form-group">
-							<label for="">Name</label>
-							<input type="text" name="user-name" class="form-control" placeholder="User Name" id="user-name">
-						</div>
-
-						<div class="form-group email-group">
-							<label for="">Email</label>
-							<input type="text" name="user-email" class="form-control" placeholder="User email" id="user-email">
-						</div>
-				</div>
-			<?php } else { 
-				$current_user = $user->get_current_user();
-				?>
+			
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" name="term-condition" id="anonymous-submit">
+				<label class="form-check-label" for="term">Submit as Anonymous</label>
+			</div>
+				
+			<?php $current_user = $user->get_current_user(); ?>
+				
 				<input type="hidden" id="user-id" value="<?php echo $current_user['id']; ?>">
-			<?php } ?>
 			<button id="idea-submit" type="submit" class="btn btn-primary submit-button">Submit</button>
 		</form>
+		<?php } else { ?>
+			<div class="alert alert-info" role="alert">
+			 	You need to <a ref="login.php">login</a> to submit ideas.
+			</div>
+		<?php } ?>
 	</div>
 
 <?php 
