@@ -1,6 +1,6 @@
 <?php
 	require_once("../database.php");
-	require_once("../classes/_Ideals.php");
+	require_once("../classes/_Ideas.php");
 	require_once("admin_functions.php");
 	include("admin_header.php");
 

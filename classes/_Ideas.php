@@ -83,5 +83,10 @@ class idea
 		$sql = 'DELETE FROM categories WHERE id = "'.$cat_id.'"';
 		$database->execute_query( $sql );
 	}
+
+	function _insert_idea( $array ) {
+		var_dump( $array );
+		die();
+	}
 }
 $GLOBALS['idea'] = new idea();

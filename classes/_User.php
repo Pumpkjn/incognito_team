@@ -27,22 +27,22 @@ class User
     }
 
     function get_role_text( $role_id ) {
-    	$role = 'Student';
+    	$role = 'Staff';
     	switch ( $role_id ) {
     		case 0:
     			$role = 'Admin';
     			break;
 
     		case 1:
-    			$role = 'Manager';
+    			$role = 'QA Coordinator';
     			break;
 
-    		case 1:
-    			$role = 'Student';
+    		case 2:
+    			$role = 'Staff';
     			break;
 
     		default:
-    			$role = 'Student';
+    			$role = 'Staff';
     			break;
     	}
     	return $role;
