@@ -7,6 +7,7 @@
 
 		$('#title-alert').remove();
 		$('#desc-alert').remove();
+		$('#email-alert').remove();
 
 		var termConditionCheck = $('#term-condition-check');
 		if ( !termConditionCheck.is(':checked') ) {
@@ -20,22 +21,27 @@
 		var dep = $('#idea-dep').val();
 		var cat = $('#idea-cat').val();
 
+		var isUser = false;	
 		var userID = $('#user-id').val();
 
-		var anonymousSubmit = false;
-		var anonymousSubmitCheck = $('#anonymous-submit');
-		if ( anonymousSubmitCheck.is(':checked') ) {
-			anonymousSubmit = true;
+		if ( userID && userID != '' ) {
+			isUser = true;
 		}
 
 		fd.append( "title", title );
 		fd.append( "desc", desc );
 		fd.append( "dep", dep );
 		fd.append( "cat", cat );
-		fd.append( "anonymousSubmit", anonymousSubmit );
-		fd.append( "userID", userID );
 
-
+		fd.append( "isUser", isUser );
+		if ( isUser ) {
+			fd.append( "userID", userID );
+		} else {
+			userName = $('#user-name').val();
+			userEmail = $('#user-email').val();
+			fd.append( "userName", userName );
+			fd.append( "userEmail", userEmail );
+		}
 	    var file_data = $('#idea-attachment')[0].files; // for multiple files
 	    for(var i = 0;i<file_data.length;i++){
 	        fd.append("file_"+i, file_data[i]);
@@ -61,10 +67,10 @@
 
 		        			} else if ( 'desc' == i ) {
 		        				$('.desc-group').append('<div id="desc-alert" class="alert alert-danger">'+e+'</div>');
+		        			} else if ( 'email' == i ) {
+		        				$('.email-group').append('<div id="desc-alert" class="alert alert-danger">'+e+'</div>');
 		        			}
 		        		})
-		        	} else if ( res.success ) {
-		        		window.location.href = res.redirect;
 		        	}
 		        	// if ( resp ) {
 		        	// 	if ( resp.data.fail_upload > 0 ) {

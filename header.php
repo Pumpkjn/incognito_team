@@ -1,7 +1,6 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="shortcut icon" type="image/png" href="assets/img/logo.png"/>
 	<link href="assets/css/style.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/bootstrap-theme.css" rel="stylesheet" type="text/css">
@@ -10,7 +9,7 @@
 	<script src="assets/js/isotope.min.js"  type="text/javascript"></script>
 	<script src="assets/js/masonry.pkgd.min.js"></script>
 	<script src="assets/js/form-data.js"></script>
-	<title>Incognito</title>
+	<title>3RD Greenwich</title>
 </head>
 <body>
 	<header>
