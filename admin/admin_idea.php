@@ -4,7 +4,7 @@
 	require_once("admin_functions.php");
 	include("admin_header.php");
 
-	global $idea;
+	global $idea,$user;
 	if ( is_user_login() ) {
 		if ( current_user_can_manage() ) {
 			?>
@@ -27,39 +27,46 @@
 						<tr>
 							<th>ID</th>
 							<th>Name</th>
-							<th>Price</th>
-							<th>Add date</th>
-							<th>Modify date</th>
-							<th>Thumbnail</th>
-							<th>In Recipes</th>
+							<th>Category</th>
+							<th>Email</th>
+							<th>Date</th>
+							<th>Time remaining</th>
+							<th>Anonymous submit</th>
+							<th>Download Attachment</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
 					<?php 
 						
-						$ideas = $idea->get_all_ideas_by_category();
+						$ideas = $idea->get_all_ideas();
 					?>
 					<?php if ( $ideas ) : ?>
-					<?php foreach ( $ideas as $idea ) : ?>
+					<?php foreach ( $ideas as $i ) : 
+						var_dump( $i );
+						?>
 						<tbody>
 							<tr> 
 								<th scope="row">
-									<?php echo $r['id']; ?>
+									<?php echo $i['id']; ?>
 								</th> 
-								<td><?php echo $r['name']; ?></td>
-								 <td><?php echo $r['mota']; ?></td>
-								  <td><?php echo $r['term_name']; ?></td>
-								  <td><?php echo $r['soluong']; ?></td>
-								  <td><?php echo $r['gia']; ?> VNĐ</td>
-								  <td>
-								  <?php if ( $r['anh'] && $r['anh'] != '' ) : ?>
-								  	<img width="32" height="32" src="<?php echo $r['anh']; ?>">
-								  <?php endif; ?>
-								  	</td>
-								  <td>
-								  	<a href="suasanpham.php?id=<?php echo $r['id'] ?>&name=<?php echo $r['name'] ?>&mota=<?php echo $r['mota'] ?>&lh=<?php echo $r['loaihang'] ?>&sl=<?php echo $r['soluong'] ?>&gia=<?php echo $r['gia'] ?>&anh=<?php echo $r['anh'] ?>"> Sửa </a> |
-									<a href="thuchienxoasanpham.php?id=<?php echo $r['id'] ?>"> Xóa </a>
-								  </td>
+								<td><?php echo $idea->get_idea_meta( $i['id'], 'title', false ); ?></td>
+								<?php $categories = $idea->get_categories( $i['id'] ); ?>
+								 <td>
+								 	<?php
+								 	$cat_array = array();
+								 	foreach ( $categories as $cat ):
+								 		$cat_array[] = $cat['name'];
+								 	endforeach;
+								 	echo implode( ',' , $cat_array );
+								 ?>
+								 </td>
+								 <?php $author = $user->get_user_by_id( $i['user_id'] ); ?>
+								  <td><?php echo $author['email'] ?></td>
+								  <td><?php echo $i['date']; ?></td>
+								  <td></td>
+								  <td><?php echo $idea->get_idea_meta( $i['id'], 'anonymousSubmit', false ); ?></td>
+								  <td></td>
+								  <td>Delete</td>
 								   </tr>
 								 <tr> 
 							</tr>
