@@ -364,3 +364,33 @@ body{
     position: absolute;
     top: 50%;
 }
+
+.my-carousel-control .glyphicon
+{
+    font-size: 18px;
+}
+
+.my-carousel-control.left
+{
+    left: 0px;
+}
+
+.my-carousel-control.right
+{
+    right: 0px;
+}
+
+ol.carousel-indicators
+{
+    bottom: -15px;
+}
+
+ol.carousel-indicators li
+{
+    border: 1px solid #337ab7;
+}
+
+ol.carousel-indicators li.active
+{
+    background-color:  #337ab7;
+}
