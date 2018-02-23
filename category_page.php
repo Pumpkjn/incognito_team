@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
-<?php include "head.php";?>
-<body>
-
 <?php
-include_once "top_nav.php";
+require_once("database.php");
+require_once("functions.php");
+include("header.php");
+include("top_nav.php");
 ?>
 
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
             <div class="page-header">
-                <h2>Category: Computer upgrade</h2>
+                <h2><small>Category:</small> <span class="label label-primary">Computer upgrade</span></h2>
             </div>
             <!--begining of an idea -->
             <div class="panel panel-default">
                 <div class="panel-heading ">
-                    <h4 class="pull-left">Title</h4>
+                    <h4 class="pull-left">
+                        <a href="idea.php">Computer upgrade</a>
+                    </h4>
                     <div class="cats pull-right ">
                         <h5>Categories:
                             <a href="#"><span class="label label-primary">computing</span></a>
@@ -92,7 +94,9 @@ include_once "top_nav.php";
             <!--begining of an idea -->
             <div class="panel panel-default">
                 <div class="panel-heading ">
-                    <h4 class="pull-left">Title</h4>
+                    <h4 class="pull-left">
+                        <a href="idea.php">Computer upgrade</a>
+                    </h4>
                     <div class="cats pull-right ">
                         <h5>Categories:
                             <a href="#"><span class="label label-primary">computing</span></a>

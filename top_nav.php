@@ -23,14 +23,14 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li> <a href="#">Computing</a> </li>
-                        <li> <a href="#">Electrical Engineering</a> </li>
+                        <li> <a href="deparments.php?status=active">Computing</a> </li>
+                        <li> <a href="deparments.php">Electrical Engineering</a> </li>
                         <li class="divider"></li>
-                        <li> <a href="#">Business</a></li>
-                        <li> <a href="#">Accounting</a> </li>
+                        <li> <a href="deparments.php">Business</a></li>
+                        <li> <a href="deparments.php">Accounting</a> </li>
                         <li class="divider"></li>
-                        <li> <a href="#">Art</a></li>
-                        <li> <a href="#">Music</a> </li>
+                        <li> <a href="deparments.php">Art</a></li>
+                        <li> <a href="deparments.php">Music</a> </li>
                     </ul>
                 </li>
                 <li>
@@ -69,7 +69,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="user-profile.php">User profile</a></li>
+                        <li><a href="user_profile.php">User profile</a></li>
                         <li><a href="#">Preferences</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="modules/logout.php">Log out</a></li>

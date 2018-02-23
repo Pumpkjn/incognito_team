@@ -16,6 +16,7 @@ $sql = 'SELECT users.* FROM users
             and password = "'.$password.'"';
 
 $results = $database->select_query($sql);
+
 if( $results ){
         $_SESSION['login'] = 1; // 
         $username = $results['username'];

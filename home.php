@@ -128,7 +128,7 @@ include_once "top_nav.php";
                                     <div class="media">
                                         <div class="media-left pull-left arrow-media-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="../assets/img/a2.png" >
+                                                <img class="media-object img-circle" src="assets/img/a2.png" >
                                             </a>
                                         </div>
                                         <div class="media-body">
@@ -165,7 +165,7 @@ include_once "top_nav.php";
                             <li class="media">
                                 <div class="media-left pull-left arrow-media-left">
                                     <a href="#">
-                                        <img class="media-object img-circle" src="../assets/img/a3.png" >
+                                        <img class="media-object img-circle" src="assets/img/a3.png" >
                                     </a>
                                 </div>
                                 <div class="media-body">
@@ -203,7 +203,7 @@ include_once "top_nav.php";
                             <li class="media">
                                 <div class="media-left pull-left arrow-media-left">
                                     <a href="#">
-                                        <img class="media-object img-circle" src="../assets/img/a1.png">
+                                        <img class="media-object img-circle" src="assets/img/a1.png">
                                     </a>
                                 </div>
                                 <div class="media-body">
