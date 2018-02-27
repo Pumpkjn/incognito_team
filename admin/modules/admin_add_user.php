@@ -2,7 +2,7 @@
 	require("../../database.php");
 	require_once("../../classes/_Ideas.php");
 	require_once("../../classes/_user.php");
-	require_once("../admin_functions.php");
+	// require_once("../admin_functions.php");
 	session_start();
 	global $database,$user;
 

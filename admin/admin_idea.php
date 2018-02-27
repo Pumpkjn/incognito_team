@@ -30,7 +30,6 @@
 							<th>Category</th>
 							<th>Email</th>
 							<th>Date</th>
-							<th>Time remaining</th>
 							<th>Anonymous submit</th>
 							<th>Download Attachment</th>
 							<th>Actions</th>
@@ -63,7 +62,6 @@
 								 <?php $author = $user->get_user_by_id( $i['user_id'] ); ?>
 								  <td><?php echo $author['email'] ?></td>
 								  <td><?php echo $i['date']; ?></td>
-								  <td></td>
 								  <td><?php echo $idea->get_idea_meta( $i['id'], 'anonymousSubmit', false ); ?></td>
 								  <td></td>
 								  <td>Delete</td>

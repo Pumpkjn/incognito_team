@@ -48,7 +48,7 @@ include_once "top_nav.php";
                         <div class="form-group">
                             <label class="col-sm-2">Categories</label>
                             <div class="col-sm-4">
-                                <select class="form-control name="tag_id">
+                                <select class="form-control" name="tag_id">
                                 <option value="1">Life</option>
                                 <option value="2">Is </option>
                                 <option value="3">Beautiful</option>
@@ -57,13 +57,13 @@ include_once "top_nav.php";
                                 <option value="6">No matter</option>
                                 </select>
                             </div>
-<!--                            <button class="btn btn-default col-sm-1">Add <span aria-hidden="true">&rarr;</span></button>-->
-<!--                            <ul class="col-sm-4 col-sm-offset-1 list-inline " style="margin-left: 15px;">-->
-<!--                                <li><span class="label label-primary">life</span></li>-->
-<!--                                <li><span class="label label-primary">love</span></li>-->
-<!--                                <li><span class="label label-primary">computing</span></li>-->
-<!--                                <li><span class="label label-primary">forever</span></li>-->
-<!--                            </ul>-->
+                         <button class="btn btn-default col-sm-1">Add <span aria-hidden="true">&rarr;</span></button>
+                <ul class="col-sm-4 col-sm-offset-1 list-inline " style="margin-left: 15px;">
+                               <li><span class="label label-primary">life</span></li>
+                                <li><span class="label label-primary">love</span></li>
+                               <li><span class="label label-primary">computing</span></li>
+                               <li><span class="label label-primary">forever</span></li>
+                          </ul>-->
                         </div>
                     </form>
                 </div>

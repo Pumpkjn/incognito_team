@@ -83,7 +83,7 @@
 						</form>
 						<?php } else { ?>
 							<div class="alert alert-info" role="alert">
-							 	You need to <a href="login.php">login</a> to submit ideas.
+							 	You need to <a ref="login.php">login</a> to submit ideas.
 							</div>
 						<?php } ?>
 					</div>

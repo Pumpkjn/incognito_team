@@ -56,13 +56,8 @@ class User
 
 	function insert_user( $user ) {
 		global $database;
-		if ( !$user['deps'] ) {
-			$sql = "INSERT INTO users( `username` , `password`, `name`, `email`, `role` )
-			VALUES ('" . $user['email'] . "','".$user['password']."', '".$user['name']."', '".$user['email']."', '".$user['role']."')";
-		} else {
-			$sql = "INSERT INTO users( `username` , `password`, `name`, `email`, `role`, `dep_id` )
-			VALUES ('" . $user['email'] . "','".$user['password']."', '".$user['name']."', '".$user['email']."', '".$user['role']."', '".$user['deps']."')";
-		}
+		$sql = "INSERT INTO users( `username` , `password`, `name`, `email`, `role`, `dep_id` )
+		VALUES ('" . $user['email'] . "','".$user['password']."', '".$user['name']."', '".$user['email']."', '".$user['role']."', '".$user['deps']."')";
 		$database->execute_query( $sql );
 	}
 
