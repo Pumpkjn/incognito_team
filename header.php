@@ -31,5 +31,3 @@
 			</nav>
 		</div>
 	</header>
-	<div class="space-ground">
-	</div>

@@ -3,12 +3,13 @@
     require_once("functions.php");
     include("header.php");
     $current_tab = 'login';
-    include("/templates/top_nav.php");
+    include("top_nav.php");
 ?>
 
     <div class="login-page">
         <div class="back">
             <?php if ( !is_user_login() ) : ?>
+
           <div class="div-center">
             <div class="content">
                     <center><img src="assets/img/logo.png" alt="logo" height="100" width="100"></center>
