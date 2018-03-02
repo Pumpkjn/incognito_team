@@ -8,7 +8,7 @@
 		if ( $current == $tab ) {
 			return 'active';
 		} else {
-			return;
+			return '';
 		}
 	}
 	function login_form() { ?>
