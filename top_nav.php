@@ -38,12 +38,12 @@
 
                 </li>
                 <?php if ( is_user_login() ) : ?>
-                <li class="<?php echo get_active_tab( $current_tab, 'my-idea' ); ?>">
+                <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'my-idea' ); ?>">
                     <a href="#">My Idea</a>
                 </li>
                 <?php endif; ?>
                 <?php if ( is_user_login() ) : ?>
-                <li class="<?php echo get_active_tab( $current_tab, 'my-department' ); ?>">
+                <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'my-department' ); ?>">
                     <a href="my-department.php">My Department</a>
                 </li>
                 <?php endif; ?>
