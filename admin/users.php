@@ -67,7 +67,7 @@
 									?>
 									<label for="department">Choose Department</label>
 									</br>
-									<select name="department" id="department-select">
+									<select name="deps" id="department-select">
 										<?php foreach ( $departments as $d ) { ?>
 											<option value="<?php echo $d['id'] ?>"><?php echo $d['name'] ?></option>
 										<?php } ?>
@@ -85,6 +85,7 @@
 									<th>Display Name</th>
 									<th>Email</th>
 									<th>Role</th>
+									<th>Department</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -98,6 +99,16 @@
 										<td><?php echo $u['name']; ?></td>
 										 <td><?php echo $u['email']; ?></td>
 										 <td><?php echo $user->get_role_text( $u['role'] ); ?></td>
+										 <td>
+										 	<?php
+										 		if ( $u['dep_id'] ) {
+										 			$department = $deps->get_dep_by_id( $u['dep_id'] );
+											 		if ( $department ) {
+											 			echo $department['name'];
+											 		}
+												}
+										 	?>
+										 </td>
 										  <td>
 											<a href="modules/admin_delete_user.php?id=<?php echo $u['id'] ?>"> Delete </a>
 										  </td>

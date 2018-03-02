@@ -44,7 +44,7 @@
                 <?php endif; ?>
                 <?php if ( is_user_login() ) : ?>
                 <li class="<?php echo get_active_tab( $current_tab, 'my-department' ); ?>">
-                    <a href="#">My Department</a>
+                    <a href="my-department.php">My Department</a>
                 </li>
                 <?php endif; ?>
                 <?php if ( current_user_can_manage() ) : ?>

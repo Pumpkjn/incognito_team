@@ -3,7 +3,7 @@
     require_once("functions.php");
     include("header.php");
     $current_tab = 'login';
-    include("templates/top_nav.php");
+    include("top_nav.php");
 ?>
 
     <div class="login-page">

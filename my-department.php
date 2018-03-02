@@ -3,7 +3,7 @@
 	require_once("functions.php");
 	include("header.php");
 	$current_tab = 'submit';
-	include("templates/top_nav.php");
+	include("/templates/top_nav.php");
 	global $deps,$idea;
 ?>
 	<div class="container submit-container main-container">
@@ -83,7 +83,7 @@
 						</form>
 						<?php } else { ?>
 							<div class="alert alert-info" role="alert">
-							 	You need to <a href="login.php">login</a> to submit ideas.
+							 	You need to <a ref="login.php">login</a> to submit ideas.
 							</div>
 						<?php } ?>
 					</div>
@@ -97,6 +97,7 @@
         	</div>
 		</div>
 	</div>
-<?php
+
+<?php 
 	include("footer.php");
 ?>

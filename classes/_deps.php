@@ -14,6 +14,13 @@ class DEPS
 		return $result;
     }
 
+    function get_dep_by_id( $dep_id ) {
+        global $database;
+        $sql = "SELECT * From deps WHERE id=".$dep_id;
+        $result = $database->select_all_query( $sql );
+        return $result[0];
+    }
+
     function _insert_deps( $name ) {
     	global $database;
     	$sql = "INSERT INTO deps( `name`  )
