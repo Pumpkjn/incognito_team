@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-<?php include "head.php"; ?>
+
+<?php include "header.php"; ?>
 <body>
 
 <?php
-include_once "top_nav.php";
+include "top_nav.php";
 ?>
 
 <div class="container">
@@ -239,7 +238,4 @@ include_once "top_nav.php";
 </div>
 
 
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
+<?php include "footer.php"; ?>

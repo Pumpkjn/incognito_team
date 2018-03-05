@@ -18,6 +18,7 @@
 		var title = $('#idea-title').val();
 		var desc = $('#idea-desc').val();
 		var dep = $('#idea-dep').val();
+		var topic = $('#topic').val();
 		var cat = $('#idea-cat').val();
 
 		var userID = $('#user-id').val();
@@ -31,6 +32,7 @@
 		fd.append( "title", title );
 		fd.append( "desc", desc );
 		fd.append( "dep", dep );
+		fd.append( "topic", topic );
 		fd.append( "cat", cat );
 		fd.append( "anonymousSubmit", anonymousSubmit );
 		fd.append( "userID", userID );
@@ -56,11 +58,13 @@
 		        			if ( 'title' == i ) {
 		        				var titleAlert = $('#title-alert');
 		        				if ( titleAlert.length == 0 ) {
-		        					$('.title-group').append('<div id="title-alert" class="alert alert-danger">'+e+'</div>');
+		        					$('.title-input').append('<div id="title-alert" class="col-sm-12 alert alert-danger">'+e+'</div>');
 		        				}
 
 		        			} else if ( 'desc' == i ) {
-		        				$('.desc-group').append('<div id="desc-alert" class="alert alert-danger">'+e+'</div>');
+		        				$('.desc-input').append('<div id="desc-alert" class="col-sm-12 alert alert-danger">'+e+'</div>');
+		        			} else if ( 'topic' == i ) {
+		        				$('.topic-input').append('<div id="desc-alert" class="col-sm-12 alert alert-danger">'+e+'</div>');
 		        			}
 		        		})
 		        	} else if ( res.success ) {
@@ -80,6 +84,71 @@
 		        }	
 		    });	
 
+	} )
+
+
+	var ajaxRequestSwitch = false;
+	$(document).on( 'click', '.idea-request-switch', function(e){
+		e.preventDefault;
+		if ( !ajaxRequestSwitch ) {
+			ajaxRequestSwitch = true;
+			var t = $(this);
+			var requestId = t.data('id');
+			var action = t.data('action');
+			var data = {
+				action: action,
+				requestId: requestId,
+			}
+
+			$.ajax({
+				url: 'modules/ajax.php',
+				data: data,
+				type: 'POST',
+				dataType: 'json',
+				success: function(response){
+					// if ( response.error ) {
+					// 	alert('You don\'t allow to download the attachments.')
+					// }
+				},
+		        complete: function(xhr, textStatus) {
+		          	ajaxRequestSwitch = false;
+		        }
+			});
+
+		}
+	})
+
+	var topicChangeContainer = $('#topic-change-container');
+	$(document).on( 'change', '#idea-dep', function(e){
+		e.preventDefault();
+		var t = $(this);
+		var depID = t.val();
+		var action = t.data('action');
+		var data = {
+			action: action,
+			depID: depID,
+		}
+	$.ajax({
+			url: 'modules/ajax.php',
+			data: data,
+			type: 'POST',
+			dataType: 'json',
+			success: function(response){
+				if ( response.error ) {
+					topicChangeContainer.html('<h5>No topic available.</h5>');
+				} else {
+					var html = '';
+					html += '<select name="topic" id="topic" class="form-control topic-input">';
+					$.each( response, function(i,e){
+						html += '<option value="'+e.id+'">'+e.title+'</option>';
+					})
+					html += '</select>';
+					topicChangeContainer.html( html );
+				}
+			},
+	        complete: function(xhr, textStatus) {
+	        }
+		});
 	} )
 
 	// $(document).on( 'click', '#modal-signin-button', function(e){

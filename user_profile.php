@@ -62,7 +62,7 @@ include("top_nav.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 col-md-4">
+                                  <!--   <div class="col-sm-12 col-md-4">
                                         <h4 class="text-primary">Update</h4>
 
                                         <div class="list-group">
@@ -72,7 +72,7 @@ include("top_nav.php");
                                             <a href="#" class="list-group-item">Change avatar</a>
 
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

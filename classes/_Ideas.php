@@ -107,6 +107,7 @@ class idea
 		$this->add_idea_meta( $new_idea, 'title', $array['title'] );
 		$this->add_idea_meta( $new_idea, 'desc', $array['desc'] );
 		$this->add_idea_meta( $new_idea, 'dep', $array['dep'] );
+		$this->add_idea_meta( $new_idea, 'topic', $array['topic'] );
 		$this->add_idea_meta( $new_idea, 'views', 0 );
 		$this->add_idea_meta( $new_idea, 'thumbup', 0 );
 		$this->add_idea_meta( $new_idea, 'thumbdown', 0 );
@@ -173,7 +174,7 @@ class idea
     		}
     		
     	} else {
-    		$res = false;
+    		$r = false;
     	}
     	return $r;
 	}
@@ -186,6 +187,12 @@ class idea
 			WHERE ideas.id =".$idea_id;
 		$result = $database->select_all_query( $sql );
 		return $result;
+	}
+
+	function delete_idea( $idea_id ) {
+		global $database;
+		$sql = 'DELETE FROM ideas WHERE id = "'.$idea_id.'"';
+		$database->execute_query( $sql );
 	}
 }
 $GLOBALS['idea'] = new idea();

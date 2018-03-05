@@ -69,7 +69,12 @@ class DEPS
         $database->execute_query( $sql );
     }
 
-
+    function get_all_available_request_idea( $deps ) {
+        global $database;
+        $sql = 'SELECT * from deps INNER JOIN open_subs ON open_subs.dep_id = deps.id WHERE open_subs.status = 1 AND deps.id='.$deps;
+        $result = $database->select_all_query( $sql );
+        return $result;
+    }
 
 }
 $GLOBALS['deps'] = new DEPS();

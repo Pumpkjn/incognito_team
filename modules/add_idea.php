@@ -14,6 +14,11 @@ if ( !$desc || '' == $desc ) {
 	$error['desc'] = 'Missing description. You need to input description of the idea.';
 }
 
+$topic = isset( $_POST['topic'] ) ? $_POST['topic'] : null;
+if ( !$topic || '' == $topic || 'undefined' == $topic ) {
+	$error['topic'] = 'Missing Topic. You need to choose a topic to submit the idea.';
+}
+
 $dep = isset( $_POST['dep'] ) ? $_POST['dep'] : null;
 
 $cat = isset( $_POST['cat'] ) ? $_POST['cat'] : null;
@@ -45,6 +50,7 @@ if ( count( $error ) > 0 ) {
 	$idea_data['title'] = $title;
 	$idea_data['desc'] = $desc;
 	$idea_data['dep'] = $dep;
+	$idea_data['topic'] = $topic;
 	$idea_data['cat'] = $cat;
 	$idea_data['attachment'] = $attachment;
 	$idea_data['anonymousSubmit'] = $anonymousSubmit;

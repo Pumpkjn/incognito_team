@@ -2,6 +2,7 @@
 	require_once("classes/_Ideas.php");
 	require_once("classes/_deps.php");
 	require_once("classes/_user.php");
+	require_once("classes/_sub.php");
 
 	function get_active_tab( $current, $tab ) {
 		$current = isset( $current) ? $current : 'dashboard';
@@ -11,6 +12,15 @@
 			return;
 		}
 	}
+
+	function is_selected( $current, $option ) {
+		if ( $current == $option ) {
+			return 'selected';
+		} else {
+			return;
+		}
+	}
+
 	function login_form() { ?>
 		<div class="container">
 			<div class="row">
@@ -74,4 +84,32 @@
 		}
 		return $can;
 	}
-	
+
+	function current_user_can_coor() {
+		if (session_status() == PHP_SESSION_NONE) {
+		    session_start();
+		}
+		$can = false;
+		if ( is_user_login() ) {
+			global $user;
+			$role = $_SESSION['role'];
+			switch ( $role ) {
+				case 0:
+					$can = true;
+					break;
+
+				case 1:
+					$can = true;
+					break;
+
+				case 2:
+					$can = false;
+					break;
+				
+				default:
+					$can = false;
+					break;
+			}
+		}
+		return $can;
+	}

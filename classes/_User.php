@@ -85,5 +85,12 @@ class User
 		$result = $database->select_all_query( $sql );
 		return $result[0];
 	}
+
+	function get_user_department_id( $user_id ) {
+		global $database;
+		$sql = 'SELECT deps.id FROM deps INNER JOIN users WHERE users.dep_id = deps.id AND users.id='.$user_id;
+		$result = $database->select_all_query( $sql );
+		return $result[0];
+	}
 }
 $GLOBALS['user'] = new User();

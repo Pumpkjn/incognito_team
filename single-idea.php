@@ -134,9 +134,9 @@
 	
 	<div class="col-xs-12 col-md-3">
 			<!-- Search box-->
-			<?php include("/templates/search_box.php"); ?>
-			<?php include("/templates/categories_box.php"); ?>
-			<?php include("/templates/popular_ideas_box.php"); ?>
+			<?php include("search_box.php"); ?>
+			<?php include("categories_box.php"); ?>
+			<?php include("popular_ideas_box.php"); ?>
 		</div>
 	</div>
 </div>
