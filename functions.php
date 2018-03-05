@@ -9,7 +9,7 @@
 		if ( $current == $tab ) {
 			return 'active';
 		} else {
-			return;
+			return '';
 		}
 	}
 

@@ -365,109 +365,34 @@ body{
     top: 50%;
 }
 
-body{
-    padding-top: 70px;
-}
-
-.page-header-2
+.my-carousel-control .glyphicon
 {
-    border-bottom: 1px solid #EEE;
+    font-size: 18px;
 }
 
-.avatar-small{
-    padding: 10px !important;
-}
-
-.avatar-small img{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-}
-.media-list img
+.my-carousel-control.left
 {
-    width: 48px;
-    height: 48px;
-}
-.divider {
-    height: 1px;
-    width:100%;
-    display:block; /* for use on default inline elements like span */
-    margin: 9px 0;
-    overflow: hidden;
-    background-color: #e5e5e5;
+    left: 0px;
 }
 
-.right-border-md
+.my-carousel-control.right
 {
-    border-right: 1px solid #e5e5e5;
-}
-
-.only-sx
-{
-    display: block;
-}
-
-
-.full-height-md
-{
-    min-height: 100%;
-}
-@media only screen and (min-width: 576px){
-    .only-sx{
-        display: none;
-    }
-    .my-panel-body{
-        padding: 15px 0px 15px 0px;
-    }
-    .container-fluid .my-row
-    {
-        height: 100%;
-        display: table-row;
-    }
-    .no-float
-    {
-        display: table-cell;
-        float: none;
-    }
-}
-
-.media-content{
-    background-color: white;
-    padding: 15px 15px 10px 15px;
-    border-radius: 4px;
-}
-
-.media-heading{
-    margin-bottom: 5px;
-}
-.media-info{
-    margin-top: 5px;
-}
-
-.panel-footer .list-inline
-{
-    margin-bottom: 0px;
-}
-
-.media
-{
-    overflow: visible;
-}
-
-.media-left{
-    position: relative;
-}
-.arrow-media-left:before{
-    z-index: 100;
-    content: " ";
-    position: absolute;
     right: 0px;
-    top: 50%;
-    margin-top: -8px;
-    margin-right: -10px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent white transparent transparent;
+}
+
+ol.carousel-indicators
+{
+    bottom: -15px;
+}
+
+ol.carousel-indicators li
+{
+    border: 1px solid #337ab7;
+}
+
+ol.carousel-indicators li.active
+{
+    background-color:  #337ab7;
 }
 
 body{
