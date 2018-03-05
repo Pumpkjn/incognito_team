@@ -14,10 +14,10 @@
         <!-- Collapseable menu -->
         <div class="collapse navbar-collapse" id="collapsable-menu">
             <ul class="nav navbar-nav">
-                <li class="<?php if ($current_tab) echo get_active_tab( $current_tab, 'home' ); ?>">
+                <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'home' ); ?>">
                     <a href="index.php">Home</a>
                 </li>
-                <li class="dropdown <?php if ($current_tab) echo get_active_tab( $current_tab, 'category' ); ?>">
+                <li class="dropdown <?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'category' ); ?>">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         Departments
                         <b class="caret"></b>
