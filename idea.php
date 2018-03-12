@@ -67,7 +67,7 @@ include("top_nav.php");
                         </li>
                         <li>|</li>
                         <li>
-                            <a href="#idea-comments-1" data-toggle="collapse">
+                            <a href="#">
                                 <span class="glyphicon glyphicon-comment"></span>
                                 <span>2 comments</span>
                             </a>
@@ -87,144 +87,149 @@ include("top_nav.php");
                         </li>
                     </ul>
                     <div class="clearfix"></div>
-                    <div  id="idea-comments-1" class="collapse">
-                        <div class="divider"></div>
-                        <ul class="media-list">
-                            <li class="media">
-                                <div class="media-left pull-left arrow-media-left">
-                                    <a href="#">
-                                        <img class="media-object img-circle" src="assets/img/a1.png" >
-                                    </a>
+                    <div class="divider"></div>
+                    <ul class="media-list">
+                        <!--                            submit comment-->
+                        <li class="media">
+                            <div class="media-left pull-left arrow-media-left">
+                                <a href="#">
+                                    <img class="media-object img-circle" src="assets/img/a1.png">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <div class="media-content">
+                                    <form>
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
+                                        </div>
+                                        <input type="submit" class="btn btn-primary">
+                                    </form>
+
                                 </div>
-                                <div class="media-body">
-                                    <div class="media-content">
-                                        <h4 class="media-heading">Nguyen Vu</h4>
-                                        <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-                                                2 days, 8 hours ago</small></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                        <div class="divider"></div>
-                                        <ul class="list-inline ">
-                                            <li>
-                                                <a>
-                                                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                    <span> 5 </span>
-                                                </a>
-                                            </li>
-                                            <li>|</li>
-                                            <li>
-                                                <a>
-                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                    <span> 11 </span>
-                                                </a>
-                                            </li>
-                                            <li>|</li>
-                                            <li>
-                                                <a href="#idea-comments-2" data-toggle="collapse">
-                                                    <span class="glyphicon glyphicon-comment"></span>
-                                                    <span>2 comments</span>
-                                                </a>
-                                        </ul>
-                                    </div>
-                                    <div class="comment-box collapse" id="idea-comments-2">
-                                        <div class="media">
-                                            <div class="media-left pull-left arrow-media-left">
-                                                <a href="#">
-                                                    <img class="media-object img-circle" src="assets/img/a2.png" >
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="media-content">
-                                                    <h4 class="media-heading">Nguyen Vu</h4>
-                                                    <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-                                                            2 days, 8 hours ago</small></h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                                    <div class="divider"></div>
-                                                    <ul class="list-inline ">
-                                                        <li>
-                                                            <a>
-                                                                <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                                <span> 5 </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>|</li>
-                                                        <li>
-                                                            <a>
-                                                                <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                                <span> 11 </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>|</li>
-                                                        <li>
-                                                            <a href="#comment-box-1">
-                                                                <span class="glyphicon glyphicon-comment"></span>
-                                                                <span>2 comments</span>
-                                                            </a>
-                                                    </ul>
-                                                </div>
+
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-left pull-left arrow-media-left">
+                                <a href="#">
+                                    <img class="media-object img-circle" src="assets/img/a1.png" >
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <div class="media-content">
+                                    <h4 class="media-heading">Nguyen Vu</h4>
+                                    <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+                                            2 days, 8 hours ago</small></h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                    <div class="divider"></div>
+                                    <ul class="list-inline ">
+                                        <li>
+                                            <a>
+                                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                                <span> 5 </span>
+                                            </a>
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                            <a>
+                                                <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                <span> 11 </span>
+                                            </a>
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                            <a >
+                                                <span class="glyphicon glyphicon-comment"></span>
+                                                <span>2 comments</span>
+                                            </a>
+                                    </ul>
+                                </div>
+                                <div class="comment-box" id="idea-comments-2">
+                                    <div class="media">
+                                        <div class="media-left pull-left arrow-media-left">
+                                            <a href="#">
+                                                <img class="media-object img-circle" src="assets/img/a2.png" >
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="media-content">
+                                                <h4 class="media-heading">Nguyen Vu</h4>
+                                                <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+                                                        2 days, 8 hours ago</small></h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                                <div class="divider"></div>
+                                                <ul class="list-inline ">
+                                                    <li>
+                                                        <a>
+                                                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                                                            <span> 5 </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>|</li>
+                                                    <li>
+                                                        <a>
+                                                            <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                            <span> 11 </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>|</li>
+                                                    <li>
+                                                        <a href="#comment-box-1">
+                                                            <span class="glyphicon glyphicon-comment"></span>
+                                                            <span>2 comments</span>
+                                                        </a>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                            </li>
-                            <li class="media">
-                                <div class="media-left pull-left arrow-media-left">
-                                    <a href="#">
-                                        <img class="media-object img-circle" src="assets/img/a3.png" >
-                                    </a>
+                        </li>
+                        <li class="media">
+                            <div class="media-left pull-left arrow-media-left">
+                                <a href="#">
+                                    <img class="media-object img-circle" src="assets/img/a3.png" >
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <div class="media-content">
+                                    <h4 class="media-heading">Nguyen Vu</h4>
+                                    <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+                                            2 days, 8 hours ago</small></h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
+                                    <div class="divider"></div>
+                                    <ul class="list-inline ">
+                                        <li>
+                                            <a>
+                                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                                <span> 5 </span>
+                                            </a>
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                            <a>
+                                                <span class="glyphicon glyphicon-thumbs-down"></span>
+                                                <span> 11 </span>
+                                            </a>
+                                        </li>
+                                        <li>|</li>
+                                        <li>
+                                            <a href="#comment-box-1">
+                                                <span class="glyphicon glyphicon-comment"></span>
+                                                <span>2 comments</span>
+                                            </a>
+                                    </ul>
                                 </div>
-                                <div class="media-body">
-                                    <div class="media-content">
-                                        <h4 class="media-heading">Nguyen Vu</h4>
-                                        <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-                                                2 days, 8 hours ago</small></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                        <div class="divider"></div>
-                                        <ul class="list-inline ">
-                                            <li>
-                                                <a>
-                                                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                    <span> 5 </span>
-                                                </a>
-                                            </li>
-                                            <li>|</li>
-                                            <li>
-                                                <a>
-                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                    <span> 11 </span>
-                                                </a>
-                                            </li>
-                                            <li>|</li>
-                                            <li>
-                                                <a href="#comment-box-1">
-                                                    <span class="glyphicon glyphicon-comment"></span>
-                                                    <span>2 comments</span>
-                                                </a>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!--                            the comment-->
-                            <li class="media">
-                                <div class="media-left pull-left arrow-media-left">
-                                    <a href="#">
-                                        <img class="media-object img-circle" src="assets/img/a1.png">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <div class="media-content">
-                                        <form>
-                                            <div class="form-group">
-                                                <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
-                                            </div>
-                                            <input type="submit" class="btn btn-primary">
-                                        </form>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <div class="media-body">
+                                <a href="#">Load more comments...</a>
+                            </div>
+                        </li>
 
-                                    </div>
+                    </ul>
 
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
 
                 </div>
             </div>
