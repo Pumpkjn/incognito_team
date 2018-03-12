@@ -23,14 +23,16 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li> <a href="deparments.php?status=active">Computing</a> </li>
-                        <li> <a href="deparments.php">Electrical Engineering</a> </li>
-                        <li class="divider"></li>
-                        <li> <a href="deparments.php">Business</a></li>
-                        <li> <a href="deparments.php">Accounting</a> </li>
-                        <li class="divider"></li>
-                        <li> <a href="deparments.php">Art</a></li>
-                        <li> <a href="deparments.php">Music</a> </li>
+                        <?php
+                        $departments = $deps->get_all_department();
+                        $cnt = 0;
+                        if ($departments)
+                            foreach ($departments as $dep)
+                            {
+                                echo "<li> <a href=\"deparments.php?dep_id={$dep["id"]}\">{$dep["name"]}</a></li>";
+
+                            }
+                        ?>
                     </ul>
                 </li>
                 <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'submit-idea' ); ?>">

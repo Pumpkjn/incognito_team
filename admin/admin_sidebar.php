@@ -6,5 +6,6 @@
 	<li class="list-group-item <?php echo admin_get_active_tab( $current_tab, 'user' ); ?>" role="presentation"><a href="users.php">Users</a></li>
 	<li class="list-group-item <?php echo admin_get_active_tab( $current_tab, 'email' ); ?>" role="presentation"><a href="email.php">Email Settings</a></li>
 	<!-- <li role="presentation"><a href="analyze.php">Manage</a></li> -->
-	<li class="list-group-item <?php echo admin_get_active_tab( $current_tab ); ?>" role="presentation"><a href="../index.php">Homepage</a></li>
+
+	<li class="list-group-item <?php echo admin_get_active_tab( $current_tab); ?>" role="presentation"><a href="../index.php">Homepage</a></li>
 </ul>

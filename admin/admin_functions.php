@@ -2,7 +2,7 @@
 	require_once("../classes/_deps.php");
 	require_once("../classes/_Ideas.php");
 	require_once("../classes/_user.php");
-	function admin_get_active_tab( $current, $tab ) {
+	function admin_get_active_tab( $current, $tab="" ) {
 		$current = isset( $current) ? $current : 'dashboard';
 		if ( $current == $tab ) {
 			return 'active';
