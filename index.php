@@ -3,6 +3,7 @@
 <?php
 require_once("database.php");
 require_once("functions.php");
+$current_tab = 'home';
 include("header.php");
 include("top_nav.php");
 ?>

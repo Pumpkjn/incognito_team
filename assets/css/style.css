@@ -633,3 +633,9 @@ input:checked + .slider:before {
   margin-right: 5px;
 }
 
+#attachment-container {
+  margin: 10px 20px;
+  padding: 10px 10px;
+  border: 1px dashed;
+}
+

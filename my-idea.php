@@ -99,12 +99,12 @@
 												<?php 
 												$item_perpage = 1;
 												$current_page = 1;
-												$total_records = 1;
+												$total_records = $ideas;
 												$total_pages = 1;
 												$page_url = 1;
-												var_dump($ideas);
+												
 
-												echo ajax_paginate( $item_perpage, $current_page, $total_records, $total_pages, $page_url );
+												// echo ajax_paginate( $item_perpage, $current_page, $total_records, $total_pages, $page_url );
 												?>
 											</div>
 										</div>

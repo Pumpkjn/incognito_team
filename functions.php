@@ -207,3 +207,15 @@
 	    }
 	    return $pagination; //return pagination links
 	}
+
+	function post_views( $post_id ) {
+		global $idea;
+		$count_key = 'views';
+	    $count = $idea->get_idea_meta( $post_id, $count_key, false );
+	    if( $count == '' ){
+	        $idea->add_idea_meta( $post_id, $count_key, '1');
+	    } else {
+	        $count++;
+	        $idea->update_idea_meta( $post_id, $count_key, $count );
+	    }
+	}

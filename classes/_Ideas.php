@@ -179,6 +179,13 @@ class idea
     	return $r;
 	}
 
+	function update_idea_meta( $id, $key, $value ) {
+		global $database;
+    	$sql = 'UPDATE ideas_metadata SET meta_value = '.$value.'  WHERE idea_id = '.$id.' AND meta_key = "'.$key.'"';
+    	$database->execute_query( $sql );
+	}
+	
+
 	function get_categories( $idea_id ) {
 		global $database;
 		$sql = "SELECT * FROM categories
@@ -195,12 +202,26 @@ class idea
 		$database->execute_query( $sql );
 	}
 
+	function get_all_idea_from_topic( $topic_id ) {
+		global $database;
+		$sql = 'SELECT * FROM ideas_metadata INNER JOIN ideas ON ideas.id = ideas_metadata.idea_id  WHERE ideas_metadata.meta_key ="topic" AND ideas_metadata.meta_value = "'.$topic_id.'"  ORDER BY ideas.date DESC LIMIT '.$limit;
+		$result = $database->select_all_query( $sql );
+		return $result;
+	}
+
 	function get_idea_from_topic( $topic_id, $limit = 1 ,$paged = null ) {
 		global $database;
 		$sql = 'SELECT * FROM ideas_metadata INNER JOIN ideas ON ideas.id = ideas_metadata.idea_id  WHERE ideas_metadata.meta_key ="topic" AND ideas_metadata.meta_value = "'.$topic_id.'"  ORDER BY ideas.date DESC LIMIT '.$limit;
 		if ( $paged ) {
 			$sql += ' OFFSET 5';
 		}
+		$result = $database->select_all_query( $sql );
+		return $result;
+	}
+
+	function get_idea_categories( $idea_id ) {
+		global $database;
+		$sql = 'SELECT * FROM categories_ideas INNER JOIN ideas ON categories_ideas.idea_id = ideas.id INNER JOIN categories ON categories_ideas.category_id = categories.id WHERE ideas.id=' .$idea_id;
 		$result = $database->select_all_query( $sql );
 		return $result;
 	}

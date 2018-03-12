@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
 <?php include "head.php"; ?>
 <body>
 
 <?php
+$current_tab = 'home';
 include_once "top_nav.php";
 ?>
 
@@ -455,9 +454,3 @@ include_once "top_nav.php";
         </div>
     </div>
 </div>
-
-
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>

@@ -33,7 +33,7 @@
                         <li> <a href="deparments.php">Music</a> </li>
                     </ul>
                 </li>
-                <li>
+                <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'submit-idea' ); ?>">
                     <a href="submit-idea.php">Submit Idea</a>
 
                 </li>

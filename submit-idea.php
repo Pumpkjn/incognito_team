@@ -2,7 +2,7 @@
 	require_once("database.php");
 	require_once("functions.php");
 	include("header.php");
-	$current_tab = 'submit';
+	$current_tab = 'submit-idea';
 	include("top_nav.php");
 	global $deps,$idea;
 ?>
