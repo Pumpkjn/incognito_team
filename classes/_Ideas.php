@@ -194,5 +194,15 @@ class idea
 		$sql = 'DELETE FROM ideas WHERE id = "'.$idea_id.'"';
 		$database->execute_query( $sql );
 	}
+
+	function get_idea_from_topic( $topic_id, $limit = 1 ,$paged = null ) {
+		global $database;
+		$sql = 'SELECT * FROM ideas_metadata INNER JOIN ideas ON ideas.id = ideas_metadata.idea_id  WHERE ideas_metadata.meta_key ="topic" AND ideas_metadata.meta_value = "'.$topic_id.'"  ORDER BY ideas.date DESC LIMIT '.$limit;
+		if ( $paged ) {
+			$sql += ' OFFSET 5';
+		}
+		$result = $database->select_all_query( $sql );
+		return $result;
+	}
 }
 $GLOBALS['idea'] = new idea();

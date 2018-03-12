@@ -39,12 +39,7 @@
                 </li>
                 <?php if ( is_user_login() ) : ?>
                 <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'my-idea' ); ?>">
-                    <a href="#">My Idea</a>
-                </li>
-                <?php endif; ?>
-                <?php if ( is_user_login() ) : ?>
-                <li class="<?php if (isset($current_tab)) echo get_active_tab( $current_tab, 'my-department' ); ?>">
-                    <a href="my-department.php">My Department</a>
+                    <a href="my-idea.php">My Idea</a>
                 </li>
                 <?php endif; ?>
                 <?php if ( current_user_can_manage() ) : ?>

@@ -15,7 +15,7 @@ $department = isset( $_POST['department'] ) ? $_POST['department'] : null;
 
 $userID = isset( $_POST['userID'] ) ? $_POST['userID'] : null;
 if ( count( $error ) > 0 ) {
-	$redirect = 'http://'.$_SERVER['HTTP_HOST'].dirname( dirname($_SERVER['PHP_SELF'] ) ).'/my-department.php?tab=create-sub&error=missing-title';
+	$redirect = 'http://'.$_SERVER['HTTP_HOST'].dirname( dirname($_SERVER['PHP_SELF'] ) ).'/my-idea.php?tab=create-sub&error=missing-title';
 	header( 'Location: '.$redirect );
 	exit();
 } else {
@@ -33,7 +33,7 @@ if ( count( $error ) > 0 ) {
 	$sub_data['status'] = 'open';
 	$sub_data['dep_id'] = $department;
 	$new_sub = $sub->insert_sub( $sub_data );
-	$redirect = 'http://'.$_SERVER['HTTP_HOST'].dirname( dirname($_SERVER['PHP_SELF'] ) ).'/my-department.php';
+	$redirect = 'http://'.$_SERVER['HTTP_HOST'].dirname( dirname($_SERVER['PHP_SELF'] ) ).'/my-idea.php';
 	header( 'Location: '.$redirect );
 	exit();
 }

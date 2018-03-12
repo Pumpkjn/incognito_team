@@ -2,7 +2,7 @@
 	require_once("database.php");
 	require_once("functions.php");
 	include("header.php");
-	$current_tab = 'my-department';
+	$current_tab = 'my-idea';
 	include("top_nav.php");
 	global $deps,$idea,$user,$sub;
 	
@@ -30,9 +30,9 @@
 	                	$current_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'idea-request';
 	                	?>
 	                    <ul class="nav nav-tabs">
-							<li class="<?php echo get_active_tab( $current_tab, 'idea-request' ) ?>"><a data-toggle="tab" href="#idea-request">Idea Requests</a></li>
+							<li class="<?php echo get_active_tab( $current_tab, 'idea-request' ) ?>"><a data-toggle="tab" href="#idea-request">Topics</a></li>
 							<?php if ( current_user_can_coor() ) { ?>
-								<li class="<?php echo get_active_tab( $current_tab, 'create-sub' ) ?>"><a data-toggle="tab" href="#create-sub">Create Idea Request</a></li>
+								<li class="<?php echo get_active_tab( $current_tab, 'create-sub' ) ?>"><a data-toggle="tab" href="#create-sub">Create Topic</a></li>
 							<?php } ?>
 							
 						</ul>
@@ -40,28 +40,72 @@
 					<div class="panel-body">
 					<div class="tab-content">
 					<div id="idea-request" class="tab-pane <?php echo get_active_tab( $current_tab, 'idea-request' ) ?>">
-						<h3>Ideas Request List</h3>
+						<h3>Topics</h3>
 						<?php $idea_request = $sub->get_sub_by_user( $current_user['id'] );  ?>
 						<div>
 							<ul class="list-group">
 							 	<?php foreach ( $idea_request as $request ): ?>
 							 		<li class="list-group-item">
-							 			<div class="row idea-request-list">
-							 				<div style="margin-left: 10px;"><h5><?php echo $request['title']; ?></h5></div>
-							 				<div class="pull-right switch-btn">
-							 				<?php
-							 				$check = '';
-							 				if ( $request['status'] == 0 ) {
-							 					$check = '';
-							 				} else {
-							 					$check = 'checked';
-							 				}
+							 			<p>
+								 			<div class="row idea-request-list">
+								 				<div style="margin-left: 10px;">
+								 					<a data-toggle="collapse" href="#tab-<?php echo $request['id'] ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+													    <?php echo $request['title']; ?>
+													</a>
+								 				</div>
+								 				<?php if ( current_user_can_coor() ): ?>
+								 					<div class="pull-right" style="margin-right: 10px;"><a href="modules/delete_sub.php?id=<?php echo $request['id'] ?>" onclick="return confirm('Do you really want to delete the topic?')"><i class="glyphicon glyphicon-remove" style="font-size: 22px;top: 2px;"></i></a></div>
+								 				<?php endif ?>
+								 				
+								 				<div class="pull-right switch-btn">
+								 				<?php
+								 				$check = '';
+								 				if ( $request['status'] == 0 ) {
+								 					$check = '';
+								 				} else {
+								 					$check = 'checked';
+								 				}
 
-							 				?>
-									 			<label class="switch">
-													<input data-action="change-status" class="idea-request-switch" data-id="<?php echo $request['id'] ?>" type="checkbox" <?php echo $check; ?>>
-													<span class="slider round"></span>
-												</label>
+								 				?>
+										 			<label class="switch">
+														<input data-action="change-status" class="idea-request-switch" data-id="<?php echo $request['id'] ?>" type="checkbox" <?php echo $check; ?>>
+														<span class="slider round"></span>
+													</label>
+												</div>
+												
+											</div>
+										</p>
+										<div class="collapse in" id="tab-<?php echo $request['id'] ?>">
+											<div class="card card-body">
+												<?php 
+													$ideas = $idea->get_idea_from_topic( $request['id'] );
+												?>
+												<?php if ( $ideas ): ?>
+													<ul class="list-group">
+													<?php foreach ( $ideas as $i ):	?>
+														<?php $author = $user->get_user_by_id( $i['user_id'] ); ?>
+														 <li class="list-group-item">
+															 <a href="idea.php?id=<?php echo $i['id']; ?>"><?php echo $idea->get_idea_meta( $i['id'], 'title', false ) ?> -
+															  <?php echo $author['email'] ?>
+															  </a>
+															 <div class="pull-right"><a href="modules/delete_idea.php?id=<?php echo $i['id'] ?>" onclick="return confirm('Do you really want to delete the idea?')"><i class="glyphicon glyphicon-remove"></i></a></div>
+														 </li>
+													<?php endforeach; ?>
+													</ul>
+												<?php endif ?>
+											</div>
+
+											<div>
+												<?php 
+												$item_perpage = 1;
+												$current_page = 1;
+												$total_records = 1;
+												$total_pages = 1;
+												$page_url = 1;
+												var_dump($ideas);
+
+												echo ajax_paginate( $item_perpage, $current_page, $total_records, $total_pages, $page_url );
+												?>
 											</div>
 										</div>
 							 		</li>

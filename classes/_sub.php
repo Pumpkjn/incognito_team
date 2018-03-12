@@ -33,7 +33,6 @@ class Sub
 
     }
 
-
     function delete_sub( $Sub_id ) {
 		global $database;
 		$sql = 'DELETE FROM open_subs WHERE id = "'.$Sub_id.'"';
