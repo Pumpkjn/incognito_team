@@ -344,7 +344,7 @@ body{
     right: 0px;
     top: 50%;
     margin-top: -8px;
-    margin-right: -10px;
+    margin-right: 0px;
     border-width: 8px;
     border-style: solid;
     border-color: transparent white transparent transparent;
@@ -359,42 +359,46 @@ body{
     padding-top: 15px;
 }
 
-.my-carousel-control
-{
-    position: absolute;
-    top: 50%;
-}
+/*.my-carousel-control*/
+/*{*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+/*}*/
 
-.my-carousel-control .glyphicon
-{
-    font-size: 18px;
-}
+/*.my-carousel-control .glyphicon*/
+/*{*/
+    /*font-size: 18px;*/
+/*}*/
 
-.my-carousel-control.left
-{
-    left: 0px;
-}
+/*.my-carousel-control.left*/
+/*{*/
+    /*left: 0px;*/
+/*}*/
 
-.my-carousel-control.right
-{
-    right: 0px;
-}
+/*.my-carousel-control.right*/
+/*{*/
+    /*right: 0px;*/
+/*}*/
 
-ol.carousel-indicators
-{
-    bottom: -15px;
-}
+/*ol.carousel-indicators*/
+/*{*/
+    /*bottom: -15px;*/
+/*}*/
 
-ol.carousel-indicators li
-{
-    border: 1px solid #337ab7;
-}
+/*ol.carousel-indicators li*/
+/*{*/
+    /*border: 1px solid #337ab7;*/
+/*}*/
 
-ol.carousel-indicators li.active
-{
-    background-color:  #337ab7;
-}
+/*ol.carousel-indicators li.active*/
+/*{*/
+    /*background-color:  #337ab7;*/
+/*}*/
 
+.carousel-inner .item img{
+    width: 900px;
+    height: 500px !important;
+}
 body{
     padding-top: 70px;
 }
@@ -487,30 +491,30 @@ body{
 .media-left{
     position: relative;
 }
-.arrow-media-left:before{
-    z-index: 100;
-    content: " ";
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    margin-top: -8px;
-    margin-right: -10px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent white transparent transparent;
-}
 
 #nav-login {
-  background: #0084B4;
-  padding: 10px;
-  margin-top: 9%;
-  border-radius: 6px;
-  color: #fff;
+
+  padding-left: 15px;
+    display: block;
+    background-color: transparent;
+  line-height: 1.42857143;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-radius: 4px;
 }
 #nav-login:hover {
   background: #04698e;
+    color: #fff;
 }
-
+@media screen and (min-width: 768px)
+{
+    #nav-login{
+        background: #337ab7;
+        display: inline-block;
+        color: #fff;
+        padding: 6px 12px;
+    }
+}
 .login-page .back {
   background: #D3D3D3;
   width: 100%;

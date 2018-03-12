@@ -35,7 +35,7 @@
                             </div>                                                                  
                             <br />
                             <br />
-                             <center><button type="submit" name="login" class="btn btn-success btn-md btn-block">Login</button>
+                             <center><button type="submit" name="login" class="btn btn-primary btn-md btn-block">Login</button>
                             <br />
                             <!-- <a class="btn btn-link" href="changepw.php" name="forgotpw">Forgot Password?</a></button></center> -->
                            
