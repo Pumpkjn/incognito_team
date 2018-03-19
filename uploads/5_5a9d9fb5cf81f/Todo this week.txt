@@ -1,0 +1,51 @@
+Manga:
+_ Popular Widget
+_ Search Page/ Widget 
+_ Hook places
+
+
+Video Plugin : subscribe and lock
+
+Hieudo
+
+e vào backend -> Events -> Settings -> General Options -> m? ra, tìm d?n ch? Event Attributes
+thêm cái này vào
+#_ATT{Speed date status}{Yes|No}
+#_ATT{Speed date userID}
+#_ATT{Speed date userKey}
+#_ATT{Speed date companionID}
+#_ATT{Speed date companionKey}
+cái này nó cho phép thêm
+ki?u custom value cho cái event ?y, lúc e t?o event thì s? th?y 1 cái select box (speed dating staus là yes / no)
+4 input boxes
+lúc save event nó s? luu vào db luôn, c?a a dang là wp_2_em_events
+
+
+1. Sau khi t?o event xong thì cái wishlist nó ph?i hi?n ra trong event nhé
+2. khi select item trong wishlist thì có 2 actions :
+* select xong c? th? add nhu bt, nghia là th?ng này s? mua cái item d?y
+* "They can select to invite certain other recipients (by email) to select a wish list item together. So they share the present" <<< là nó add thêm 1 cái email c?a th?ng nào d?y vào, nghia là nó (th?ng dang submit) s? mua chung quà d?y v?i th?ng du?c add
+3. Khi t?o event, vd a list ra là
+* Wedding Dress = 1
+* Wedding Cake = 2
+m?c d?nh thì trong event nó hi?n ra wishlist nhu này
+gi? có th?ng A nh?y vào book ch? (nghia là nó có di), xong nó select item Wedding Cake, s? lu?ng 1 -> Book
+n?u cái yêu c?u book c?a nó du?c approve (event manager nó b?t event owner ph?i approve) -> lúc này trong event detail hi?n nhu sau
+* Wedding Dress = 1 và Wedding Cake = 1 (vì th?ng A dã ch?n mua 1 cái r?i), wishlist này hi?n ra cho t?t c? m?i ngu?i
+* Bên du?i cái wishlist là Who Attended (là nh?ng th?ng di), nó s? là 1 danh sách g?m các c?t nhu sau
+date - item name - quantity - email
+ngày book - book item nào - s? lu?ng bao nhiêu - email (email c?a th?ng book ho?c nó và th?ng b?n, n?u nó ch?n mua chung v?i th?ng nào d?y)
+h?t dz?i
+có m?y cái khác l?t v?t nhung thôi a qu?y du?c, fix giúp a m?y cái này là xong
+Vâng anh
+
+à quên, có cái này
+trong yêu c?u có cái checkbox là "m?y th?ng khách có nhìn th?y nhau ko ?y"
+thì ý nghia c?a nó là nhu này
+m?c d?nh cái wishlist là public, nghia là ai cung th?y
+có di?u cái who attended thì m?c d?nh ch? th?ng t?o event m?i th?y
+n?u cái box kia uncheck thì nhu trên
+n?u lúc t?o event, nó check cái box này, thì cái who attend này ai cung th?y luôn
+
+
+#_RECIPIENTS  Ð? hi?n th? wishlist
