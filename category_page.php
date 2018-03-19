@@ -28,7 +28,7 @@ $ideas = $idea->get_all_ideas_by_category($cat_id);
                 <div class="panel-heading ">
                     <h4 class="pull-left">
                         <?php
-                            echo "<a href='idea.php?{$idea["id"]}'>{$db_idea->get_idea_meta($idea["id"],"title",false)}</a>";
+                            echo "<a href='idea.php?id={$idea["id"]}'>{$db_idea->get_idea_meta($idea["id"],"title",false)}</a>";
                         ?>
                     </h4>
                     <div class="cats pull-right ">

@@ -32,8 +32,10 @@ if ( count( $error ) > 0 ) {
 	$sub_data['userID'] = $userID;
 	$sub_data['status'] = 'open';
 	$sub_data['dep_id'] = $department;
+
 	$new_sub = $sub->insert_sub( $sub_data );
 	$redirect = 'http://'.$_SERVER['HTTP_HOST'].dirname( dirname($_SERVER['PHP_SELF'] ) ).'/my-idea.php';
+
 	header( 'Location: '.$redirect );
 	exit();
 }

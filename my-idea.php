@@ -44,7 +44,9 @@
 						<?php $idea_request = $sub->get_sub_by_user( $current_user['id'] );  ?>
 						<div>
 							<ul class="list-group">
-							 	<?php foreach ( $idea_request as $request ): ?>
+							 	<?php
+
+                                    foreach ( $idea_request as $request ): ?>
 							 		<li class="list-group-item">
 							 			<p>
 								 			<div class="row idea-request-list">
