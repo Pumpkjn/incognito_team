@@ -78,14 +78,14 @@ $post = $idea->get_idea_by_id( $post_id );
 				<div class="panel-footer">
 					<ul class="list-inline pull-left">
 						<li>
-							<a>
+							<a href="javascript:void(0)" id="action-thumb-up" data-postid="<?php echo $post_id ?>" >
 								<span class="glyphicon glyphicon-thumbs-up"></span>
 								<span> 5 </span>
 							</a>
 						</li>
 						<li>|</li>
 						<li>
-							<a>
+							<a href="javascript:void(0)" id="action-thumb-down" data-postid="<?php echo $post_id ?>" >
 								<span class="glyphicon glyphicon-thumbs-down"></span>
 								<span> 11 </span>
 							</a>

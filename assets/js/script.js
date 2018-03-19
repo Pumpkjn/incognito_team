@@ -151,6 +151,13 @@
 		});
 	} )
 
+	$(document).on( 'click', '#action-thumb-up',function(e){
+		e.preventDefault();
+		var t = $(this);
+		var action = t.id;
+		var postid = t.data( 'postid' );
+	} )
+
 	// $(document).on( 'click', '#modal-signin-button', function(e){
 	// 	e.preventDefault();
 	// 	var tendangnhap = $('#dk_tendangnhap').val();
