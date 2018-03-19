@@ -105,8 +105,8 @@ class idea
 		$this->add_idea_meta( $new_idea, 'dep', $array['dep'] );
 		$this->add_idea_meta( $new_idea, 'topic', $array['topic'] );
 		$this->add_idea_meta( $new_idea, 'views', 0 );
-		$this->add_idea_meta( $new_idea, 'thumbup', 0 );
-		$this->add_idea_meta( $new_idea, 'thumbdown', 0 );
+		$this->add_idea_meta( $new_idea, 'thumbup', null );
+		$this->add_idea_meta( $new_idea, 'thumbdown', null );
 		$this->add_idea_meta( $new_idea, 'anonymousSubmit', $array['anonymousSubmit'] );
 		if ( count( $array['attachment'] ) > 0 ) {
 			$this->upload_attachment( $new_idea , $array['attachment'] );
@@ -177,7 +177,7 @@ class idea
 
 	function update_idea_meta( $id, $key, $value ) {
 		global $database;
-    	$sql = 'UPDATE ideas_metadata SET meta_value = '.$value.'  WHERE idea_id = '.$id.' AND meta_key = "'.$key.'"';
+    	$sql = 'UPDATE ideas_metadata SET meta_value = "'.$value.'"  WHERE idea_id = '.$id.' AND meta_key = "'.$key.'"';
     	$database->execute_query( $sql );
 	}
 	
@@ -220,6 +220,127 @@ class idea
 		$sql = 'SELECT * FROM categories_ideas INNER JOIN ideas ON categories_ideas.idea_id = ideas.id INNER JOIN categories ON categories_ideas.category_id = categories.id WHERE ideas.id=' .$idea_id;
 		$result = $database->select_all_query( $sql );
 		return $result;
+	}
+
+	function update_vote( $post, $user, $action ) {
+		$thumbup = $this->get_idea_meta( $post, 'thumbup', false );
+		$thumbdown = $this->get_idea_meta( $post, 'thumbdown', false );
+		switch ( $action ) {
+			case 'thumb-up':
+				$down = array();
+				$down = array();
+				if ( $thumbdown && $thumbdown != '' ) {
+					$thumbdown_arr = explode( ',' , $thumbdown );
+					if ( in_array( $user , $thumbdown_arr ) ) {
+						$remove = array_search( $user , $thumbdown_arr );
+						if ( $remove !== false ) {
+							unset($thumbdown_arr[ $remove ]);
+						}
+						$down = $thumbdown_arr;
+						$down = implode( ',', $down );
+						// remove thumb_down user
+						$this->update_idea_meta( $post, 'thumbdown', $down );
+						if ( !$thumbup || $thumbup == '' ) {
+							$up[] = $user;
+						} else {
+							$thumbup_arr = explode( ',' , $thumbup );
+							$thumbup_arr[] = $user;
+							$blank = array_search( '', $thumbup_arr );
+							if ( $blank !== false) {
+								unset( $thumbup_arr[ $blank ]);
+							}
+							$up = $thumbup_arr;
+						}
+					} else {
+						if ( !$thumbup || $thumbup == '' ) {
+							$up[] = $user;
+						} else {
+							$thumbup_arr = explode( ',' , $thumbup );
+							$thumbup_arr[] = $user;
+							$blank = array_search( '', $thumbup_arr );
+							if ( $blank !== false ) {
+								unset( $thumbup_arr[ $blank ]);
+							}
+							$up = $thumbup_arr;
+						}
+					}
+				} else if ( !$thumbup || $thumbup == '' ) {
+					$up[] = $user;
+				} else {
+					$thumbup_arr = explode( ',' , $thumbup );
+					if ( !in_array( $user , $thumbup_arr ) ) {
+						$thumbup_arr[] = $user;
+					} else {
+						die();
+					}
+					$up = $thumbup_arr;
+				}
+				$blank = array_search( '', $up );
+				if ( $blank !== false ) {
+					unset( $up[ $blank ]);
+				}
+				$up = implode( ',', $up );
+				$this->update_idea_meta( $post, 'thumbup', $up );
+				break;
+
+			case 'thumb-down':
+				$up = array();
+				$down = array();
+				if ( $thumbup && $thumbup != '' ) {
+					$thumbup_arr = explode( ',' , $thumbup );
+
+					if ( in_array( $user , $thumbup_arr ) ) {
+						$remove = array_search( $user , $thumbup_arr );
+						if ( $remove !== false ) {
+							unset($thumbup_arr[ $remove ]);
+						}
+						$up = $thumbup_arr;
+						$up = implode( ',', $up );
+						// remove thumb_up user
+						$this->update_idea_meta( $post, 'thumbup', $up );
+						if ( !$thumbdown || $thumbdown == '' ) {
+							$down[] = $user;
+						} else {
+							$thumbdown_arr = explode( ',' , $thumbdown );
+							$thumbdown_arr[] = $user;
+							$blank = array_search( '', $thumbdown_arr );
+							if ( $blank !== false ) {
+								unset( $thumbdown_arr[ $blank ]);
+							}
+							$down = $thumbdown_arr;
+						}
+					} else {
+						if ( !$thumbdown || $thumbdown == '' ) {
+							$down[] = $user;
+						} else {
+							$thumbdown_arr = explode( ',' , $thumbdown );
+							$thumbdown_arr[] = $user;
+							$blank = array_search( '', $thumbdown_arr );
+							if ( $blank !== false ) {
+								unset( $thumbdown_arr[ $blank ]);
+							}
+							$down = $thumbdown_arr;
+						}
+					}
+				} else if ( !$thumbdown || $thumbdown == '' ) {
+					$down[] = $user;
+				} else {
+					$thumbdown_arr = explode( ',' , $thumbdown );
+					if ( !in_array( $user , $thumbdown_arr ) ) {
+						$thumbdown_arr[] = $user;
+					} else {
+						die();
+					}
+					$down = $thumbdown_arr;
+				}
+				$blank = array_search( '', $down );
+				if ( $blank !== false ) {
+					unset( $down[ $blank ]);
+				}
+				$down = implode( ',', $down );
+				$this->update_idea_meta( $post, 'thumbdown', $down );
+				break;
+		}
 	}
 }
 $GLOBALS['idea'] = new idea();

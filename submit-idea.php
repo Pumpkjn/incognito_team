@@ -103,7 +103,7 @@
 							<div class="form-group">
 								<label class="form-check-label col-sm-3" for="term">Submit as Anonymous</label>
 								<div class="col-sm-9">
-									<input type="checkbox" class="form-check-input" name="term-condition" id="anonymous-submit">
+									<input type="checkbox" class="form-check-input" name="anonymous-submit" id="anonymous-submit">
 								</div>
 							</div>
 								

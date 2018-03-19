@@ -151,11 +151,33 @@
 		});
 	} )
 
-	$(document).on( 'click', '#action-thumb-up',function(e){
+	var thumbAction = false;
+	$(document).on( 'click', '.action-thumb',function(e){
 		e.preventDefault();
-		var t = $(this);
-		var action = t.id;
-		var postid = t.data( 'postid' );
+		if ( thumbAction == false ) {
+			thumbAction = true;
+			var t = $(this);
+			var postid = t.data( 'postid' );
+			var action = t.data('action');
+			var data = {
+				action:  action,
+				postid: postid,
+			}
+
+			$.ajax({
+				url: 'modules/ajax.php',
+				data: data,
+				type: 'POST',
+				dataType: 'json',
+				success: function(response){
+
+				},
+		        complete: function(xhr, textStatus) {
+		        	thumbAction = false;
+		        	location.reload();
+		        }
+			});
+		}
 	} )
 
 	// $(document).on( 'click', '#modal-signin-button', function(e){

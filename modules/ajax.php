@@ -29,4 +29,20 @@ if ( $action && 'dep-change' == $action ) {
 	die();
 }
 
+if ( ( $action && 'thumb-up' == $action ) || ( $action && 'thumb-down' == $action ) || 'thumb-up' == $action || 'thumb-down' == $action ) {
+	global $user,$idea;
+	if ( is_user_login() ) {
+		$current_user = $user->get_current_user();
+		$postid =  isset( $_POST['postid'] ) ? $_POST['postid'] : null;
+		$userid = $current_user['id'];
+		$idea->update_vote( $postid, $userid, $action );
+		die();
+	} else {
+		echo json_encode( array( 'error' => true ) );
+		die();
+	}
+
+}
+
+
 ?>

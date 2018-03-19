@@ -79,6 +79,11 @@ class User
 		return $result[0];
 	}
 
+	function get_current_user_department() {
+		$user_data = $this->get_current_user();
+		return $user_data['dep_id'];
+	}
+
 	function get_user_department( $user_id ) {
 		global $database;
 		$sql = 'SELECT deps.name FROM deps INNER JOIN users WHERE users.dep_id = deps.id AND users.id='.$user_id;

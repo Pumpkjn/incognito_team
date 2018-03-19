@@ -78,16 +78,38 @@ $post = $idea->get_idea_by_id( $post_id );
 				<div class="panel-footer">
 					<ul class="list-inline pull-left">
 						<li>
-							<a href="javascript:void(0)" id="action-thumb-up" data-postid="<?php echo $post_id ?>" >
+							<a href="javascript:void(0)" class="action-thumb" data-action="thumb-up" data-postid="<?php echo $post_id ?>" >
 								<span class="glyphicon glyphicon-thumbs-up"></span>
-								<span> 5 </span>
+								<span>
+									<?php   
+										$thumbup_users = $idea->get_idea_meta( $post_id, 'thumbup', false );
+										if ( !$thumbup_users ) {
+											$up = 0;
+										} else {
+											$thumbup_arr = explode(',', $thumbup_users);
+											$up = count( $thumbup_arr );
+										}
+										echo $up;
+									?>
+								</span>
 							</a>
 						</li>
 						<li>|</li>
 						<li>
-							<a href="javascript:void(0)" id="action-thumb-down" data-postid="<?php echo $post_id ?>" >
+							<a href="javascript:void(0)" class="action-thumb" data-action="thumb-down" data-postid="<?php echo $post_id ?>" >
 								<span class="glyphicon glyphicon-thumbs-down"></span>
-								<span> 11 </span>
+								<span>
+									<?php   
+										$thumdown_users = $idea->get_idea_meta( $post_id, 'thumbdown', false );
+										if ( !$thumdown_users ) {
+											$down = 0;
+										} else {
+											$thumdown_arr = explode(',', $thumdown_users);
+											$down = count( $thumdown_arr );
+										}
+										echo $down;
+									?>
+								</span>
 							</a>
 						</li>
 						<li>|</li>
@@ -106,9 +128,38 @@ $post = $idea->get_idea_by_id( $post_id );
 						<li>
 							<span class="glyphicon glyphicon-user"></span>
 							by
-							<a href="#">
-								John
-							</a>
+							<?php
+							$status = $post['status'];
+							$dep_id = $idea->get_idea_meta( $post_id, 'dep', false );
+							if ( $status ) {
+								if ( !is_user_login() ) {
+									echo 'Anonymous';
+								} else {
+									if ( !current_user_can_coor() ) {
+										if ( $post['user_id'] == $user_id ) { ?>
+											<a href="profile.php?id=<?php echo $post['user_id']; ?>">
+												<?php echo $author['name']; ?>
+											</a>
+										<?php } else  {
+											echo 'Anonymous';
+										}
+									} else if ( $dep_id != $user->get_current_user_department() && null != $user->get_current_user_department() ) {
+										echo 'Anonymous';
+									} else {
+										$author = $user->get_user_by_id( $post['user_id'] );
+										?>
+										<a href="profile.php?id=<?php echo $post['user_id']; ?>">
+											<?php echo $author['name']; ?>
+										</a>
+									<?php }
+								}
+							} else {
+								$author = $user->get_user_by_id( $post['user_id'] );
+								?>
+								<a href="profile.php?id=<?php echo $post['user_id']; ?>">
+									<?php echo $author['name']; ?>
+								</a>
+							<?php } ?>
 						</li>
 					</ul>
 					<div class="clearfix"></div>
@@ -270,4 +321,7 @@ $post = $idea->get_idea_by_id( $post_id );
 </div>
 <?php post_views( $post_id ); ?>
 <?php endif ?>
+<?php 
+	include("footer.php");
+?>
 
