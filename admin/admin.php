@@ -11,7 +11,7 @@
 					<div class="col-md-2">
 					<?php
 						$current_tab = 'dashboard';
-						include("admin_sidebar.php"); 
+						include("admin_sidebar.php");
 					?>
 					</div>
 					<div class="col-md-10">Dashboard</div>

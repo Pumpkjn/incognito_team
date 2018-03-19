@@ -31,7 +31,6 @@
 							<!-- the topic and department can be show when access from linh with query parameters/ improve -->
 							<?php
 							$selected_deparment = isset( $_GET['dep'] ) ? $_GET['dep'] : null;
-							$departments = $deps->get_all_department();
 							if ( $departments ) { ?>
 							<div class="form-group">
 								<label class="col-sm-3" for="department">Choose Department</label>
