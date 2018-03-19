@@ -60,11 +60,7 @@ class idea
 
 	function get_category_by( $word, $type ) {
 		global $database;
-		if ( 'slug' == $type ) {
-			$sql = 'SELECT * FROM categories WHERE slug="'.$word.'"';
-		} else if ( 'name' == $type ) {
-			$sql = 'SELECT * FROM categories WHERE name="'.$word.'"';
-		}
+		$sql = "SELECT * FROM categories WHERE $type='$word'";
 		$result = $database->select_all_query( $sql );
 		return $result;
 	}

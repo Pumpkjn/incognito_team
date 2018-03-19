@@ -5,7 +5,23 @@ require_once("database.php");
 require_once("functions.php");
 include("header.php");
 include("top_nav.php");
+$cuser = $user->get_current_user();
+$user_id = $_GET["id"];
+if ($user_id)
+{
+
+}
+else{
+    if ($cuser)
+    {
+
+    }
+    else {
+        
+    }
+}
 ?>
+
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">

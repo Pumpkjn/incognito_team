@@ -5,17 +5,22 @@
     </div>
 
     <ul class="list-group">
-        <li class="list-group-item">
-            <span class="badge">14</span>
-            <a href="category_page.php">Computer upgrade </a>
-        </li>
-        <li class="list-group-item">
-            <span class="badge">90</span>
-            <a href="category_page.php">Distance learning</a>
-        </li>
-        <li class="list-group-item">
-            <span class="badge">50</span>
-            <a href="category_page.php">Parking improvement</a>
-        </li>
+        <?php
+            $idea= new idea();
+            $cats = $idea->get_all_category();
+            if ($cats)
+            foreach ($cats as $cat)
+            {
+                echo "<li class='list-group-item'>
+                        <span class='badge'>14</span>
+                        <a href='category_page.php?cat_id={$cat["id"]}'>{$cat["name"]}</a>
+                      </li>";
+            }
+        ?>
+<!--        <li class="list-group-item">-->
+<!--            <span class="badge">14</span>-->
+<!--            <a href="category_page.php">Computer upgrade </a>-->
+<!--        </li>-->
+
     </ul>
 </div>
