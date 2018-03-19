@@ -8,8 +8,9 @@ include("header.php");
 include("top_nav.php");
 $db_idea = new idea();
 $db_user = new User();
-
+$db_deps = new DEPS();
 $ideas = $db_idea->get_all_ideas();
+
 ?>
 <body>
 
@@ -81,9 +82,7 @@ $ideas = $db_idea->get_all_ideas();
                 }
             ?>
 
-
-
-
+            
             <!-- The end of an idea -->
 
             <div class="clearfix visible-xs-block"></div>
