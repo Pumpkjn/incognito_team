@@ -13,6 +13,13 @@ class idea
 		return $result;
     }
 
+    function get_popular_ideas() {
+    	global $database;
+    	$sql = "SELECT DISTINCT ideas.id FROM ideas INNER JOIN ideas_metadata ON ideas.id = ideas_metadata.idea_id ORDER BY FIELD( ideas_metadata.meta_value , 'views' ) DESC LIMIT 5";
+    	$result = $database->select_all_query( $sql );
+		return $result;
+    }
+
     function get_idea_by_id( $idea_id ) {
 		global $database;
 		$sql = "SELECT * From ideas WHERE id=".$idea_id;

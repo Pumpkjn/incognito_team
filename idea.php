@@ -11,7 +11,7 @@ include("top_nav.php");
 <?php if ( $post_id ): 
 global $idea;
 $post = $idea->get_idea_by_id( $post_id );
-
+if ( $post ) {
 ?>
 	<div class="container">
 	<div class="row">
@@ -320,7 +320,11 @@ $post = $idea->get_idea_by_id( $post_id );
 	</div>
 </div>
 <?php post_views( $post_id ); ?>
+<?php } else { ?>
+	<h1 style="text-align: center;font-weight: bolder;color: red;">404 Page not found</h1>
+<?php } ?>
 <?php endif ?>
+
 <?php 
 	include("footer.php");
 ?>
