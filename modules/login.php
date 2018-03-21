@@ -5,15 +5,17 @@ session_start();
 
 require("../database.php");
 require_once("../functions.php");
+require_once("../classes/_User.php");
 
 
 global $database,$user;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
+$encryptedpass = $user->EncryptPassword($password, $email);
 $sql = 'SELECT users.* FROM users 
         WHERE email = "'.$email.'" 
-            and password = "'.$password.'"';
+            and password = "'.$encryptedpass.'"';
 
 $results = $database->select_query($sql);
 
