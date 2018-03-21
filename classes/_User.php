@@ -1,5 +1,4 @@
 <?php
-
 class User
 {
 	public $user;
@@ -7,6 +6,12 @@ class User
     {
         
     }
+
+	function EncryptPassword($password, $email){
+		$usersalt = md5($email); //Create user unique salt
+		$encrypted_pass = crypt($password, '$2a$12$'.$usersalt.'$'); //Encrypt password using bCrypt
+		return $encrypted_pass;
+	}
 
     function get_all_user() {
     	global $database;
@@ -56,8 +61,11 @@ class User
 
 	function insert_user( $user ) {
 		global $database;
+		$password = $user['password'];
+		$email = $user['email'];
+		$encryptedpass = $this->EncryptPassword($password, $email);
 		$sql = "INSERT INTO users( `username` , `password`, `name`, `email`, `role`, `dep_id` )
-		VALUES ('" . $user['email'] . "','".$user['password']."', '".$user['name']."', '".$user['email']."', '".$user['role']."', '".$user['deps']."')";
+		VALUES ('" . $user['email'] . "','".$encryptedpass."', '".$user['name']."', '".$user['email']."', '".$user['role']."', '".$user['deps']."')";
 		$database->execute_query( $sql );
 	}
 
@@ -77,11 +85,6 @@ class User
 		$sql = "SELECT * From users WHERE id=".$user_id;
 		$result = $database->select_all_query( $sql );
 		return $result[0];
-	}
-
-	function get_current_user_department() {
-		$user_data = $this->get_current_user();
-		return $user_data['dep_id'];
 	}
 
 	function get_user_department( $user_id ) {
