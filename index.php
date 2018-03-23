@@ -70,7 +70,7 @@ $ideas = $db_idea->get_all_ideas();
                                     <?php
                                     $user = $db_user->get_user_by_id($idea["user_id"]);
 
-                                    echo "<a href='user_profile.php?{$user["id"]}'>{$user["name"]}</a>";
+                                    echo "<a href='user_profile.php?user_id={$user["id"]}'>{$user["name"]}</a>";
                                     ?>
                                 </li>
                             </ul>
@@ -82,7 +82,7 @@ $ideas = $db_idea->get_all_ideas();
                 }
             ?>
 
-            
+
             <!-- The end of an idea -->
 
             <div class="clearfix visible-xs-block"></div>

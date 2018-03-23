@@ -6,20 +6,19 @@ require_once("functions.php");
 include("header.php");
 include("top_nav.php");
 $cuser = $user->get_current_user();
-$user_id = $_GET["id"];
-if ($user_id)
+if (isset($_GET["id"]))
 {
-
+    $puser = $user->get_user_by_id($_GET["id"]);
 }
-else{
-    if ($cuser)
-    {
+else if ($cuser)
+    $puser = $cuser;
 
-    }
-    else {
-        
-    }
-}
+echo $puser["dep_id"];
+
+if ($puser["dep_id"])
+    $user_dep= $deps->get_dep_by_id($puser["dep_id"]);
+
+
 ?>
 
 <div class="container">
@@ -51,28 +50,32 @@ else{
                                             </div>
                                             <div class="media-body">
                                                 <div class="media-heading">
-                                                    <a><h4>Nguyen Vu</h4></a>
+                                                    <a><h4><?php echo $puser["username"];?></h4></a>
                                                 </div>
                                                 <table class="table">
                                                     <tr>
+                                                        <td>Name:</td>
+                                                        <td><?php echo $puser["name"]; ?></td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>Role:</td>
-                                                        <td>Coordinator</td>
+                                                        <td><?php echo $user->get_role_text($puser["role"]); ?></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td>Department: </td>
-                                                        <td>Computing</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Room: </td>
-                                                        <td>QM362</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Date of birth: </td>
-                                                        <td>03/02/1994</td>
-                                                    </tr>
+                                                    <?php
+                                                        if (isset($user_dep))
+                                                        {
+                                                            echo "
+                                                                <tr>
+                                                                    <td>Department: </td>
+                                                                    <td>{$user_dep["name"]}</td>
+                                                                </tr>
+                                                            ";
+                                                        }
+                                                    ?>
+
                                                     <tr>
                                                         <td>Email:</td>
-                                                        <td>nguyenvu9405@gmail.com</td>
+                                                        <td><?php echo $puser["email"]; ?></td>
                                                     </tr>
                                                 </table>
                                             </div>
