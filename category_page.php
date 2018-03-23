@@ -8,8 +8,8 @@ include("top_nav.php");
 $db_idea = new idea();
 $db_user = new User();
 $cat_id = $_GET["cat_id"];
-$cat = $idea->get_category_by($cat_id,"id")[0];
-$ideas = $idea->get_all_ideas_by_category($cat_id);
+$cat = $db_idea->get_category_by($cat_id,"id")[0];
+$ideas = $db_idea->get_all_ideas_by_category($cat_id);
 ?>
 
 <div class="container">
@@ -22,23 +22,24 @@ $ideas = $idea->get_all_ideas_by_category($cat_id);
                 if ($ideas)
                 foreach ($ideas as $idea)
                 {
+
             ?>
             <!--begining of an idea -->
             <div class="panel panel-default">
                 <div class="panel-heading ">
                     <h4 class="pull-left">
                         <?php
-                            echo "<a href='idea.php?id={$idea["id"]}'>{$db_idea->get_idea_meta($idea["id"],"title",false)}</a>";
+                            echo "<a href='idea.php?id={$idea["idea_id"]}'>{$db_idea->get_idea_meta($idea["idea_id"],"title",false)}</a>";
                         ?>
                     </h4>
                     <div class="cats pull-right ">
                         <h5>Categories:
                             <?php
-                                $set = $db_idea->get_idea_categories($idea["id"]);
+                                $set = $db_idea->get_idea_categories($idea["idea_id"]);
                                 if ($set)
                                 foreach ($set as $item)
                                 {
-                                    echo "<a href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
+                                    echo "<a class='cats' href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
                                 }
                             ?>
                         </h5>
@@ -48,7 +49,7 @@ $ideas = $idea->get_all_ideas_by_category($cat_id);
                 </div>
                 <div class="panel-body">
                     <?php
-                        echo $db_idea->get_idea_meta($idea["id"],"desc",false);
+                        echo $db_idea->get_idea_meta($idea["idea_id"],"desc",false);
                     ?>
                 </div>
                 <div class="panel-footer">

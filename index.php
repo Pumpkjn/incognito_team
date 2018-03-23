@@ -19,9 +19,10 @@ if (isset($_GET["page"]))
 
 $num_per_page = 5;
 $num_off_set = ($page-1)*$num_per_page;
-
 $ideas = $db_idea->get_all_ideas($num_per_page,$num_off_set);
 
+if ($page>1) $lprev = "?page=".($page-1); else $lprev="#";
+if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
 ?>
 <body>
 
@@ -98,8 +99,8 @@ $ideas = $db_idea->get_all_ideas($num_per_page,$num_off_set);
             ?>
             <nav>
                 <ul class="pager">
-                    <li class="previous <?php if ($page==1) echo "disabled";?>"><a href="<?php if ($page!=1) echo "?page=".($page-1); else echo "#";?>"><span aria-hidden="true">&larr;</span> Older</a></li>
-                    <li class="next <?php if (count($ideas)<5) echo "disabled";?>"><a href="<?php if (count($ideas)==5) echo "?page=".($page+1); else echo "#";?>">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                    <li class="previous <?php if ($lprev=="#") echo "disabled";?>"><a href="<?php echo $lprev; ?>"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                    <li class="next <?php if ($lnext=="#") echo "disabled";?>"><a href="<?php echo $lnext; ?>">Next <span aria-hidden="true">&rarr;</span></a></li>
                 </ul>
             </nav>
 

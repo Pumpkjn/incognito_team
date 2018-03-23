@@ -3,243 +3,114 @@ require_once("database.php");
 require_once("functions.php");
 include("header.php");
 include("top_nav.php");
+$cur_tab = "active";
+if (isset($_GET["status"]) && $_GET['status']=='closed') $cur_tab = "closed";
+$db_idea = new idea();
+$db_user = new User();
+$dep_id = $_GET["dep_id"];
+$page=1;
+
+if (isset($_GET["page"]) && is_numeric($_GET["page"]))
+{
+    $page = $_GET["page"];
+}
+
+$num_per_page = 5;
+$num_off_set = ($page-1)*$num_per_page;
+$ideas = $db_idea->get_ideas_by_dep($dep_id,$num_per_page,$num_off_set);
+
+if ($page>1) $lprev = "?dep_id=$dep_id&page=".($page-1); else $lprev="#";
+if (count($ideas)==$num_per_page) $lnext = "?dep_id=$dep_id&page=".($page+1); else $lnext="#";
+
+
 ?>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
             <div class="panel panel-default">
-
                 <div class="panel-body">
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" <?php if (isset($_GET['status']) && $_GET['status']=='active') echo "class='active'"?>>
+                        <li role="presentation" <?php if ($cur_tab=='active') echo "class='active'"?>>
                             <a href="deparments.php?status=active" aria-controls="home" role="tab" >Active</a>
                         </li>
-                        <li role="presentation" <?php if (isset($_GET['status']) && $_GET['status']=='closed') echo "class='active'"; ?>"">
+                        <li role="presentation" <?php if ($cur_tab=='closed') echo "class='active'"; ?>"">
                             <a href="deparments.php?status=closed" aria-controls="home" role="tab">Closed</a>
                         </li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active">
-                            <div class="panel panel-default">
-                                <div class="panel-heading ">
-                                    <h4 class="pull-left">
-                                        <a href="idea.php">Computer upgrade</a>
-                                    </h4>
-                                    <div class="cats pull-right ">
-                                        <h5>Categories:
-                                            <a href="#"><span class="label label-primary">computing</span></a>
-                                            <a href="#"><span class="label label-primary">life</span></a>
-                                            <a href="#"><span class="label label-primary">love</span></a>
-                                        </h5>
-
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="panel-body">
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam aspernatur beatae
-                                        corporis doloribus eligendi, enim esse ex ipsa magnam modi nihil nostrum, odio tempora
-                                        voluptas. Aperiam odit recusandae soluta!
-                                    </div>
-                                    <div>Alias amet, ducimus earum excepturi harum inventore, nobis obcaecati odit officiis
-                                        praesentium quaerat quas quibusdam totam vero vitae! Dolore dolores ducimus fugit laudantium
-                                        numquam placeat possimus soluta suscipit voluptatem, voluptates!
-                                    </div>
-                                    <div>Adipisci animi aut, eos et laborum laudantium maiores maxime molestias nam possimus quo
-                                        repellendus saepe, velit? Alias, dolor eum ex fuga illo illum inventore iste libero, minima
-                                        nesciunt praesentium tempore.
-                                    </div>
-                                    <div>At, corporis deleniti dolor eos et expedita explicabo fugiat id in inventore ipsam maiores
-                                        minus, modi nisi perferendis perspiciatis, porro praesentium quis quod repellat
-                                        reprehenderit sed similique sit unde voluptatem?
-                                    </div>
-                                    <div>A aliquam amet aperiam asperiores dicta enim eos et fugiat illum impedit in itaque iusto
-                                        minima nobis odit officia officiis, qui ratione repudiandae sed soluta tempora unde
-                                        voluptatem. Assumenda, eum.
-                                    </div>
-                                </div>
-                                <div class="panel-footer">
-                                    <ul class="list-inline pull-left">
-                                        <li>
-                                            <a>
-                                                <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                <span> 5 </span>
-                                            </a>
-                                        </li>
-                                        <li>|</li>
-                                        <li>
-                                            <a>
-                                                <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                <span> 11 </span>
-                                            </a>
-                                        </li>
-                                        <li>|</li>
-                                        <li>
-                                            <a href="#idea-comments-1" data-toggle="collapse">
-                                                <span class="glyphicon glyphicon-comment"></span>
-                                                <span>2 comments</span>
-                                            </a>
-                                    </ul>
-                                    <ul class="list-inline pull-right">
-                                        <li>
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                            2 days, 8 hours ago
-                                        </li>
-                                        <li>|</li>
-                                        <li>
-                                            <span class="glyphicon glyphicon-user"></span>
-                                            by
-                                            <a href="#">
-                                                John
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                    <div  id="idea-comments-1" class="collapse">
-                                        <div class="divider"></div>
-                                        <ul class="media-list">
-                                            <li class="media">
-                                                <div class="media-left pull-left arrow-media-left">
-                                                    <a href="#">
-                                                        <img class="media-object img-circle" src="assets/img/a1.png" >
-                                                    </a>
+                            <?php
+                            if ($ideas)
+                                foreach ($ideas as $idea)
+                                {
+                                    ?>
+                                    <!--begining of an idea -->
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading ">
+                                            <h4 class="pull-left">
+                                                <?php
+                                                echo "<a href='idea.php?id={$idea["id"]}'>{$db_idea->get_idea_meta($idea["id"],"title",false)}</a>";
+                                                ?>
+                                            </h4>
+                                            <?php
+                                            $set = $db_idea->get_idea_categories($idea["id"]);
+                                            if ($set){
+                                                ?>
+                                                <div class="cats pull-right ">
+                                                    <h5>Categories:
+                                                        <?php
+                                                        foreach ($set as $item)
+                                                        {
+                                                            echo "<a class='cats' href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
+                                                        }
+                                                        ?>
+                                                    </h5>
                                                 </div>
-                                                <div class="media-body">
-                                                    <div class="media-content">
-                                                        <h4 class="media-heading">Nguyen Vu</h4>
-                                                        <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-                                                                2 days, 8 hours ago</small></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                                        <div class="divider"></div>
-                                                        <ul class="list-inline ">
-                                                            <li>
-                                                                <a>
-                                                                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                                    <span> 5 </span>
-                                                                </a>
-                                                            </li>
-                                                            <li>|</li>
-                                                            <li>
-                                                                <a>
-                                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                                    <span> 11 </span>
-                                                                </a>
-                                                            </li>
-                                                            <li>|</li>
-                                                            <li>
-                                                                <a href="#idea-comments-2" data-toggle="collapse">
-                                                                    <span class="glyphicon glyphicon-comment"></span>
-                                                                    <span>2 comments</span>
-                                                                </a>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="comment-box collapse" id="idea-comments-2">
-                                                        <div class="media">
-                                                            <div class="media-left pull-left arrow-media-left">
-                                                                <a href="#">
-                                                                    <img class="media-object img-circle" src="assets/img/a2.png" >
-                                                                </a>
-                                                            </div>
-                                                            <div class="media-body">
-                                                                <div class="media-content">
-                                                                    <h4 class="media-heading">Nguyen Vu</h4>
-                                                                    <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-                                                                            2 days, 8 hours ago</small></h4>
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                                                    <div class="divider"></div>
-                                                                    <ul class="list-inline ">
-                                                                        <li>
-                                                                            <a>
-                                                                                <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                                                <span> 5 </span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>|</li>
-                                                                        <li>
-                                                                            <a>
-                                                                                <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                                                <span> 11 </span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>|</li>
-                                                                        <li>
-                                                                            <a href="#comment-box-1">
-                                                                                <span class="glyphicon glyphicon-comment"></span>
-                                                                                <span>2 comments</span>
-                                                                            </a>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <?php
+                                            echo $db_idea->get_idea_meta($idea["id"],"desc",false);
+                                            ?>
+                                        </div>
+                                        <div class="panel-footer">
+                                            <ul class="list-inline pull-right">
+                                                <li>
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                    <?php
+                                                    $date= new DateTime($idea["date"]);
+                                                    echo $date->format("M j, Y");
+                                                    ?>
+                                                </li>
+                                                <li>|</li>
+                                                <li>
+                                                    <span class="glyphicon glyphicon-user"></span>
+                                                    by
+                                                    <?php
+                                                    $user = $db_user->get_user_by_id($idea["user_id"]);
 
-                                            </li>
-                                            <li class="media">
-                                                <div class="media-left pull-left arrow-media-left">
-                                                    <a href="#">
-                                                        <img class="media-object img-circle" src="assets/img/a3.png" >
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <div class="media-content">
-                                                        <h4 class="media-heading">Nguyen Vu</h4>
-                                                        <h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-                                                                2 days, 8 hours ago</small></h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-                                                        <div class="divider"></div>
-                                                        <ul class="list-inline ">
-                                                            <li>
-                                                                <a>
-                                                                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                                                                    <span> 5 </span>
-                                                                </a>
-                                                            </li>
-                                                            <li>|</li>
-                                                            <li>
-                                                                <a>
-                                                                    <span class="glyphicon glyphicon-thumbs-down"></span>
-                                                                    <span> 11 </span>
-                                                                </a>
-                                                            </li>
-                                                            <li>|</li>
-                                                            <li>
-                                                                <a href="#comment-box-1">
-                                                                    <span class="glyphicon glyphicon-comment"></span>
-                                                                    <span>2 comments</span>
-                                                                </a>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <!--                            the comment-->
-                                            <li class="media">
-                                                <div class="media-left pull-left arrow-media-left">
-                                                    <a href="#">
-                                                        <img class="media-object img-circle" src="assets/img/a1.png">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <div class="media-content">
-                                                        <form>
-                                                            <div class="form-group">
-                                                                <textarea class="form-control" rows="3" placeholder="Comment"></textarea>
-                                                            </div>
-                                                            <input type="submit" class="btn btn-primary">
-                                                        </form>
+                                                    echo "<a href='user_profile.php?user_id={$user["id"]}'>{$user["name"]}</a>";
+                                                    ?>
+                                                </li>
+                                            </ul>
+                                            <div class="clearfix"></div>
+                                        </div>
 
-                                                    </div>
-
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </div>
-
-                                </div>
-                            </div>
+                                    <?php
+                                }
+                            ?>
+                            <nav>
+                                <ul class="pager">
+                                    <li class="previous <?php if ($lprev=="#") echo "disabled";?>"><a href="<?php echo $lprev; ?>"><span aria-hidden="true">&larr;</span> Previous</a></li>
+                                    <li class="next <?php if ($lnext=="#") echo "disabled";?>"><a href="<?php echo $lnext; ?>">Next <span aria-hidden="true">&rarr;</span></a></li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
-
-
 
                 </div>
             </div>
