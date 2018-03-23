@@ -639,3 +639,11 @@ input:checked + .slider:before {
   border: 1px dashed;
 }
 
+
+/*categories*/
+
+.cats:not(:first-child)
+{
+    margin-left: 4px;
+}
+

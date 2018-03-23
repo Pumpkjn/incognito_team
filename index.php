@@ -9,7 +9,18 @@ include("top_nav.php");
 $db_idea = new idea();
 $db_user = new User();
 $db_deps = new DEPS();
-$ideas = $db_idea->get_all_ideas();
+
+$page=1;
+if (isset($_GET["page"]))
+{
+    $page = $_GET["page"];
+    if (!is_numeric($page)) $page = 1;
+}
+
+$num_per_page = 5;
+$num_off_set = ($page-1)*$num_per_page;
+
+$ideas = $db_idea->get_all_ideas($num_per_page,$num_off_set);
 
 ?>
 <body>
@@ -34,19 +45,23 @@ $ideas = $db_idea->get_all_ideas();
                                 echo "<a href='idea.php?id={$idea["id"]}'>{$db_idea->get_idea_meta($idea["id"],"title",false)}</a>";
                                 ?>
                             </h4>
+                            <?php
+                                $set = $db_idea->get_idea_categories($idea["id"]);
+                                if ($set){
+                            ?>
                             <div class="cats pull-right ">
                                 <h5>Categories:
                                     <?php
-                                    $set = $db_idea->get_idea_categories($idea["id"]);
-                                    if ($set)
                                         foreach ($set as $item)
                                         {
-                                            echo "<a href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
+                                            echo "<a class='cats' href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
                                         }
                                     ?>
                                 </h5>
-
                             </div>
+                            <?php
+                                }
+                            ?>
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-body">
@@ -81,7 +96,12 @@ $ideas = $db_idea->get_all_ideas();
                     <?php
                 }
             ?>
-
+            <nav>
+                <ul class="pager">
+                    <li class="previous <?php if ($page==1) echo "disabled";?>"><a href="<?php if ($page!=1) echo "?page=".($page-1); else echo "#";?>"><span aria-hidden="true">&larr;</span> Older</a></li>
+                    <li class="next <?php if (count($ideas)<5) echo "disabled";?>"><a href="<?php if (count($ideas)==5) echo "?page=".($page+1); else echo "#";?>">Newer <span aria-hidden="true">&rarr;</span></a></li>
+                </ul>
+            </nav>
 
             <!-- The end of an idea -->
 

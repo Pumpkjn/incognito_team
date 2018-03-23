@@ -6,9 +6,11 @@ class idea
         // innitial
     }
 
-    function get_all_ideas() {
+    function get_all_ideas($limit =null , $offset = null) {
     	global $database;
     	$sql = "SELECT * FROM ideas";
+
+    	if (isset($limit) && isset($offset)) $sql.=" LIMIT $limit OFFSET $offset";
     	$result = $database->select_all_query( $sql );
 		return $result;
     }
