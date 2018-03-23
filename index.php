@@ -111,137 +111,106 @@ if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
                 <h2>Departments</h2>
             </div>
             <!-- a department -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Computing</h3>
-                </div>
-                <div class="panel-body container-fluid my-panel-body">
-                    <div class="row my-row">
-                        <div class="col-xs-12 col-md-8 no-float bottom-border-xs right-border-md ">
+            <?php
+                $deps = $db_deps->get_all_department();
+                if ($deps) {
+                    foreach ($deps as $dep) {
+                        ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><?php echo $dep["name"];?></h3>
+                            </div>
+                            <div class="panel-body container-fluid my-panel-body">
+                                <div class="row my-row">
+                                    <?php
+                                    $dep_ideas = $db_idea->get_ideas_by_dep($dep["id"]);
+                                    if ($dep_ideas)
+                                    {
+                                        $first_idea = $dep_ideas[0];
+                                        ?>
+                                        <div class="col-xs-12 col-md-8 no-float bottom-border-xs right-border-md ">
+                                            <div class="media">
+                                                <div class="media-left pull-left">
+                                                    <a href="#">
+                                                        <img width="110px" height="110px" class="media-object img-thumbnail"
+                                                             src="assets/img/dep_<?php echo $dep["id"]%5;?>.jpg"
+                                                             alt="...">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading">
+                                                        <?php
+                                                            echo "<a href='idea.php?id={$first_idea["id"]}'>{$db_idea->get_idea_meta($first_idea["id"],"title",false)}</a>";
+                                                        ?>
+                                                    </h4>
+                                                    <ul class="list-inline pull-left">
+                                                        <li>
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                            <?php
+                                                            $date= new DateTime($first_idea["date"]);
+                                                            echo $date->format("M j, Y");
+                                                            ?>
+                                                        </li>
+                                                        <li>|</li>
+                                                        <li>
+                                                            <span class="glyphicon glyphicon-user"></span>
+                                                            <a href="#">
+                                                                <?php
+                                                                $user = $db_user->get_user_by_id($first_idea["user_id"]);
 
-                            <div class="media">
-                                <div class="media-left pull-left">
-                                    <a href="#">
-                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://demo.designwall.com/dw-focus/wp-content/uploads/sites/10/time-to-get-tough-with-north-korea-and-iran-as-imminent-nuclear-bomb-test-looms-110x110.jpg" alt="...">
-                                    </a>
+                                                                echo "<a href='user_profile.php?user_id={$user["id"]}'>{$user["name"]}</a>";
+                                                                ?>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                    <div>
+                                                        <?php
+                                                            echo substr($db_idea->get_idea_meta($first_idea["id"],"desc",false),0,100);
+                                                        ?>
+                                                    </div>
+                                                    <?php
+                                                        $set = $db_idea->get_idea_categories($first_idea["id"]);
+                                                        if ($set) {
+                                                            ?>
+                                                            <h5>
+                                                                <?php
+                                                                foreach ($set as $item) {
+                                                                    echo "<a class='cats' href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
+                                                                }
+                                                                ?> </h5>
+                                                            <?php
+                                                        }
+                                                            ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="col-xs-12 col-md-4 no-float list-unstyled my-list">
+
+                                        <?php
+                                        for($i=1, $len = count($dep_ideas); $i<$len; $i++)
+                                        {
+                                            $dep_idea = $dep_ideas[$i];
+                                            echo "<li><a href='idea.php?id={$dep_idea["id"]}'>{$db_idea->get_idea_meta($dep_idea["id"],"title",false)}</a></li>";
+                                            if ($i!=$len) echo "<li role=\"separator\" class=\"divider\"></li>";
+                                        }
+                                        ?>
+                                        </ul>
+                                        <?php
+                                    }
+                                    ?>
+
+
                                 </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a>Title</a></h4>
-                                    <ul class="list-inline pull-left">
-                                        <li>
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                            2 days, 8 hours ago
-                                        </li>
-                                        <li>|</li>
-                                        <li>
-                                            <span class="glyphicon glyphicon-user"></span>
-                                            <a href="#">
-                                                John
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad quidem quis
-                                        voluptatibus? Blanditiis est harum in veniam? Aliquid animi iste porro
-                                        quidem quos repudiandae saepe sed sequi similique sint?
-                                    </div>
-
+                                <div class="clearfix">
                                 </div>
                             </div>
                         </div>
-                        <ul class="col-xs-12 col-md-4 no-float list-unstyled my-list">
-                            <li role="separator" class="divider only-sx"></li>
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet, consectetur adipi </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Dapibus ac facilisis in morbi leo risus</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Morbi leo risus dapibus ac facilisis in</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Porta ac consectetur ac dapibus ac facilisis</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Vestibulum at eros porta ac consectetur</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                </div>
-            </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Art</h3>
-                </div>
-                <div class="panel-body container-fluid my-panel-body">
-                    <div class="row my-row">
-                        <div class="col-xs-12 col-md-8 no-float bottom-border-xs right-border-md ">
-
-                            <div class="media">
-                                <div class="media-left pull-left">
-                                    <a href="#">
-                                        <img width="110px" height="110px" class="media-object img-thumbnail" src="http://www.planetware.com/photos-large/ENG/london-victoria-and-albert-museum-national-art-library.jpg" alt="...">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a>Title</a></h4>
-                                    <ul class="list-inline pull-left">
-                                        <li>
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                            2 days, 8 hours ago
-                                        </li>
-                                        <li>|</li>
-                                        <li>
-                                            <span class="glyphicon glyphicon-user"></span>
-                                            <a href="#">
-                                                John
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div class="clearfix"></div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad quidem quis
-                                        voluptatibus? Blanditiis est harum in veniam? Aliquid animi iste porro
-                                        quidem quos repudiandae saepe sed sequi similique sint?
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="col-xs-12 col-md-4 no-float list-unstyled my-list">
-                            <li role="separator" class="divider only-sx"></li>
-                            <li>
-                                <a href="#">Lorem ipsum dolor sit amet, consectetur adipi </a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Dapibus ac facilisis in morbi leo risus</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Morbi leo risus dapibus ac facilisis in</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Porta ac consectetur ac dapibus ac facilisis</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#">Vestibulum at eros porta ac consectetur</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                </div>
-            </div>
+                        <?php
+                    }
+                }
+         ?>
         </div>
 
         <div class="col-xs-12 col-md-3 ">
