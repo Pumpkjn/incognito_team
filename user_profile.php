@@ -50,7 +50,7 @@ if ($puser["dep_id"])
                                             </div>
                                             <div class="media-body">
                                                 <div class="media-heading">
-                                                    <a><h4><?php echo $puser["username"];?></h4></a>
+                                                    <a><h4><?php echo $puser["name"];?></h4></a>
                                                 </div>
                                                 <table class="table">
                                                     <tr>

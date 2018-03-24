@@ -64,6 +64,7 @@ class User
 		$password = $user['password'];
 		$email = $user['email'];
 		$encryptedpass = $this->EncryptPassword($password, $email);
+
 		$sql = "INSERT INTO users( `username` , `password`, `name`, `email`, `role`, `dep_id` )
 		VALUES ('" . $user['email'] . "','".$encryptedpass."', '".$user['name']."', '".$user['email']."', '".$user['role']."', '".$user['deps']."')";
 		$database->execute_query( $sql );

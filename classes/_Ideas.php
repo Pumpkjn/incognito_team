@@ -8,7 +8,7 @@ class idea
 
     function get_all_ideas($limit =null , $offset = null) {
     	global $database;
-    	$sql = "SELECT * FROM ideas";
+    	$sql = "SELECT * FROM ideas ORDER BY ideas.id DESC";
 
     	if (isset($limit) && isset($offset)) $sql.=" LIMIT $limit OFFSET $offset";
     	$result = $database->select_all_query( $sql );
@@ -45,7 +45,7 @@ class idea
         global $database;
         $sql = "SELECT ideas.* FROM ideas 
                 INNER JOIN ideas_metadata on ideas_metadata.idea_id=ideas.id AND ideas_metadata.meta_key='dep' 
-                WHERE ideas_metadata.meta_value='$dep_id'";
+                WHERE ideas_metadata.meta_value='$dep_id' ORDER BY ideas.id DESC";
         if (isset($limit) && isset($offset)) $sql .= " LIMIT $limit OFFSET $offset";
         $result = $database->select_all_query( $sql );
         return $result;

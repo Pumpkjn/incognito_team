@@ -32,7 +32,7 @@
 
 
 	$deps = null;
-	if ( 1 == $role ) {
+	if ( $role >0 ) {
 		$deps = isset( $_POST['deps'] ) ? $_POST['deps'] :null;
 	}
 

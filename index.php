@@ -123,7 +123,7 @@ if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
                             <div class="panel-body container-fluid my-panel-body">
                                 <div class="row my-row">
                                     <?php
-                                    $dep_ideas = $db_idea->get_ideas_by_dep($dep["id"]);
+                                    $dep_ideas = $db_idea->get_ideas_by_dep($dep["id"],6,0);
                                     if ($dep_ideas)
                                     {
                                         $first_idea = $dep_ideas[0];
@@ -166,7 +166,9 @@ if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
                                                     <div class="clearfix"></div>
                                                     <div>
                                                         <?php
-                                                            echo substr($db_idea->get_idea_meta($first_idea["id"],"desc",false),0,100);
+                                                            $desc = $db_idea->get_idea_meta($first_idea["id"],"desc",false);
+                                                            echo substr($desc,0,256);
+                                                            if (strlen($desc)>256) echo "...";
                                                         ?>
                                                     </div>
                                                     <?php
@@ -192,7 +194,7 @@ if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
                                         {
                                             $dep_idea = $dep_ideas[$i];
                                             echo "<li><a href='idea.php?id={$dep_idea["id"]}'>{$db_idea->get_idea_meta($dep_idea["id"],"title",false)}</a></li>";
-                                            if ($i!=$len) echo "<li role=\"separator\" class=\"divider\"></li>";
+                                            if ($i!=$len-1) echo "<li role=\"separator\" class=\"divider\"></li>";
                                         }
                                         ?>
                                         </ul>

@@ -45,7 +45,7 @@
 						<div>
 							<ul class="list-group">
 							 	<?php
-
+                                    if ($idea_request)
                                     foreach ( $idea_request as $request ): ?>
 							 		<li class="list-group-item">
 							 			<p>

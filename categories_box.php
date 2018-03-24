@@ -12,7 +12,7 @@
             foreach ($cats as $cat)
             {
                 echo "<li class='list-group-item'>
-                        <span class='badge'>14</span>
+                        
                         <a href='category_page.php?cat_id={$cat["id"]}'>{$cat["name"]}</a>
                       </li>";
             }

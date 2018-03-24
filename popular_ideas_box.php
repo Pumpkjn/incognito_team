@@ -11,7 +11,14 @@
                 <div class="list-group">
                     <a href="idea.php?id=<?php echo $i['id'] ?>" class="list-group-item">
                         <h4 class="list-group-item-heading"><?php echo $idea->get_idea_meta( $i['id'], 'title', false ); ?></h4>
-                        <p class="list-group-item-text"><?php echo $idea->get_idea_meta( $i['id'], 'desc', false ); ?></p>
+                        <p class="list-group-item-text">
+                            <?php
+
+                            $desc = $idea->get_idea_meta( $i['id'], 'desc', false );
+                            echo substr($desc,0,256);
+                            if (strlen($desc)>256) echo "...";
+                            ?>
+                        </p>
                     </a>
                 </div>
             <?php }
