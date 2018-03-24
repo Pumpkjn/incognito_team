@@ -1,4 +1,5 @@
 	<?php
+	require_once( 'mail/PHPMailer-master/PHPMailerAutoload.php' );
 	require_once("classes/_Ideas.php");
 	require_once("classes/_deps.php");
 	require_once("classes/_user.php");
@@ -218,4 +219,47 @@
 	        $count++;
 	        $idea->update_idea_meta( $post_id, $count_key, $count );
 	    }
+	}
+
+	function prepare_mail_setup() {
+		$mailer = new PHPMailer;
+		$mailer->isSMTP();
+		$mailer->Host = 'smtp.gmail.com';
+		$mailer->SMTPAuth = true;
+		$mailer->Username = 'incognito2018gre@gmail.com';
+		$mailer->Password = 'incognito2018grepass';
+		$mailer->SMTPSecure = 'tls';
+		$mailer->Port = 587;
+		$mailer->setFrom('incognito2018gre@gmail.com', 'Incognito');
+		$mailer->SMTPOptions = array(
+		    'ssl' => array(
+		        'verify_peer' => false,
+		        'verify_peer_name' => false,
+		        'allow_self_signed' => true
+		    )
+		);
+		
+		$mailer->isHTML(true);
+		return $mailer;
+	}
+
+	function send_email( $dep, $idea, $desc ,$type ) {
+		global $user;
+		$mailer = prepare_mail_setup();
+		switch ($type) {
+			case 'idea':
+				$qu_manager = $user->get_manager_of_department( $dep );
+				$mailer->addAddress( $qu_manager['email'] );
+				$mailer->Subject = 'New Idea has been submitted';
+				$mailer->Body    = 'You can access the idea: <a href="http://localhost/uog-incognito-team-project/idea.php?id="'.$idea.'>'.$desc.'</a>';
+				break;
+
+			case 'comment':
+				$mail->Subject = 'New comment has been submitted';
+				break;
+			default:
+				# code...
+				break;
+		}
+		$mailer->send();
 	}

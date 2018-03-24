@@ -56,6 +56,7 @@ if ( count( $error ) > 0 ) {
 	$idea_data['anonymousSubmit'] = $anonymousSubmit;
 	$idea_data['userID'] = $userID;
 	$new_idea = $idea->insert_idea( $idea_data );
+	send_email( $dep, $new_idea, $desc , 'idea' );
 	$redirect = 'http://'.$_SERVER['HTTP_HOST'].dirname( dirname($_SERVER['PHP_SELF'] ) ).'/idea.php?id='.$new_idea;
 	$response = array( 'success' => true, 'redirect' => $redirect );
 	echo json_encode( $response );

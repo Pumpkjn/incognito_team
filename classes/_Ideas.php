@@ -282,7 +282,9 @@ class idea
 							$up[] = $user;
 						} else {
 							$thumbup_arr = explode( ',' , $thumbup );
-							$thumbup_arr[] = $user;
+							if ( !in_array( $user , $thumbup_arr ) ) {
+								$thumbup_arr[] = $user;
+							}
 							$blank = array_search( '', $thumbup_arr );
 							if ( $blank !== false ) {
 								unset( $thumbup_arr[ $blank ]);
@@ -340,7 +342,9 @@ class idea
 							$down[] = $user;
 						} else {
 							$thumbdown_arr = explode( ',' , $thumbdown );
-							$thumbdown_arr[] = $user;
+							if ( !in_array( $user , $thumbdown_arr ) ) {
+								$thumbdown_arr[] = $user;
+							}
 							$blank = array_search( '', $thumbdown_arr );
 							if ( $blank !== false ) {
 								unset( $thumbdown_arr[ $blank ]);
