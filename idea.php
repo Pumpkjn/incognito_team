@@ -116,7 +116,16 @@ if ( $post ) {
 						<li>
 							<a href="#">
 								<span class="glyphicon glyphicon-comment"></span>
-								<span>2 comments</span>
+								<span>
+									<?php $count_comment = count_comment( $post_id ); ?>
+									<?php echo $count_comment; ?> 
+									<?php if ( $count_comment >= 2 ): ?>
+										&nbsp;Comments
+									<?php else: ?>
+										&nbsp;Comment
+									<?php endif ?>
+
+								</span>
 							</a>
 					</ul>
 					<ul class="list-inline pull-right">
@@ -168,139 +177,80 @@ if ( $post ) {
 					<div class="clearfix"></div>
 					<div class="divider"></div>
 					<ul class="media-list">
-						<!--                            submit comment-->
-						<li class="media">
-							<div class="media-left pull-left arrow-media-left">
-								<a href="#">
-									<img class="media-object img-circle" src="assets/img/a1.png">
-								</a>
-							</div>
-							<div class="media-body">
-								<div class="media-content">
-									<form>
-										<div class="form-group">
-											<textarea class="form-control" rows="3" placeholder="Comment"></textarea>
-										</div>
-										<input type="submit" class="btn btn-primary">
-									</form>
-
+						<!--         submit comment-->
+						<?php if ( is_user_login() ) { ?>
+							<li class="media">
+								<div class="media-left pull-left arrow-media-left">
+									<a href="#">
+										<img class="media-object img-circle" src="assets/img/a1.png">
+									</a>
 								</div>
-
-							</div>
-						</li>
-						<li class="media">
-							<div class="media-left pull-left arrow-media-left">
-								<a href="#">
-									<img class="media-object img-circle" src="assets/img/a1.png" >
-								</a>
-							</div>
-							<div class="media-body">
-								<div class="media-content">
-									<h4 class="media-heading">Nguyen Vu</h4>
-									<h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-											2 days, 8 hours ago</small></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-									<div class="divider"></div>
-									<ul class="list-inline ">
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-thumbs-up"></span>
-												<span> 5 </span>
-											</a>
-										</li>
-										<li>|</li>
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-thumbs-down"></span>
-												<span> 11 </span>
-											</a>
-										</li>
-										<li>|</li>
-										<li>
-											<a >
-												<span class="glyphicon glyphicon-comment"></span>
-												<span>2 comments</span>
-											</a>
-									</ul>
-								</div>
-								<div class="comment-box" id="idea-comments-2">
-									<div class="media">
-										<div class="media-left pull-left arrow-media-left">
-											<a href="#">
-												<img class="media-object img-circle" src="assets/img/a2.png" >
-											</a>
-										</div>
-										<div class="media-body">
-											<div class="media-content">
-												<h4 class="media-heading">Nguyen Vu</h4>
-												<h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-														2 days, 8 hours ago</small></h4>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-												<div class="divider"></div>
-												<ul class="list-inline ">
-													<li>
-														<a>
-															<span class="glyphicon glyphicon-thumbs-up"></span>
-															<span> 5 </span>
-														</a>
-													</li>
-													<li>|</li>
-													<li>
-														<a>
-															<span class="glyphicon glyphicon-thumbs-down"></span>
-															<span> 11 </span>
-														</a>
-													</li>
-													<li>|</li>
-													<li>
-														<a href="#comment-box-1">
-															<span class="glyphicon glyphicon-comment"></span>
-															<span>2 comments</span>
-														</a>
-												</ul>
+								<div class="media-body">
+									<div class="media-content">
+										<form action="modules/add_comment.php" method="POST">
+											<div class="form-group">
+												<textarea class="form-control" rows="3" placeholder="Comment" name="comment"></textarea>
+												<input type="checkbox" name="anonymousComment" value="1"> Comment as Anonymous
+												<input type="hidden" name="idea_id" value="<?php echo $post_id ?>">
 											</div>
-										</div>
-									</div>
-								</div>
+											<input type="submit" class="btn btn-primary">
+										</form>
 
-						</li>
-						<li class="media">
-							<div class="media-left pull-left arrow-media-left">
-								<a href="#">
-									<img class="media-object img-circle" src="assets/img/a3.png" >
-								</a>
-							</div>
-							<div class="media-body">
-								<div class="media-content">
-									<h4 class="media-heading">Nguyen Vu</h4>
-									<h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
-											2 days, 8 hours ago</small></h4>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi impedit ipsam nobis recusandae repudiandae. Ab deleniti dolorem dolorum, facilis laboriosam magnam officia omnis optio quas reprehenderit, saepe sint tempore voluptas.</p>
-									<div class="divider"></div>
-									<ul class="list-inline ">
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-thumbs-up"></span>
-												<span> 5 </span>
-											</a>
-										</li>
-										<li>|</li>
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-thumbs-down"></span>
-												<span> 11 </span>
-											</a>
-										</li>
-										<li>|</li>
-										<li>
-											<a href="#comment-box-1">
-												<span class="glyphicon glyphicon-comment"></span>
-												<span>2 comments</span>
-											</a>
-									</ul>
+									</div>
+
 								</div>
-							</div>
-						</li>
+							</li>
+						<?php } ?>
+						<?php $comments = get_all_comments( $post_id ); ?>
+						<?php if ( $comments ): ?>
+							<?php foreach ( $comments as $comment ): ?>
+								<?php
+									$comment_author = $user->get_user_by_id( $comment['user_id'] );
+									
+								?>
+								<?php
+								$comment_status = $comment['comment_status'];
+								$dep_id = $idea->get_idea_meta( $post_id, 'dep', false );
+								if ( $comment_status ) {
+									if ( !is_user_login() ) {
+										$author_name = 'Anonymous';
+										} else {
+											if ( !current_user_can_coor() ) {
+												if ( $post['user_id'] == $user_id ) {
+													$author_name = $comment_author['name'];
+												} else  {
+													$author_name = 'Anonymous';
+												}
+											} else if ( $dep_id != $user->get_current_user_department() && null != $user->get_current_user_department() ) {
+												$author_name = 'Anonymous';
+											} else {
+												$author_name = $comment_author['name'];
+											}
+										}
+									} else {
+										$author_name = $comment_author['name']; 
+									} ?>
+								<li class="media" data-comment="<?php echo $comment['id'] ?>">
+									<div class="media-left pull-left arrow-media-left">
+										<a href="javascript:void(0)">
+											<img class="media-object img-circle" src="assets/img/a1.png" >
+										</a>
+									</div>
+									<div class="media-body">
+										<div class="media-content">
+											<h4 class="media-heading"><?php echo $author_name ?></h4>
+											<h4 class="media-info"><small><span class="glyphicon glyphicon-calendar"></span>
+													<?php
+						                            $date= new DateTime($post["date"]);
+						                            echo $date->format("M j, Y");
+						                            ?></small>
+						                      </h4>
+											<p><?php echo $comment['content'] ?></p>
+										</div>
+								</li>
+							<?php endforeach ?>
+						<?php endif ?>
+						
 						<li class="media">
 							<div class="media-body">
 								<a href="#">Load more comments...</a>

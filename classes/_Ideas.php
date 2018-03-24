@@ -15,7 +15,7 @@ class idea
 		return $result;
     }
 
-    function get_popular_ideas() {
+    function get_most_view_ideas() {
     	global $database;
     	$sql = "SELECT DISTINCT ideas.id FROM ideas INNER JOIN ideas_metadata ON ideas.id = ideas_metadata.idea_id ORDER BY FIELD( ideas_metadata.meta_value , 'views' ) DESC LIMIT 5";
     	$result = $database->select_all_query( $sql );
@@ -126,6 +126,8 @@ class idea
 		$this->add_idea_meta( $new_idea, 'views', 0 );
 		$this->add_idea_meta( $new_idea, 'thumbup', null );
 		$this->add_idea_meta( $new_idea, 'thumbdown', null );
+		$this->add_idea_meta( $new_idea, 'total_fav', 0 );
+		
 		$this->add_idea_meta( $new_idea, 'anonymousSubmit', $array['anonymousSubmit'] );
 		if ( count( $array['attachment'] ) > 0 ) {
 			$this->upload_attachment( $new_idea , $array['attachment'] );
@@ -223,9 +225,9 @@ class idea
 		return $result;
 	}
 
-	function get_idea_from_topic( $topic_id, $limit = 1 ,$paged = null ) {
+	function get_idea_from_topic( $topic_id ,$paged = null ) {
 		global $database;
-		$sql = 'SELECT * FROM ideas_metadata INNER JOIN ideas ON ideas.id = ideas_metadata.idea_id  WHERE ideas_metadata.meta_key ="topic" AND ideas_metadata.meta_value = "'.$topic_id.'"  ORDER BY ideas.date DESC LIMIT '.$limit;
+		$sql = 'SELECT * FROM ideas_metadata INNER JOIN ideas ON ideas.id = ideas_metadata.idea_id  WHERE ideas_metadata.meta_key ="topic" AND ideas_metadata.meta_value = "'.$topic_id.'"  ORDER BY ideas.date DESC';
 		if ( $paged ) {
 			$sql += ' OFFSET 5';
 		}
@@ -371,6 +373,30 @@ class idea
 				$this->update_idea_meta( $post, 'thumbdown', $down );
 				break;
 		}
+
+		$up = $this->get_idea_meta( $post, 'thumbup', false );
+		$down = $this->get_idea_meta( $post, 'thumbdown', false );
+
+		if ( !$up || '' == $up ) {
+			$total_up = 0;
+		} else {
+			$total_up = count( explode( ',', $up ) );
+		}
+		
+		if ( !$down || '' == $down ) {
+			$total_down = 0;
+		} else {
+			$total_down = count( explode( ',', $down ) );
+		}
+		$total_fav = intval( $total_up ) - intval( $total_down );
+		$this->update_idea_meta( $post, 'total_fav', $total_fav );
+}
+
+	function get_popular_ideas() {
+		global $database;
+    	$sql = "SELECT DISTINCT ideas.id FROM ideas INNER JOIN ideas_metadata ON ideas.id = ideas_metadata.idea_id ORDER BY case FIELD( ideas_metadata.meta_value , 'total_fav' ) when ideas_metadata.meta_value > 0 then 1 else 2 end DESC LIMIT 5";
+    	$result = $database->select_all_query( $sql );
+		return $result;
 	}
 }
 $GLOBALS['idea'] = new idea();

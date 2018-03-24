@@ -86,7 +86,7 @@
 								  	<?php } ?>
 								  </td>
 								  <td>
-									<a href="modules/admin_delete_idea.php?id=<?php echo $i['id'] ?>"> Delete </a>  	
+									<a  onclick="return confirm('Do you really want to delete the idea?')" href="modules/admin_delete_idea.php?id=<?php echo $i['id'] ?>"> Delete </a>  	
 								  </td>
 								   </tr>
 								 <tr> 

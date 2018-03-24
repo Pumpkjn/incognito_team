@@ -243,23 +243,38 @@
 		return $mailer;
 	}
 
-	function send_email( $dep, $idea, $desc ,$type ) {
+	function send_email( $dep, $idea_id, $desc ,$type, $comment_id = null ) {
 		global $user;
 		$mailer = prepare_mail_setup();
+		$qu_manager = $user->get_manager_of_department( $dep );
 		switch ($type) {
 			case 'idea':
-				$qu_manager = $user->get_manager_of_department( $dep );
 				$mailer->addAddress( $qu_manager['email'] );
 				$mailer->Subject = 'New Idea has been submitted';
-				$mailer->Body    = 'You can access the idea: <a href="http://localhost/uog-incognito-team-project/idea.php?id="'.$idea.'>'.$desc.'</a>';
+				$mailer->Body    = 'You can access the idea: <a href="http://localhost/uog-incognito-team-project/idea.php?id='.$idea_id.'">'.$desc.'</a>';
 				break;
 
 			case 'comment':
-				$mail->Subject = 'New comment has been submitted';
+				$mailer->Subject = 'New comment has been submitted';
+				$mailer->addAddress( $qu_manager['email'] );
+				$mailer->Body    = 'You can read new comment at: <a href="http://localhost/uog-incognito-team-project/idea.php?id='.$idea_id.'#comment='.$comment_id.'">'.$desc.'</a>';
 				break;
 			default:
 				# code...
 				break;
 		}
 		$mailer->send();
+	}
+
+	function get_all_comments( $post ) {
+		global $database;
+		$sql = "SELECT * From comments WHERE idea_id=".$post;
+		$result = $database->select_all_query( $sql );
+		return $result;
+
+	}
+
+	function count_comment( $post ) {
+		$comments = get_all_comments( $post );
+		return count( $comments );
 	}

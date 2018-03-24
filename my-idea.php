@@ -33,6 +33,7 @@
 							<li class="<?php echo get_active_tab( $current_tab, 'idea-request' ) ?>"><a data-toggle="tab" href="#idea-request">Topics</a></li>
 							<?php if ( current_user_can_coor() ) { ?>
 								<li class="<?php echo get_active_tab( $current_tab, 'create-sub' ) ?>"><a data-toggle="tab" href="#create-sub">Create Topic</a></li>
+								<li class=""><a href="admin/addcategory.php">Add Category</a></li>
 							<?php } ?>
 							
 						</ul>

@@ -7,7 +7,7 @@
 
 	global $idea;
 	if ( is_user_login() ) {
-		if ( current_user_can_manage() ) { 
+		if ( current_user_can_coor() ) { 
 			?>
 		<div class="admin-container">
 			<div class="container-fluid">
@@ -49,7 +49,7 @@
 										<td><?php echo $cat['name']; ?></td>
 										 <td><?php echo $cat['slug']; ?></td>
 										  <td>
-											<a href="modules/admin_delete_category.php?id=<?php echo $cat['id'] ?>"> Delete </a>
+											<a  onclick="return confirm('Do you really want to delete the category?')" href="modules/admin_delete_category.php?id=<?php echo $cat['id'] ?>"> Delete </a>
 										  </td>
 										   </tr>
 										 <tr> 

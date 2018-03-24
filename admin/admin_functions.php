@@ -54,4 +54,33 @@
 		}
 		return $can;
 	}
+	
+	function current_user_can_coor() {
+		if (session_status() == PHP_SESSION_NONE) {
+		    session_start();
+		}
+		$can = false;
+		if ( is_user_login() ) {
+			global $user;
+			$role = $_SESSION['role'];
+			switch ( $role ) {
+				case 0:
+					$can = true;
+					break;
+
+				case 1:
+					$can = true;
+					break;
+
+				case 2:
+					$can = false;
+					break;
+				
+				default:
+					$can = false;
+					break;
+			}
+		}
+		return $can;
+	}
 ?>

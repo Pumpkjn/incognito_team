@@ -110,7 +110,7 @@
 										 	?>
 										 </td>
 										  <td>
-											<a href="modules/admin_delete_user.php?id=<?php echo $u['id'] ?>"> Delete </a>
+											<a  onclick="return confirm('Do you really want to delete the user?')" href="modules/admin_delete_user.php?id=<?php echo $u['id'] ?>"> Delete </a>
 										  </td>
 										   </tr>
 										 <tr> 
@@ -127,6 +127,11 @@
 			</div>
 		</div>
 		<?php
+	} else {
+		echo "<script>
+	        alert('Eh try to cheat huh?');
+	        window.location.href = '../index.php';
+	      </script>";
 	}
 }
 include("admin_footer.php");
