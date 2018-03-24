@@ -122,7 +122,10 @@ if ( $post ) {
 					<ul class="list-inline pull-right">
 						<li>
 							<span class="glyphicon glyphicon-calendar"></span>
-							2 days, 8 hours ago
+                            <?php
+                            $date= new DateTime($post["date"]);
+                            echo $date->format("M j, Y");
+                            ?>
 						</li>
 						<li>|</li>
 						<li>

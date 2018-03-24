@@ -216,7 +216,6 @@ class idea
 		$sql = 'DELETE FROM ideas WHERE id = "'.$idea_id.'"';
 		$database->execute_query( $sql );
 	}
-
 	function get_all_idea_from_topic( $topic_id ) {
 		global $database;
 		$sql = 'SELECT * FROM ideas_metadata INNER JOIN ideas ON ideas.id = ideas_metadata.idea_id  WHERE ideas_metadata.meta_key ="topic" AND ideas_metadata.meta_value = "'.$topic_id.'"  ORDER BY ideas.date DESC LIMIT '.$limit;
@@ -240,6 +239,14 @@ class idea
 		$result = $database->select_all_query( $sql );
 		return $result;
 	}
+
+	function get_num_by_cat_id($cat_id)
+    {
+        global $database;
+        $sql = "SELECT count(*) as num FROM categories_ideas WHERE category_id='$cat_id'";
+        $result = $database->select_query($sql);
+        return $result;
+    }
 
 	function update_vote( $post, $user, $action ) {
 		$thumbup = $this->get_idea_meta( $post, 'thumbup', false );
