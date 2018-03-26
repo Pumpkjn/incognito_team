@@ -39,7 +39,8 @@ $ideas = $db_idea->get_all_ideas_by_category($cat_id);
                                 if ($set)
                                 foreach ($set as $item)
                                 {
-                                    echo "<a class='cats' href=\"#\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
+
+                                    echo "<a class='cats' href=\"category_page.php?cat_id={$item["id"]}\"><span class=\"label label-primary\">{$item["name"]}</span></a>";
                                 }
                             ?>
                         </h5>
