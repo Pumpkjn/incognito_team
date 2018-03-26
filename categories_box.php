@@ -7,7 +7,7 @@
     <ul class="list-group">
         <?php
             $idea= new idea();
-            $cats = $idea->get_all_category();
+            $cats = $idea->get_all_popular_category();
             if ($cats)
             foreach ($cats as $cat)
             {

@@ -84,9 +84,11 @@
                                 <?php
                                 for($i=1, $len = count($dep_ideas); $i<$len; $i++)
                                 {
+                                    if ($i!=1) echo "<li role=\"separator\" class=\"divider\"></li>";
+                                    else echo "<li role=\"separator\" class=\"divider visible-xs-block visible-xs-block visible-sm-block\"></li>";
                                     $dep_idea = $dep_ideas[$i];
                                     echo "<li><a href='idea.php?id={$dep_idea["id"]}'>{$db_idea->get_idea_meta($dep_idea["id"],"title",false)}</a></li>";
-                                    if ($i!=$len-1) echo "<li role=\"separator\" class=\"divider\"></li>";
+
                                 }
                                 ?>
                             </ul>

@@ -52,15 +52,21 @@ class idea
     }
 	function get_all_category() {
 		global $database;
-		$sql = "SELECT categories.*, count(categories_ideas.category_id)as num From categories 
+		$sql = "SELECT * FROM categories" ;
+		$result = $database->select_all_query( $sql );
+		return $result;
+	}
+    function get_all_popular_category()
+    {
+        global $database;
+        $sql = "SELECT categories.*, count(categories_ideas.category_id)as num From categories 
                 LEFT JOIN categories_ideas ON categories_ideas.category_id = categories.id
                 GROUP BY categories_ideas.category_id
                 ORDER BY count(categories_ideas.category_id) DESC LIMIT 5
                 " ;
-		$result = $database->select_all_query( $sql );
-		return $result;
-	}
-
+        $result = $database->select_all_query( $sql );
+        return $result;
+    }
     function get_num_by_cat_id($cat_id)
     {
         global $database;
