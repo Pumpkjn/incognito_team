@@ -388,7 +388,7 @@ class idea
 		} else {
 			$total_down = count( explode( ',', $down ) );
 		}
-		$total_fav = intval( $total_up ) - intval( $total_down );
+		$total_fav = 1000- intval( $total_up ) - intval( $total_down );
 		$this->update_idea_meta( $post, 'total_fav', $total_fav );
 }
 
