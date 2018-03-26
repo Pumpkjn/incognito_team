@@ -13,7 +13,7 @@ if (isset($_GET["id"]))
 else if ($cuser)
     $puser = $cuser;
 
-echo $puser["dep_id"];
+
 
 if ($puser["dep_id"])
     $user_dep= $deps->get_dep_by_id($puser["dep_id"]);

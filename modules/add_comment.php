@@ -10,7 +10,7 @@ if ( !$comment || '' == $comment ) {
 	header("Location: ../idea.php?id=".$idea_id);
 	die();
 }
-$anonymousComment = isset( $_POST['anonymousComment'] ) ? $_POST['anonymousComment'] : null;
+$anonymousComment = isset( $_POST['anonymousComment'] ) ? $_POST['anonymousComment'] : 0;
 $current_user = $user->get_current_user();
 global $database;
 $sql = "INSERT INTO comments( `idea_id`, `content`, `user_id`, `date`, `comment_status` )

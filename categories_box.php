@@ -11,9 +11,9 @@
             if ($cats)
             foreach ($cats as $cat)
             {
-                $row = $idea->get_num_by_cat_id($cat["id"]);
+                //$row = $idea->get_num_by_cat_id($cat["id"]);
                 echo "<li class='list-group-item'>
-                        <span class=\"badge\">{$row["num"]}</span>
+                        <span class=\"badge\">{$cat["num"]}</span>
                         <a href='category_page.php?cat_id={$cat["id"]}'>{$cat["name"]}</a>
                       </li>";
             }

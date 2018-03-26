@@ -52,11 +52,23 @@ class idea
     }
 	function get_all_category() {
 		global $database;
-		$sql = "SELECT * From categories";
+		$sql = "SELECT categories.*, count(categories_ideas.category_id)as num From categories 
+                LEFT JOIN categories_ideas ON categories_ideas.category_id = categories.id
+                GROUP BY categories_ideas.category_id
+                ORDER BY count(categories_ideas.category_id) DESC LIMIT 5
+                " ;
 		$result = $database->select_all_query( $sql );
 		return $result;
 	}
-	
+
+    function get_num_by_cat_id($cat_id)
+    {
+        global $database;
+        $sql = "SELECT count(*) as num FROM categories_ideas WHERE category_id='$cat_id'";
+        $result = $database->select_query($sql);
+        return $result;
+    }
+
 	function slugify($string, $replace = array(), $delimiter = '-') {
 	  if (!extension_loaded('iconv')) {
 		throw new Exception('iconv module not loaded');
@@ -242,13 +254,7 @@ class idea
 		return $result;
 	}
 
-	function get_num_by_cat_id($cat_id)
-    {
-        global $database;
-        $sql = "SELECT count(*) as num FROM categories_ideas WHERE category_id='$cat_id'";
-        $result = $database->select_query($sql);
-        return $result;
-    }
+
 
 	function update_vote( $post, $user, $action ) {
 		$thumbup = $this->get_idea_meta( $post, 'thumbup', false );
@@ -394,7 +400,7 @@ class idea
 
 	function get_popular_ideas() {
 		global $database;
-    	$sql = "SELECT DISTINCT ideas.id FROM ideas INNER JOIN ideas_metadata ON ideas.id = ideas_metadata.idea_id ORDER BY case FIELD( ideas_metadata.meta_value , 'total_fav' ) when ideas_metadata.meta_value > 0 then 1 else 2 end DESC LIMIT 5";
+    	$sql = "SELECT DISTINCT ideas.id FROM ideas INNER JOIN ideas_metadata ON ideas.id = ideas_metadata.idea_id ORDER BY RAND() DESC LIMIT 5";
     	$result = $database->select_all_query( $sql );
 		return $result;
 	}
