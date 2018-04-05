@@ -112,5 +112,47 @@ class User
 		$user_data = $this->get_current_user();
 		return $user_data['dep_id'];
 	}
+
+	function add_user_meta( $id, $key, $value ) {
+		global $database;
+    	$sql = "INSERT INTO user_meta( `user_id`, `meta_key`, `meta_value`  )
+			VALUES ('" . $id . "', '" . $key . "', '" . $value . "')";
+		$database->execute_query( $sql );
+	}
+
+	function get_user_meta( $id, $key, $plural ) {
+		global $database;
+    	$sql = 'SELECT * FROM user_meta WHERE user_id='.$id.' AND meta_key="'.$key.'"';
+    	$result = $database->select_all_query( $sql );
+    	if ( $result ) {
+    		if ( $plural ) {
+    			foreach ( $result as $res ) {
+    				$r[] = $res['meta_value'];
+    			}
+    		} else {
+    			$res = $result[0];
+    			$r = $res['meta_value'];
+    		}
+    		
+    	} else {
+    		$r = false;
+    	}
+    	return $r;
+	}
+
+	function delete_user_meta( $id, $key ) {
+		global $database;
+    	$sql = 'DELETE FROM user_meta WHERE user_id = "'.$id.'" AND meta_key ="'.$key.'"';
+		$database->execute_query( $sql );
+	}
+
+	function block_user( $id ) {
+		$this->add_user_meta( $id, 'block' , true );
+	}
+
+	function unblock_user( $id ) {
+		$this->delete_user_meta( $id, 'block' );
+	}
+
 }
 $GLOBALS['user'] = new User();

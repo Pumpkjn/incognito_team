@@ -110,6 +110,14 @@
 										 	?>
 										 </td>
 										  <td>
+										  	<?php $blocked = $user->get_user_meta( $u['id'], 'block', false ); ?>
+										  	<?php if ( $blocked ): ?>
+										  		<a  onclick="return confirm('Do you really want to Block the user?')" href="modules/admin_unblock_user.php?id=<?php echo $u['id'] ?>"> Unblock </a>
+										  	<?php else : ?>
+										  		<a  onclick="return confirm('Do you really want to Block the user?')" href="modules/admin_block_user.php?id=<?php echo $u['id'] ?>"> Block </a>
+										  	<?php endif ?>
+											  
+											  |
 											<a  onclick="return confirm('Do you really want to delete the user?')" href="modules/admin_delete_user.php?id=<?php echo $u['id'] ?>"> Delete </a>
 										  </td>
 										   </tr>

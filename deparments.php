@@ -6,8 +6,13 @@ include("top_nav.php");
 $db_idea = new idea();
 $db_user = new User();
 $db_deps = new DEPS();
-
-?>
+if ( is_user_login() ):
+    $current_user = $user->get_current_user();
+    $user_status = $user->get_user_meta( $current_user['id'], 'block', true );
+    endif; ?>
+    <?php if ( is_user_login() && $user_status ) : ?>
+    You are blocked by Admin.
+<?php else: ?>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
@@ -143,5 +148,5 @@ $db_deps = new DEPS();
     </div>
 
 </div>
-
+<?php endif; ?>
 

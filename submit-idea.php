@@ -5,8 +5,12 @@
 	$current_tab = 'submit-idea';
 	include("top_nav.php");
 	global $deps,$idea;
+
+
 ?>
 	<div class="container submit-container main-container">
+
+
 		<div class="row">
 			<div class="col-xs-12 col-md-9">
 	            <div class="panel panel-default">
@@ -14,7 +18,12 @@
 	                    <h4>Submit idea</h4>
 	                </div>
 					<div class="panel-body">
-						<?php if ( is_user_login() ) { ?>
+						<?php if ( is_user_login() ) {
+							$current_user = $user->get_current_user();
+							$user_status = $user->get_user_meta( $current_user['id'], 'block', true ); ?>
+							<?php if ( $user_status ): ?>
+								You are blocked by Admin.
+								<?php else: ?>
 						<form method="POST" action="modules/add_idea.php" class="form-horizontal">
 							<div class="form-group title-group">
 								<label class="col-sm-3" for="">Title</label>
@@ -112,6 +121,7 @@
 								<input type="hidden" id="user-id" value="<?php echo $current_user['id']; ?>">
 							<button id="idea-submit" type="submit" class="btn btn-primary submit-button">Submit</button>
 						</form>
+						<?php endif; ?>
 						<?php } else { ?>
 							<div class="alert alert-info" role="alert">
 							 	You need to <a href="login.php">login</a> to submit ideas.
@@ -120,15 +130,27 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-3">
-            <!-- Search box-->
-	            <?php include("search_box.php"); ?>
-	            <?php include("categories_box.php"); ?>
-	            <?php include("popular_ideas_box.php"); ?>
-        	</div>
+			<?php if ( is_user_login() ): ?>
+					<?php if ( $user_status ): ?>
+							You are blocked by Admin.
+					<?php else: ?>
+					<div class="col-xs-12 col-md-3">
+		            <!-- Search box-->
+			            <?php include("search_box.php"); ?>
+			            <?php include("categories_box.php"); ?>
+			            <?php include("popular_ideas_box.php"); ?>
+		        	</div>
+		   			<?php endif; ?>
+   			<?php else : ?>
+   				<div class="col-xs-12 col-md-3">
+	            <!-- Search box-->
+		            <?php include("search_box.php"); ?>
+		            <?php include("categories_box.php"); ?>
+		            <?php include("popular_ideas_box.php"); ?>
+	        	</div>
+			<?php endif ?>
 		</div>
 	</div>
-
 <?php 
 	include("footer.php");
 ?>

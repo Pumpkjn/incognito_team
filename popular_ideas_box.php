@@ -1,4 +1,5 @@
 <?php global $idea; ?>
+
 <!-- Most Views -->
 <div class="panel panel-default">
     <div class="panel-heading">

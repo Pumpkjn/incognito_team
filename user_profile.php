@@ -17,9 +17,13 @@ else if ($cuser)
 
 if ($puser["dep_id"])
     $user_dep= $deps->get_dep_by_id($puser["dep_id"]);
-
-
-?>
+if ( is_user_login() ):
+    $current_user = $user->get_current_user();
+    $user_status = $user->get_user_meta( $current_user['id'], 'block', true );
+    endif; ?>
+    <?php if ( is_user_login() && $user_status ) : ?>
+    You are blocked by Admin.
+<?php else: ?>
 
 <div class="container">
     <div class="row">
@@ -76,6 +80,24 @@ if ($puser["dep_id"])
                                                     <tr>
                                                         <td>Email:</td>
                                                         <td><?php echo $puser["email"]; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Last login:</td>
+                                                        <td>
+                                                            <?php
+                                                            $lasts = $user->get_user_meta( $puser['id'], 'last_login', true );
+                                                            if ( !$lasts || 1 == count( $lasts ) ) {
+                                                               echo 'Welcome to the Website';
+                                                            } else if ( 2 == count( $lasts ) ) {
+                                                               echo $lasts[0];
+                                                            } else {
+                                                                $first = array_reverse( $lasts );
+                                                                echo $first[1];
+                                                            }
+                                                            ?> 
+
+
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -141,6 +163,7 @@ if ($puser["dep_id"])
         </div>
     </div>
 </div>
+<?php endif; ?>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>

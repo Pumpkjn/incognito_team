@@ -220,6 +220,9 @@ class idea
     	$database->execute_query( $sql );
 	}
 	
+	function report_idea( $id ) {
+		$this->add_idea_meta( $id, 'reported' , true );
+	}
 
 	function get_categories( $idea_id ) {
 		global $database;

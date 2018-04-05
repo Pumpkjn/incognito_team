@@ -24,6 +24,13 @@ $ideas = $db_idea->get_all_ideas($num_per_page,$num_off_set);
 if ($page>1) $lprev = "?page=".($page-1); else $lprev="#";
 if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
 ?>
+<?php if ( is_user_login() ):
+    $current_user = $user->get_current_user();
+    $user_status = $user->get_user_meta( $current_user['id'], 'block', true );
+    endif; ?>
+    <?php if ( is_user_login() && $user_status ) : ?>
+    You are blocked by Admin.
+<?php else: ?>
 <body>
 
 
@@ -119,7 +126,7 @@ if (count($ideas)==$num_per_page) $lnext = "?page=".($page+1); else $lnext="#";
         </div>
     </div>
 </div>
-
+<?php endif; ?>
 
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>

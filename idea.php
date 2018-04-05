@@ -18,6 +18,13 @@ if ( $post ) {
 		<div class="col-xs-12 col-md-9">
 			<!-- the start of an idea -->
 			<div class="panel panel-default">
+			<?php if ( is_user_login() ):
+				$current_user = $user->get_current_user();
+				$user_status = $user->get_user_meta( $current_user['id'], 'block', true );
+			endif; ?>
+			<?php if ( is_user_login() && $user_status ) : ?>
+				You are blocked by Admin.
+			<?php else: ?>
 				<div class="panel-heading ">
 					<h4 class="pull-left">
 						<?php echo $idea->get_idea_meta( $post_id, 'title', false ); ?>
@@ -38,9 +45,9 @@ if ( $post ) {
 									$user_id = $_SESSION['id'];
 									$user_department = $user->get_user_department_id( $user_id );
 									$idea_department = $idea->get_idea_meta( $post_id, 'dep', false );
-									if ( $user_department == $idea_department || $_SESSION['role'] == '0' ) { ?>
+									if ( $user_department['id'] == $idea_department || $_SESSION['role'] == '0' ) { ?>
 										<h5 style="display: inline-block;">
-										| <a href="admin/modules/admin_delete_idea.php?id=<?php echo $i['id'] ?>"> Delete </a> 
+										| <a href="admin/modules/admin_delete_idea.php?id=<?php echo $post_id ?>" onclick="return confirm('Do you really want to delete the Idea?')"> Delete </a> 
 										</h5>
 									<?php }
 								?>
@@ -60,13 +67,14 @@ if ( $post ) {
 								<?php
 									$user_id = $_SESSION['id'];
 									$user_department = $user->get_user_department_id( $user_id );
+
 									$idea_department = $idea->get_idea_meta( $post_id, 'dep', false );
-									if ( $user_department == $idea_department || $_SESSION['role'] == '0' ) { 
+									if ( $user_department['id'] == $idea_department || $_SESSION['role'] == '0' ) { 
 										$attachment = $idea->get_idea_meta( $post_id, 'attachment_dir', false );
 										?>
 										<?php if ( $attachment && $attachment != '' ): ?>
 											<div id="attachment-container">
-												<a href="admin/modules/download_package.php?idea=4&amp;package=4_5a9d8fcf557ec" class="download-attachment">Download Attachment <i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i></a>
+												<a href="admin/modules/download_package.php?idea=<?php echo $post_id ?>&amp;package=<?php echo substr( $attachment, 11 ) ?>" class="download-attachment">Download Attachment <i class="glyphicon glyphicon-download-alt" aria-hidden="true"></i></a>
 											</div>
 										<?php endif ?>
 										
@@ -127,6 +135,18 @@ if ( $post ) {
 
 								</span>
 							</a>
+						</li>
+						<li>|</li>
+						<li>
+							<?php 
+								$reported = $idea->get_idea_meta( $post_id, 'reported', false );
+							?>
+							<?php if ( $reported ) : ?>
+									<span class="alert alert-warning" style="padding: 1px;color: red;"> This idea is being reported. </span>
+							<?php else: ?>
+								<a href="modules/report.php?id=<?php echo $post_id ?>" style="color:#FF7F50;" onclick="return confirm('Do you really want to report the idea?')">Report</a>
+							<?php endif; ?>
+						</li>
 					</ul>
 					<ul class="list-inline pull-right">
 						<li>
@@ -211,6 +231,7 @@ if ( $post ) {
 								<?php
 								$comment_status = $comment['comment_status'];
 								$dep_id = $idea->get_idea_meta( $post_id, 'dep', false );
+								$user_id = isset( $_SESSION['id'] ) ? $_SESSION['id'] : null;
 								if ( $comment_status ) {
 									if ( !is_user_login() ) {
 										$author_name = 'Anonymous';
@@ -258,17 +279,32 @@ if ( $post ) {
 						</li>
 
 					</ul>
-
-
 				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 
 		<div class="col-xs-12 col-md-3 ">
 			<!-- Search box-->
-			<?php include "search_box.php"; ?>
-			<?php include "categories_box.php"; ?>
-			<?php include "popular_ideas_box.php"; ?>
+			<?php if ( is_user_login() ): ?>
+					<?php if ( $user_status ): ?>
+							You are blocked by Admin.
+					<?php else: ?>
+					<div class="col-xs-12 col-md-3">
+		            <!-- Search box-->
+			            <?php include("search_box.php"); ?>
+			            <?php include("categories_box.php"); ?>
+			            <?php include("popular_ideas_box.php"); ?>
+		        	</div>
+		   			<?php endif; ?>
+   			<?php else : ?>
+   				<div class="col-xs-12 col-md-3">
+	            <!-- Search box-->
+		            <?php include("search_box.php"); ?>
+		            <?php include("categories_box.php"); ?>
+		            <?php include("popular_ideas_box.php"); ?>
+	        	</div>
+			<?php endif ?>
 		</div>
 	</div>
 </div>

@@ -5,7 +5,13 @@
 $current_tab = 'home';
 include_once "top_nav.php";
 ?>
-
+<?php if ( is_user_login() ):
+    $current_user = $user->get_current_user();
+    $user_status = $user->get_user_meta( $current_user['id'], 'block', true );
+    endif; ?>
+    <?php if ( is_user_login() && $user_status ) : ?>
+    You are blocked by Admin.
+<?php else: ?>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-9">
@@ -454,3 +460,4 @@ include_once "top_nav.php";
         </div>
     </div>
 </div>
+<?php endif; ?>

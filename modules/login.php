@@ -28,11 +28,13 @@ if( $results ){
         $_SESSION['id'] = $results['id'];
         $_SESSION['role'] = $results['role'];
 
+        $user->add_user_meta( $results['id'], 'last_login', date("F j, Y, g:i a") );
+
         if ( 0 == $results['role'] ) {
         	header('Location: ../admin/admin.php');
 			exit();
         } else {
-        	header('Location: ../index.php');
+        	header('Location: ../user_profile.php');
 			exit();
         }
     }

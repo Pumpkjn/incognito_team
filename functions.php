@@ -276,5 +276,11 @@
 
 	function count_comment( $post ) {
 		$comments = get_all_comments( $post );
-		return count( $comments );
+		if ( $comments ) {
+			return count( $comments );
+		} else {
+			return 0;
+		}
+		
 	}
+?>
