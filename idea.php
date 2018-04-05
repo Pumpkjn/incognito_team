@@ -290,20 +290,16 @@ if ( $post ) {
 					<?php if ( $user_status ): ?>
 							You are blocked by Admin.
 					<?php else: ?>
-					<div class="col-xs-12 col-md-3">
 		            <!-- Search box-->
 			            <?php include("search_box.php"); ?>
 			            <?php include("categories_box.php"); ?>
 			            <?php include("popular_ideas_box.php"); ?>
-		        	</div>
 		   			<?php endif; ?>
    			<?php else : ?>
-   				<div class="col-xs-12 col-md-3">
 	            <!-- Search box-->
 		            <?php include("search_box.php"); ?>
 		            <?php include("categories_box.php"); ?>
 		            <?php include("popular_ideas_box.php"); ?>
-	        	</div>
 			<?php endif ?>
 		</div>
 	</div>
